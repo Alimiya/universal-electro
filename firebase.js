@@ -1,13 +1,9 @@
-var admin = require('firebase-admin')
+const admin = require('firebase-admin');
+const serviceAccount = require("./pfiles/serviceAccessKey.json");
+const fauth = require('firebase/auth');
+const { initializeApp } = require('firebase/app')
 
-var serviceAccount = require('./pfiles/serviceAccessKey.json')
 
-const {initializeApp} = require('firebase/app')
-const fauth = require('firebase/auth')
-
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
-});
 
 const firebaseConfig = {
     apiKey: "AIzaSyDoOnSE-0UMFiJPn0O48vg8NnU0Qtsa62c",
@@ -19,6 +15,12 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const fdb = admin.firestore();
 
-module.exports = {fdb, fauth}
+const admin_app = admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
+const fdb = admin.firestore();
+const admin_fauth = admin.auth();
+
+module.exports = {fdb, admin_fauth, fauth};

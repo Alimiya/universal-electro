@@ -5,32 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Universal Electro</title>
-    <link rel="stylesheet" href="/public/css/bootstrap.css">
-    <link rel="stylesheet" href="/public/css/style.css">
-    <link rel="stylesheet" href="/public/css/common.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://www.richardhsu.me/jquery.ambiance/assets/css/jquery.ambiance.css">
-    <script src="https://www.richardhsu.me/jquery.ambiance/assets/js/jquery.ambiance.js"></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
-    <script>
-        function loading(mode, el = null) {
-            if (mode == 1) {
-                $(el).html('<img src="/public/images/preloader.svg" class="loader_overlay">');
-            } else if (mode == 2) {
-                $(el).prepend('<div class="spinner-border"></div> ').attr('disabled', true);
-            } else if (mode == 20) {
-                setTimeout(function () {
-                    $(el).removeAttr('disabled');
-                    $(el).find('.spinner-border').remove();
-                }, 500);
-            } else if (mode == 3) {
-                $(el).append(' <div class="spinner-border"></div>');
-            } else if (mode == 30) {
-                $(el).find('.spinner-border').remove();
-            }
-        }
-    </script>
+    <%- include('./components/head.ejs.html') %>
 </head>
 
 <body>
@@ -39,7 +14,7 @@
         <div class="login container-sm">
             <img src="/public/images/logo.png" alt="" id="logo" width="200">
             <h1>Вход</h1>
-            <div id="ambiance" class="w-50 p-0 pt-3"></div>
+            <div id="ambiance" class="w-50 p-0"></div>
             <div class="mb-3 mt-3 w-50">
                 <label for="email" class="form-label">Электронная почта</label>
                 <input type="email" class="form-control" id="email" placeholder="Введите вашу почту" name="email">
@@ -89,11 +64,12 @@
             $.ajax({
                 method: 'post',
                 url: '/api/auth/login',
+                dataType: 'json',
                 data: {
                     email: email,
                     password: password
                 }, success: function (res) {
-                    console.log(res)
+                    
                     if (res.r == 1) {
                         ambianceElement.html('<p>Success!</p>').addClass('success');
                         setTimeout(function () {
@@ -105,8 +81,9 @@
                     } else if (res.r == 2) {
                         ambianceElement.html('<p>Пользователь не найден</p>').addClass('info');
                     } else if (res.r == 4) {
-                        ambianceElement.html('<p>Пользователь не найден</p>').addClass('info');
+                        ambianceElement.html('<p>Неверная почта или пароль</p>').addClass('info');
                     } 
+
                     loading(20, el = '#login_btn');
                     ambianceElement.addClass('show');
                     setTimeout(function () {

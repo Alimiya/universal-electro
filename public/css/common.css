@@ -19,32 +19,32 @@
 
 #ambiance.success {
     background-color: #04DEAA;
-    padding: 15px 0;
+    
 }
 
 #ambiance.error {
     background-color: #e74c3c;
-    padding: 15px 0;
+    
 }
 
 #ambiance.info {
     background-color: #2C9AFF;
-    padding: 15px 0;
+    
 }
 
 #ambiance.warning {
     background-color: #f39c12;
-    padding: 15px 0;
+    
 }
 
 #ambiance.invalid-email {
     background-color: #c0392b;
-    padding: 15px 0;
+    
 }
 
 #ambiance.too-many-requests {
     background-color: #e67e22;
-    padding: 15px 0;
+    
 }
 
 .ambiance{

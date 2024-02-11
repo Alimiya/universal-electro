@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="/public/css/bootstrap.css">
+<link rel="stylesheet" href="/public/css/style.css">
+<link rel="stylesheet" href="/public/css/common.css">
+<link href="/public/fonts/fonts.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://www.richardhsu.me/jquery.ambiance/assets/css/jquery.ambiance.css">
+<script src="https://www.richardhsu.me/jquery.ambiance/assets/js/jquery.ambiance.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+<script>
+    function loading(mode, el = null) {
+        if (mode == 1) {
+            $(el).html('<img src="/public/images/preloader.svg" class="loader_overlay">');
+        } else if (mode == 2) {
+            $(el).prepend('<div class="spinner-border"></div> ').attr('disabled', true);
+        } else if (mode == 20) {
+            setTimeout(function () {
+                $(el).removeAttr('disabled');
+                $(el).find('.spinner-border').remove();
+            }, 500);
+        } else if (mode == 3) {
+            $(el).append(' <div class="spinner-border"></div>');
+        } else if (mode == 30) {
+            $(el).find('.spinner-border').remove();
+        }
+    }
+</script>

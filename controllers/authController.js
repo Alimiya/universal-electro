@@ -5,11 +5,10 @@ const fauth = require('../firebase').fauth;
 exports.login = async function (req, res, next) {
     let r = { r: 0 };
     const {email, password} = req.body;
-    
     try {
-
-        await fauth.signInWithEmailAndPassword(fauth.getAuth(), email, password).then((userCredential) => {
-          console.log(userCredential)
+        fauth.signInWithEmailAndPassword(fauth.getAuth(), email, password).then((userCredential) => {
+          const user_id = userCredential.user.uid;
+          console.log(user_id)
             const token = generateAdminToken(userCredential)
             console.log(userCredential.user);
             res.cookie('admin', token, {maxAge: process.env.TOKEN_EXPIRE * 100000})
@@ -24,6 +23,8 @@ exports.login = async function (req, res, next) {
               r['r'] = 0;
             } else if (err.code == 'auth/too-many-requests') {
               r['r'] = 3;
+            } else if (err.code == 'auth/invalid-credential') {
+              r['r'] = 4;
             }
             res.send(JSON.stringify(r));
           });
