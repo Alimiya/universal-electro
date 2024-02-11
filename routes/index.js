@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const {verifyAdminToken} = require('../middlewares/verify')
+const {ADMIN_TOKEN_SECRET} = process.env
+const Controller = require('../controllers/adminController')
 
 router.get('/', (req, res) => {
     res.render('index');

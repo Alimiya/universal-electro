@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const path = require('path');
 require("dotenv").config({path: "config/.env"})
 
@@ -18,6 +19,7 @@ app.use('/views', express.static(path.join(__dirname + '/views')));
 app.use('/public', express.static(path.join(__dirname + '/public')));
 app.use(express.json());
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/', index);
