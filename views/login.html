@@ -24,7 +24,7 @@
                 <input type="password" class="form-control" id="password" placeholder="Введите пароль" name="pswd">
             </div>
             <div class="mb-3 w-50 text-secondary">
-                <label for="pwd" >Забыли пароль ?</label>
+                <label for="pwd" >Забыли пароль?</label>
             </div>
             <button type="submit" id="login_btn" class="btn btn-primary px-5 mt-4" onclick="signIn()">Войти</button>
         </div>
@@ -81,7 +81,7 @@
                     } else if (res.r == 2) {
                         ambianceElement.html('<p>Пользователь не найден</p>').addClass('info');
                     } else if (res.r == 4) {
-                        ambianceElement.html('<p>Неверная почта или пароль</p>').addClass('info');
+                        ambianceElement.html('<p>Неверная почта или пароль</p>').addClass('invalid-email show');
                     } 
 
                     loading(20, el = '#login_btn');

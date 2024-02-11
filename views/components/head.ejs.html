@@ -10,9 +10,13 @@
 <script>
     function loading(mode, el = null) {
         if (mode == 1) {
-            $(el).html('<img src="/public/images/preloader.svg" class="loader_overlay">');
-        } else if (mode == 2) {
-            $(el).prepend('<div class="spinner-border"></div> ').attr('disabled', true);
+            $.LoadingOverlay("show");
+        }
+        else if (mode == 0) {
+            $.LoadingOverlay("hide");
+        }
+        else if (mode == 2) {
+            $(el).prepend('<div class="spinner-border"></div>').attr('disabled', true);
         } else if (mode == 20) {
             setTimeout(function () {
                 $(el).removeAttr('disabled');

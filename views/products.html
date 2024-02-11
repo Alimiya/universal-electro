@@ -79,25 +79,8 @@
             <th scope="col">Действия</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <th class="" scope="row">1</th>
-            <td>
-              <img src="/public/images/щит.png" alt="" />
-            </td>
-            <td>Автоматический ввод резерва АВР</td>
-            <td>Бухой алкаш</td>
-            <td>Бутылка водки</td>
-            <td style="width: 12%">
-              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <span class="material-symbols-outlined"> edit_document </span>
-              </button>
+        <tbody id="products">
 
-              <button type="button" class="btn table-icon" data-toggle="modal" data-target="#deleteModal">
-                <span class="material-symbols-outlined"> delete </span>
-              </button>
-            </td>
-          </tr>
         </tbody>
       </table>
 
@@ -153,7 +136,54 @@
       </div>
     </div>
   </div>
-  <script></script>
+  <script>
+
+    $(()=>{
+      loading(1);
+      showProducts();
+      loading(0);
+    })
+
+    function showProducts() {
+      let i = 1;
+      let productsHTML = '';
+      $.ajax({
+        url: '/api/catalog/products',
+        method: 'get',
+        success: function(data){
+          data.forEach(p => {
+            productsHTML += `
+              <tr>
+                <th class="" scope="row">${i}</th>
+                <td>
+                  <img src="${p.product_img}" alt="" />
+                </td>
+                <td>${p.title}</td>
+                <td>${p.category}</td>
+                <td>${p.price}</td>
+                <td style="width: 12%">
+                  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editProduct('${p.product_id}')">
+                    <span class="material-symbols-outlined"> edit_document </span>
+                  </button>
+
+                  <button type="button" class="btn table-icon" data-toggle="modal" data-target="#deleteModal" onclick="deleteProduct('${p.product_id}')">
+                    <span class="material-symbols-outlined"> delete </span>
+                  </button>
+                </td>
+              </tr>`;
+              i++;
+
+             
+          });
+          $('#products').append(productsHTML)
+        }
+      });
+    
+    }
+
+    
+
+  </script>
 </body>
 
 </html>
