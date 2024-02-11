@@ -18,11 +18,8 @@
     "express-session": "^1.18.0",
     "firebase": "^10.8.0",
     "firebase-admin": "^12.0.0",
-<<<<<<< HEAD
     "jsonwebtoken": "^9.0.2",
-=======
     "nodemon": "^3.0.3",
->>>>>>> 1ec44f4835182c50874263e77095421d75d84c4e
     "path": "^0.12.7"
   }
 }
