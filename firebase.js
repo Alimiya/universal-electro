@@ -3,7 +3,7 @@ var admin = require('firebase-admin')
 var serviceAccount = require('./pfiles/serviceAccessKey.json')
 
 const {initializeApp} = require('firebase/app')
-const fauth = require('firebase/auth');
+const fauth = require('firebase/auth')
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
