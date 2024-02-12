@@ -22,5 +22,6 @@ const admin_app = admin.initializeApp({
 
 const fdb = admin.firestore();
 const admin_fauth = admin.auth();
+const storage = admin.storage().bucket('gs://universal-electro.appspot.com');
 
-module.exports = {fdb, admin_fauth, fauth};
+module.exports = {fdb, admin_fauth, fauth, storage}

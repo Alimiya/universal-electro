@@ -3,8 +3,11 @@ const app = express();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const path = require('path');
+const multer = require('multer');
+const uuid = require('uuid-v4');
+const fs = require('fs');
+const storage = require('./firebase').storage;
 require("dotenv").config({path: "config/.env"})
-
 
 const index = require('./routes/index');
 const adminRoute = require('./routes/adminRoute')
