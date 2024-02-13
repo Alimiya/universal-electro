@@ -4,10 +4,10 @@
   font-family: "Roboto", sans-serif;
 }
 
-body {
-  background-image: url(/public/images/main-bg.png);
-  background-size: cover;
-}
+
+
+
+/* Login page */
 
 .login {
   background-color: white;
@@ -18,6 +18,32 @@ body {
   padding: 40px;
   border-radius: 10px;
   width: 50%;
+}
+
+/* End of Login page */
+
+
+
+
+.search-input {
+  outline: none !important;
+}
+
+.table-icon {
+  border: 0;
+}
+
+.table-icon span {
+  font-size: 34px;
+}
+
+#products td img {
+  width: 100px;
+  transition: transform ease 0.3s;
+}
+
+#products td img:hover {
+  transform: scale(1.5);
 }
 
 @media (max-width: 768px) {

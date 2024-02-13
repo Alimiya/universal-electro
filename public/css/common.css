@@ -1,3 +1,7 @@
+body {
+    background-image: url(/public/images/main-bg.png);
+    background-size: cover;
+}
 
 
 #ambiance {
@@ -8,7 +12,7 @@
     transition: background-color 0.5s, transform 0.5s;
     cursor: default;
     margin: 3% 0 1% 0;
-    
+
     width: 80%;
 }
 
@@ -19,35 +23,35 @@
 
 #ambiance.success {
     background-color: #04DEAA;
-    
+
 }
 
 #ambiance.error {
     background-color: #e74c3c;
-    
+
 }
 
 #ambiance.info {
     background-color: #2C9AFF;
-    
+
 }
 
 #ambiance.warning {
     background-color: #f39c12;
-    
+
 }
 
 #ambiance.invalid-email {
     background-color: #c0392b;
-    
+
 }
 
 #ambiance.too-many-requests {
     background-color: #e67e22;
-    
+
 }
 
-.ambiance{
+.ambiance {
     font-family: InterReg;
 }
 
