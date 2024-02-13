@@ -30,9 +30,7 @@ exports.createProduct = async function (req, res, next) {
         })
         return;
     }
-
-    var product_image_url = `https://firebasestorage.googleapis.com/v0/b/universal-electro.appspot.com/o/products%2F${product_img.originalname}?alt=media`
-
+    
     await fdb.collection('products').add({
         title: title,
         description: description,
@@ -65,29 +63,6 @@ exports.createProduct = async function (req, res, next) {
 }
 // POST /product/update/:id
 // POST /product/delete/:id
-// GET /products
-
-exports.getAdminProducts = async function (req, res, next) {
-    let data = [];
-
-    await fdb.collection('products').get().then((products) => {
-        products.forEach((product) => {
-            let product_data = {
-                product_id: product.id,
-                title: product.data().title,
-                description: product.data().description,
-                price: product.data().price,
-                category: product.data().category,
-                status: product.data().status,
-                quantity: product.data().quantity,
-                product_img: product.data().product_img
-            }
-            data.push(product_data);
-        })
-    })
-
-    res.send(data);
-}
 
 // GET /requests
 // POST /request/delete/:id
