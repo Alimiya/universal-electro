@@ -21,5 +21,6 @@ const upload = multer({
 });
 
 router.post('/create', upload.single('product_img'), Controller.createProduct);
+router.get('/getProducts', Controller.getAdminProducts);
 
 module.exports = router
