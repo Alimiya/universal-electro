@@ -25,12 +25,9 @@ exports.createProduct = async function (req, res, next) {
     let kazniisa = req.body.kazniisa
     let articul = req.body.articul
 
-    if (!title || !description || !price || !category || !status || !quantity || !kazniisa || articul) {
-        res.send(r);
-        fs.unlink(product_img.path, () => {
-
-        })
-        return;
+    if (!title || !description || !price || !category || !status || !quantity || !kazniisa || !articul) {
+        fs.unlink(product_img.path, () => {})
+        return res.send(r)
     }
 
     await fdb.collection('products').add({
