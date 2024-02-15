@@ -8,9 +8,7 @@ exports.login = async function (req, res, next) {
     try {
         fauth.signInWithEmailAndPassword(fauth.getAuth(), email, password).then((userCredential) => {
           const user_id = userCredential.user.uid;
-          console.log(user_id)
             const token = generateAdminToken(userCredential)
-            console.log(userCredential.user);
             res.cookie('admin', token, {maxAge: process.env.TOKEN_EXPIRE * 100000})
             res.header('Authorization', `Bearer ${token}`)
             r['r'] = 1;
