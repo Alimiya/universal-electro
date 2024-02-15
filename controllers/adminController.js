@@ -83,7 +83,7 @@ exports.updateProduct = async function (req, res, next) {
         return;
     }
 
-    await fdb.collection('products').doc('Iuk75SbL7PBcf0mvHvRh').update({
+    await fdb.collection('products').doc(product_id).update({
         title: new_title,
         description: new_description,
         price: new_price,
@@ -94,6 +94,7 @@ exports.updateProduct = async function (req, res, next) {
         articul: new_articul
     }).then(() => {
         r['r'] = 1;
+        r['product_id'] = product_id;
         res.send(r);
     }).catch((e) => {
         console.log(e);
@@ -112,6 +113,7 @@ exports.deleteProduct = async function (req, res, next) {
 
     await fdb.collection('products').doc(product_id).delete().then(() => {
         r['r'] = 1;
+        r['product_id'] = product_id;
         res.send(r);
     }).catch((e)=>{
         console.log(e);
@@ -151,6 +153,7 @@ exports.deleteRequest = async (req, res) => {
 
     await fdb.collection('requests').doc(request_id).delete().then(() => {
         r['r'] = 1;
+        r['request_id'] = request_id;
         res.send(r);
     }).catch((e)=>{
         console.log(e);
