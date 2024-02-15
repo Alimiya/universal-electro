@@ -1,6 +1,10 @@
 // GET / - filter: title, description, img, price, category, status, quantity=
 
 const fdb = require('../firebase').fdb;
+const {jsPDF} = require('jspdf')
+require('jspdf-autotable')
+const doc = new jsPDF()
+
 
 exports.getProducts = async function (req, res, next) {
     let data = [];
@@ -52,3 +56,16 @@ exports.createRequest = async (req, res) => {
 }
 
 // POST / - сделать запрос на покупку корзины с покрытием в пдф
+exports.createPdf = async (req,res) =>{
+    doc.autoTable({ html: '#my-table' })
+    console.log(doc)
+doc.autoTable( {
+  head: [['Name', 'Email', 'Country']],
+  body: [
+    ['David', 'david@example.com', 'Sweden'],
+    ['Castille', 'castille@example.com', 'Spain'],
+  ],
+})
+
+doc.save('table.pdf')
+}

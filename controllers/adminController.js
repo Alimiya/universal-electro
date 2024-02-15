@@ -48,6 +48,7 @@ exports.createProduct = async function (req, res, next) {
         var product_image_url = `https://firebasestorage.googleapis.com/v0/b/universal-electro.appspot.com/o/products%2F${product_img.originalname}?alt=media`
         await fdb.collection('products').doc(pd.id).update({ product_img: product_image_url, product_id: pd.id }).then(() => {
             r['r'] = 1;
+            r['product_id'] = pd.id;
             res.send(r);
 
             fs.unlink(product_img.path, () => {
