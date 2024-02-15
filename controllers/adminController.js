@@ -97,7 +97,20 @@ exports.updateProduct = async function (req, res, next) {
 
 // POST /product/delete/:id
 exports.deleteProduct = async function (req, res, next) {
+    let r = { r: 0 };
+    let product_id = req.body.product_id;
 
+    if (!product_id) {
+        return res.send(r);
+    }
+
+    await fdb.collection('products').doc(product_id).delete().then(() => {
+        r['r'] = 1;
+        res.send(r);
+    }).catch((e)=>{
+        console.log(e);
+        res.send(r);
+    })
 }
 
 // GET /requests
