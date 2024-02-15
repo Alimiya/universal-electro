@@ -1,72 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <title>Universal Electro | Товары</title>
-    <link rel="stylesheet" href="/public/css/bootstrap.css" />
 
-    <%- include('./components/head.ejs.html') %>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="initial-scale=1, width=device-width" />
+  <title>Universal Electro | Товары</title>
+  <link rel="stylesheet" href="/public/css/bootstrap.css" />
 
-  <body>
-    <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#"
-            ><img src="/public/images/logo.png" width="150" alt=""
-          /></a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Товары</a>
-              </li>
+  <%- include('./components/head.ejs.html') %>
+</head>
 
-              <li class="nav-item">
-                <a class="nav-link" href="#">Запросы</a>
-              </li>
-            </ul>
-            <a class="btn btn-outline-primary" href="/login">Выйти</a>
-          </div>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="/public/images/logo.png" width="150" alt="" /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Товары</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Запросы</a>
+            </li>
+          </ul>
+          <a class="btn btn-outline-primary" href="/login">Выйти</a>
         </div>
-      </nav>
-    </header>
-    <main>
-      <div class="container">
-        <form class="d-flex justify-content-between mt-5" role="search">
-          <input
-            class="form-control me-2 w-75 search-input border-secondary"
-            type="search"
-            placeholder="Введите"
-            aria-label="Search"
-          />
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="container">
+      <form class="d-flex justify-content-between mt-5" role="search">
+        <input class="form-control me-2 w-75 search-input border-secondary" type="search" placeholder="Введите"
+          aria-label="Search" />
 
-          <div class="d-flex gap-2">
-            <button class="btn btn-success" type="button">Искать</button>
-            <button
-              class="btn btn-primary"
-              type="button"
-              onclick="showAddProductModal()"
-            >
-              Добавить
-            </button>
-          </div>
-        </form>
-
-        <table
-          class="table table-bordered border-secondary mt-5 text-center align-middle"
-        >
+        <div class="d-flex gap-2">
+          <button class="btn btn-success" type="button">Искать</button>
+          <button class="btn btn-primary" type="button" onclick="showAddProductModal()">
+            Добавить
+          </button>
+        </div>
+      </form>
+      <div id="table_block" style="width: 100%; overflow-x: auto;">
+        <table class="table table-bordered border-secondary mt-5 text-center align-middle">
           <thead class="thead-dark">
             <tr>
               <th scope="col">#</th>
@@ -76,269 +58,191 @@
               <th scope="col">Категория</th>
               <th scope="col">Цена</th>
               <th scope="col">Количество</th>
+              <th scope="col">КазНИИСА</th>
+              <th scope="col">Артикул</th>
               <th scope="col">Действия</th>
             </tr>
           </thead>
           <tbody id="products"></tbody>
         </table>
       </div>
-    </main>
 
-    <!-- Modals -->
-    <div class="modal fade" id="add_product-modal">
-      <div class="modal-dialog text-left">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Добавить</h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <label for="formFile" class="form-label"
-                  >Загрузите изображение</label
-                >
-                <input class="form-control" type="file" id="product_img" />
-              </div>
-
-              <div class="mb-3">
-                <label for="name" class="form-label">Название</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="title"
-                  placeholder="Введите название"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="description">Описание</label>
-                <textarea
-                  class="form-control"
-                  id="description"
-                  placeholder="Введите описание"
-                ></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="category" class="form-label">Категория</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="category"
-                  placeholder="Введите категорию"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="price" class="form-label">Цена</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="price"
-                  placeholder="Введите цену"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="status" class="form-label">Статус</label>
-                <select class="form-control" id="status">
-                  <option value="1">В наличии</option>
-                  <option value="0">Не в наличии</option>
-                </select>
-              </div>
-              <div class="mb-3">
-                <label for="price" class="form-label">Количество</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="quantity"
-                  placeholder="123"
-                />
-              </div>
-
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Отмена
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  id="add_product_btn"
-                  onclick="addProduct()"
-                >
-                  Добавить
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
     </div>
+  </main>
 
-    <div class="modal fade" id="edit_product-modal">
-      <div class="modal-dialog text-left">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Изменить</h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <label for="formFile" class="form-label"
-                  >Загрузите изображение</label
-                >
-                <input
-                  class="form-control"
-                  type="file"
-                  id="product_img"
-                  placeholder=""
-                />
-              </div>
-
-              <div class="mb-3">
-                <label for="new_title" class="form-label">Название</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="new_title"
-                  placeholder=""
-                />
-              </div>
-              <div class="mb-3">
-                <label for="new_description">Описание</label>
-                <textarea
-                  class="form-control"
-                  id="new_description"
-                  placeholder=""
-                ></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="new_category" class="form-label">Категория</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="new_category"
-                  placeholder=""
-                />
-              </div>
-              <div class="mb-3">
-                <label for="new_price" class="form-label">Цена</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="new_price"
-                  placeholder=""
-                />
-              </div>
-              <div class="mb-3">
-                <label for="new_status" class="form-label">Статус</label>
-                <select class="form-control" id="new_status">
-                  <option value="1">В наличии</option>
-                  <option value="0">Не в наличии</option>
-                </select>
-              </div>
-              <div class="mb-3">
-                <label for="new_quantity" class="form-label">Количество</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="new_quantity"
-                  placeholder=""
-                />
-              </div>
-
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Отмена
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  id="edit_product_btn"
-                  onclick="editProduct()"
-                >
-                  Изменить
-                </button>
-              </div>
-            </form>
-          </div>
+  <!-- Modals -->
+  <div class="modal fade" id="add_product-modal">
+    <div class="modal-dialog text-left">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Добавить</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-      </div>
-    </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="formFile" class="form-label">Загрузите изображение</label>
+              <input class="form-control" type="file" id="product_img" />
+            </div>
 
-    <div class="modal fade" id="delete_product-modal">
-      <div class="modal-dialog text-left">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5">Удалить товар</h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3">Вы уверены что хотите удалить данный товар?</div>
+            <div class="mb-3">
+              <label for="name" class="form-label">Название</label>
+              <input type="text" class="form-control" id="title" placeholder="Введите название" />
+            </div>
+            <div class="mb-3">
+              <label for="description">Описание</label>
+              <textarea class="form-control" id="description" placeholder="Введите описание"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="category" class="form-label">Категория</label>
+              <input type="text" class="form-control" id="category" placeholder="Введите категорию" />
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label">Цена</label>
+              <input type="number" class="form-control" id="price" placeholder="Введите цену" />
+            </div>
+            <div class="mb-3">
+              <label for="status" class="form-label">Статус</label>
+              <select class="form-control" id="status">
+                <option value="1">В наличии</option>
+                <option value="0">Не в наличии</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label">Количество</label>
+              <input type="number" class="form-control" id="quantity" placeholder="123" />
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label">КазНИИСА</label>
+              <input type="number" class="form-control" id="kazniisa" placeholder="123" />
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label">Артикул</label>
+              <input type="text" class="form-control" id="articul" placeholder="АО102" />
+            </div>
+
 
             <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                 Отмена
               </button>
-              <button
-                type="button"
-                class="btn btn-danger"
-                id="delete_product_btn"
-                onclick="deleteProduct()"
-              >
-                Удалить
+              <button type="button" class="btn btn-primary" id="add_product_btn" onclick="addProduct()">
+                Добавить
               </button>
             </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="edit_product-modal">
+    <div class="modal-dialog text-left">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Изменить</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="formFile" class="form-label">Загрузите изображение</label>
+              <input class="form-control" type="file" id="product_img" placeholder="" />
+            </div>
+
+            <div class="mb-3">
+              <label for="new_title" class="form-label">Название</label>
+              <input type="text" class="form-control" id="new_title" placeholder="" />
+            </div>
+            <div class="mb-3">
+              <label for="new_description">Описание</label>
+              <textarea class="form-control" id="new_description" placeholder=""></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="new_category" class="form-label">Категория</label>
+              <input type="text" class="form-control" id="new_category" placeholder="" />
+            </div>
+            <div class="mb-3">
+              <label for="new_price" class="form-label">Цена</label>
+              <input type="number" class="form-control" id="new_price" placeholder="" />
+            </div>
+            <div class="mb-3">
+              <label for="new_status" class="form-label">Статус</label>
+              <select class="form-control" id="new_status">
+                <option value="1">В наличии</option>
+                <option value="0">Не в наличии</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="new_quantity" class="form-label">Количество</label>
+              <input type="number" class="form-control" id="new_quantity" placeholder="" />
+            </div>
+            <div class="mb-3">
+              <label for="new_quantity" class="form-label">КазНИИСА</label>
+              <input type="number" class="form-control" id="new_kazniisa" placeholder="" />
+            </div>
+            <div class="mb-3">
+              <label for="new_quantity" class="form-label">Артикул</label>
+              <input type="number" class="form-control" id="new_articul" placeholder="" />
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Отмена
+              </button>
+              <button type="button" class="btn btn-primary" id="edit_product_btn" onclick="editProduct()">
+                Изменить
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="delete_product-modal">
+    <div class="modal-dialog text-left">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Удалить товар</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">Вы уверены что хотите удалить данный товар?</div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Отмена
+            </button>
+            <button type="button" class="btn btn-danger" id="delete_product_btn" onclick="deleteProduct()">
+              Удалить
+            </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    var globalProductId;
 
-    <script>
-      var globalProductId
+    $(() => {
+      loading(1);
+      showProducts();
+      loading(0);
+    })
 
-      $(() => {
-        loading(1)
-        showProducts()
-        loading(0)
-      })
-
-      function showProducts() {
-        let i = 1
-        let productsHTML = ""
-        $.ajax({
-          url: "/api/catalog/products",
-          method: "get",
-          success: function (data) {
-            data.forEach((p) => {
-              productsHTML += `
+    function showProducts() {
+      let i = 1;
+      $("#products").html('');
+      let productsHTML = "";
+      $.ajax({
+        url: "/api/catalog/products",
+        method: "get",
+        success: function (data) {
+          data.forEach((p) => {
+            productsHTML += `
               <tr id="product-${i}"">
                 <th scope="row">${i}</th>
                 <td>
@@ -349,6 +253,9 @@
                 <td>${p.category}</td>
                 <td>${p.price}</td>
                 <td style="width: 10%">${p.quantity}</td>
+                <td style="width: 10%">${p.kazniisa}</td>
+                <td style="width: 10%">${p.articul}</td>
+
                 <td style="width: 12%">
                   <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showEditProductModal('#product-${i}','${p.product_id}')">
                     <span class="material-symbols-outlined"> edit_document </span>
@@ -359,217 +266,228 @@
                   </button>
                 </td>
               </tr>`
-              i++
-            })
-            $("#products").append(productsHTML)
-          },
+            i++
+          })
+          $("#products").append(productsHTML)
+        },
+      })
+    }
+
+    function showAddProductModal(id) {
+      $("#add_product-modal").modal("show")
+    }
+
+    function addProduct() {
+      loading(2, (el = "#add_product_btn"))
+      let img = $("#product_img")[0].files[0];
+      let title = $("#title").val().trim();
+      let description = $("#description").val().trim();
+      let price = $("#price").val()
+      let category = $("#category").val().trim();
+      let status = $("#status").val().trim();
+      let quantity = $("#quantity").val();
+      let kazniisa = $("#kazniisa").val();
+      let articul = $("#articul").val().trim();
+      let product_img_src = null
+      if (
+        !img ||
+        !title ||
+        !description ||
+        !price ||
+        !category ||
+        !status ||
+        !quantity ||
+        !kazniisa ||
+        !articul
+      ) {
+        $.ambiance({
+          message: "Заполните все поля",
+          type: "error",
+          fade: true,
+          width: 400,
         })
+        return loading(20, (el = "#add_product_btn"))
       }
 
-      function showAddProductModal(id) {
-        $("#add_product-modal").modal("show")
+      if (title.length > 30 || category.length > 20) {
+        if (title.length > 20) $("#title").focus()
+        if (category.length > 20) $("#category").focus()
+        $.ambiance({
+          message:
+            "Длина заголовка и категории должна составлять не более 30",
+          type: "error",
+          fade: true,
+          width: 400,
+        })
+        return loading(20, (el = "#add_product_btn"))
       }
 
-      function addProduct() {
-        loading(2, (el = "#add_product_btn"))
-        let img = $("#product_img")[0].files[0]
-        let title = $("#title").val().trim()
-        let description = $("#description").val().trim()
-        let price = $("#price").val()
-        let category = $("#category").val().trim()
-        let status = $("#status").val().trim()
-        let quantity = $("#quantity").val()
-        let product_img_src = null
-        if (
-          !img ||
-          !title ||
-          !description ||
-          !price ||
-          !category ||
-          !status ||
-          !quantity
-        ) {
-          $.ambiance({
-            message: "Заполните все поля",
-            type: "error",
-            fade: true,
-            width: 400,
-          })
-          return loading(20, (el = "#add_product_btn"))
-        }
+      let formData = new FormData();
+      formData.append("product_img", img);
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("price", price);
+      formData.append("category", category);
+      formData.append("status", status);
+      formData.append("quantity", quantity);
+      formData.append("kazniisa", kazniisa);
+      formData.append("articul", articul);
 
-        if (title.length > 30 || category.length > 20) {
-          if (title.length > 20) $("#title").focus()
-          if (category.length > 20) $("#category").focus()
-          $.ambiance({
-            message:
-              "Длина заголовка и категории должна составлять не более 30",
-            type: "error",
-            fade: true,
-            width: 400,
-          })
-          return loading(20, (el = "#add_product_btn"))
-        }
 
-        let formData = new FormData()
-        formData.append("product_img", img)
-        formData.append("title", title)
-        formData.append("description", description)
-        formData.append("price", price)
-        formData.append("category", category)
-        formData.append("status", status)
-        formData.append("quantity", quantity)
-
-        $.ajax({
-          url: "/api/admin/create",
-          method: "post",
-          data: formData,
-          processData: false,
-          contentType: false,
-          success: function (res) {
-            if (res.r) {
-              $.ambiance({
-                message: "Новый товар добавлен",
-                type: "success",
-                fade: true,
-                width: 400,
-              })
-              $("#add_product-modal").modal("hide")
-              $("#add_product-modal input").val("")
-            }
-
-            return loading(20, (el = "#add_product_btn"))
-          },
-          error: function (err) {
-            console.log(err)
+      $.ajax({
+        url: "/api/admin/product/create",
+        method: "post",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (res) {
+          if (res.r) {
             $.ambiance({
-              message: "Что то пошло не так. Повторите позже",
-              type: "error",
+              message: "Новый товар добавлен",
+              type: "success",
               fade: true,
               width: 400,
             })
-            return loading(20, (el = "#add_product_btn"))
-          },
+            $("#add_product-modal").modal("hide");
+            $("#add_product-modal input").val("");
+            showProducts();
+          }
+
+          return loading(20, (el = "#add_product_btn"))
+        },
+        error: function (err) {
+          console.log(err)
+          $.ambiance({
+            message: "Что то пошло не так. Повторите позже",
+            type: "error",
+            fade: true,
+            width: 400,
+          })
+          return loading(20, (el = "#add_product_btn"))
+        },
+      })
+    }
+
+    function showEditProductModal(product_index, id) {
+      globalProductId = id;
+      $('#new_title').val(`${$(product_index).find('td:nth-child(3)').text()}`);
+      $('#new_description').val(`${$(product_index).find('td:nth-child(4)').text()}`);
+      $('#new_category').val(`${$(product_index).find('td:nth-child(5)').text()}`);
+      $('#new_price').val(`${$(product_index).find('td:nth-child(6)').text()}`);
+      $('#new_quantity').val(`${$(product_index).find('td:nth-child(7)').text()}`);
+      $("#edit_product-modal").modal("show");
+    }
+
+    function editProduct() {
+      loading(2, (el = "#add_product_btn"));
+      let img = $("#new_product_img")[0].files[0];
+      let title = $("#new_title").val().trim();
+      let description = $("#new_description").val().trim();
+      let price = $("#new_price").val();
+      let category = $("#new_category").val().trim();
+      let status = $("#new_status").val().trim();
+      let quantity = $("#new_quantity").val();
+      let product_img_src = null;
+
+      if (!img || !title || !description || !price || !category || !status || !quantity) {
+        $.ambiance({
+          message: "Заполните все поля",
+          type: "error",
+          fade: true,
+          width: 400,
         })
+        return loading(20, (el = "#add_product_btn"));
       }
 
-      function showEditProductModal(product_index, id) {
-        globalProductId = id;
-        $('#new_title').val(`${$(product_index).find('td:nth-child(3)').text()}`);
-        $('#new_description').val(`${$(product_index).find('td:nth-child(4)').text()}`);
-        $('#new_category').val(`${$(product_index).find('td:nth-child(5)').text()}`);
-        $('#new_price').val(`${$(product_index).find('td:nth-child(6)').text()}`);
-        $('#new_quantity').val(`${$(product_index).find('td:nth-child(7)').text()}`);
-        $("#edit_product-modal").modal("show");
+      if (title.length > 30 || category.length > 20) {
+        if (title.length > 20) $("#title").focus()
+        if (category.length > 20) $("#category").focus()
+        $.ambiance({
+          message:
+            "Длина заголовка и категории должна составлять не более 30",
+          type: "error",
+          fade: true,
+          width: 400,
+        })
+        return loading(20, (el = "#add_product_btn"));
       }
 
-      function editProduct() {
-        loading(2, (el = "#add_product_btn"));
-        let img = $("#new_product_img")[0].files[0];
-        let title = $("#new_title").val().trim();
-        let description = $("#new_description").val().trim();
-        let price = $("#new_price").val();
-        let category = $("#new_category").val().trim();
-        let status = $("#new_status").val().trim();
-        let quantity = $("#new_quantity").val();
-        let product_img_src = null;
-
-        if (
-          !img ||
-          !title ||
-          !description ||
-          !price ||
-          !category ||
-          !status ||
-          !quantity
-        ) {
-          $.ambiance({
-            message: "Заполните все поля",
-            type: "error",
-            fade: true,
-            width: 400,
-          })
-          return loading(20, (el = "#add_product_btn"))
+      if (!img || img == undefined) {
+        profile_img_src = $('#profile_img').attr('src')
+        if (profile_img_src == './public/images/default_product.png') {
+          profile_img_src = null;
+          img = null;
         }
+      }
 
-        if (title.length > 30 || category.length > 20) {
-          if (title.length > 20) $("#title").focus()
-          if (category.length > 20) $("#category").focus()
-          $.ambiance({
-            message:
-              "Длина заголовка и категории должна составлять не более 30",
-            type: "error",
-            fade: true,
-            width: 400,
-          })
-          return loading(20, (el = "#add_product_btn"))
-        }
+      let formData = new FormData();
+      formData.append("product_img", img);
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("price", price);
+      formData.append("category", category);
+      formData.append("status", status);
+      formData.append("quantity", quantity);
 
-        let formData = new FormData()
-        formData.append("product_img", img)
-        formData.append("title", title)
-        formData.append("description", description)
-        formData.append("price", price)
-        formData.append("category", category)
-        formData.append("status", status)
-        formData.append("quantity", quantity)
-
-        $.ajax({
-          url: "/api/admin/create",
-          method: "post",
-          data: formData,
-          processData: false,
-          contentType: false,
-          success: function (res) {
-            if (res.r) {
-              $.ambiance({
-                message: "Новый товар добавлен",
-                type: "success",
-                fade: true,
-                width: 400,
-              })
-              $("#add_product-modal").modal("hide")
-              $("#add_product-modal input").val("")
-            }
-
-            return loading(20, (el = "#add_product_btn"))
-          },
-          error: function (err) {
-            console.log(err)
+      $.ajax({
+        url: "/api/admin/product/update",
+        method: "post",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (res) {
+          if (res.r) {
             $.ambiance({
-              message: "Что то пошло не так. Повторите позже",
-              type: "error",
+              message: "Новый товар добавлен",
+              type: "success",
+              fade: true,
+              width: 400,
+            });
+            $("#add_product-modal").modal("hide");
+            $("#add_product-modal input").val("");
+          }
+          return loading(20, (el = "#add_product_btn"))
+        },
+        error: function (err) {
+          console.log(err)
+          $.ambiance({
+            message: "Что то пошло не так. Повторите позже",
+            type: "error",
+            fade: true,
+            width: 400,
+          })
+          return loading(20, (el = "#add_product_btn"))
+        },
+      })
+    }
+
+    function showDeleteProductModal(id) {
+      globalProductId = id;
+      $("#delete_product-modal").modal("show");
+    }
+
+    function deleteProduct() {
+      loading(2, '#delete_product_btn');
+      $.ajax({
+        url: "/api/admin/product/delete",
+        method: "post",
+        data: { product_id: globalProductId },
+        success: function (res) {
+          if (res.r) {
+            $.ambiance({
+              message: "Товар был успешно удален",
+              type: "success",
               fade: true,
               width: 400,
             })
-            return loading(20, (el = "#add_product_btn"))
-          },
-        })
-      }
+            $("#delete_product-modal").modal("hide");
+            loading(20, '#delete_product_btn');
+            showProducts();
+          }
+        },
+      });
+    }
+  </script>
+</body>
 
-      function showDeleteProductModal(id) {
-        globalProductId = id
-        $("#delete_product-modal").modal("show")
-      }
-
-      function deleteProduct() {
-        $.ajax({
-          url: "/admin/api/product/delete",
-          method: "post",
-          data: { product_id: globalProductId },
-          success: function (res) {
-            if (res.r) {
-              $.ambiance({
-                message: "Товар был успешно удален",
-                type: "success",
-                fade: true,
-                width: 400,
-              })
-              $("#delete_product-modal").modal("hide")
-            }
-          },
-        })
-      }
-    </script>
-  </body>
 </html>
