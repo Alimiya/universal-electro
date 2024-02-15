@@ -30,7 +30,7 @@ exports.createProduct = async function (req, res, next) {
         })
         return;
     }
-    
+
     await fdb.collection('products').add({
         title: title,
         description: description,
@@ -45,7 +45,7 @@ exports.createProduct = async function (req, res, next) {
             destination: `products/${product_img.originalname}`
         });
         var product_image_url = `https://firebasestorage.googleapis.com/v0/b/universal-electro.appspot.com/o/products%2F${product_img.originalname}?alt=media`
-        await fdb.collection('products').doc(pd.id).update({ product_img: product_image_url }).then(() => {
+        await fdb.collection('products').doc(pd.id).update({ product_img: product_image_url, product_id: pd.id }).then(() => {
             r['r'] = 1;
             res.send(r);
 
@@ -62,7 +62,43 @@ exports.createProduct = async function (req, res, next) {
     })
 }
 // POST /product/update/:id
+exports.updateProduct = async function (req, res, next) {
+    let r = { r: 0 };
+    let product_id = req.body.product_id;
+    let new_title = req.body.new_title;
+    let new_description = req.body.new_description;
+    let new_price = req.body.price;
+    let new_category = req.body.category;
+    let new_status = req.body.status;
+    let new_quantity = req.body.quantity;
+    let new_product_img = req.file;
+
+
+    if (!new_title || !new_description || !new_price || !new_category || !new_status || !new_quantity) {
+        res.send(r);
+        return;
+    }
+
+    await fdb.collection('products').doc('Iuk75SbL7PBcf0mvHvRh').update({
+        title: new_title,
+        description: new_description,
+        price: new_price,
+        category: new_category,
+        status: new_status,
+        quantity: new_quantity
+    }).then(() => {
+        r['r'] = 1;
+        res.send(r);
+    }).catch((e) => {
+        console.log(e);
+        res.send(r);
+    })
+}
+
 // POST /product/delete/:id
+exports.deleteProduct = async function (req, res, next) {
+
+}
 
 // GET /requests
 // POST /request/delete/:id

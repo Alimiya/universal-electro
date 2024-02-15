@@ -20,6 +20,8 @@ const upload = multer({
     limits: limits
 });
 
-router.post('/create', upload.single('product_img'), Controller.createProduct);
+router.post('/product/create', upload.single('product_img'), Controller.createProduct);
+router.post('/product/update', upload.single('product_img'), Controller.updateProduct);
+router.post('/product/delete', Controller.deleteProduct);
 
 module.exports = router
