@@ -23,9 +23,8 @@ exports.getProducts = async function (req, res, next) {
         });
         res.send(data);
     } catch (err) {
-        console.log(err)
-    }
-}
-// GET /:id - filter: title, description, img, price, category, status, quantity
+        console.log(err);
+    };
+};
 
 // POST / - сделать запрос на покупку корзины с покрытием в пдф

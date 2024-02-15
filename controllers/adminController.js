@@ -114,5 +114,40 @@ exports.deleteProduct = async function (req, res, next) {
 }
 
 // GET /requests
-// POST /request/delete/:id
+exports.getRequests = async (req,res)=>{
+    let data = []
 
+    try{
+        await fdb.collection('requests').get().then((requests)=>{
+            requests.forEach((request)=>{
+                const request_data = {
+                    request_id: request.id,
+                    question: request.data().question,
+                    phone: request.data().phone,
+                    email: request.data().email,
+                }
+                data.push(request_data)
+            })
+        })
+        res.send(data)
+    } catch (err) {
+        console.log(err)
+    }
+}
+// POST /request/delete/:id
+exports.deleteRequest = async (req, res) => {
+    let r = { r: 0 };
+    let request_id = req.body.request_id;
+
+    if (!request_id) {
+        return res.send(r);
+    }
+
+    await fdb.collection('requests').doc(request_id).delete().then(() => {
+        r['r'] = 1;
+        res.send(r);
+    }).catch((e)=>{
+        console.log(e);
+        res.send(r);
+    })
+}
