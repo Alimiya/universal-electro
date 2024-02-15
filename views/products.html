@@ -37,7 +37,7 @@
                 <a class="nav-link" href="#">Запросы</a>
               </li>
             </ul>
-            <button class="btn btn-outline-primary">Выйти</button>
+            <a class="btn btn-outline-primary" href="/login">Выйти</a>
           </div>
         </div>
       </nav>
@@ -208,53 +208,53 @@
               </div>
 
               <div class="mb-3">
-                <label for="name" class="form-label">Название</label>
+                <label for="new_title" class="form-label">Название</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="title"
+                  id="new_title"
                   placeholder=""
                 />
               </div>
               <div class="mb-3">
-                <label for="description">Описание</label>
+                <label for="new_description">Описание</label>
                 <textarea
                   class="form-control"
-                  id="description"
+                  id="new_description"
                   placeholder=""
                 ></textarea>
               </div>
               <div class="mb-3">
-                <label for="category" class="form-label">Категория</label>
+                <label for="new_category" class="form-label">Категория</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="category"
+                  id="new_category"
                   placeholder=""
                 />
               </div>
               <div class="mb-3">
-                <label for="price" class="form-label">Цена</label>
+                <label for="new_price" class="form-label">Цена</label>
                 <input
                   type="number"
                   class="form-control"
-                  id="price"
+                  id="new_price"
                   placeholder=""
                 />
               </div>
               <div class="mb-3">
-                <label for="status" class="form-label">Статус</label>
-                <select class="form-control" id="status">
+                <label for="new_status" class="form-label">Статус</label>
+                <select class="form-control" id="new_status">
                   <option value="1">В наличии</option>
                   <option value="0">Не в наличии</option>
                 </select>
               </div>
               <div class="mb-3">
-                <label for="price" class="form-label">Количество</label>
+                <label for="new_quantity" class="form-label">Количество</label>
                 <input
                   type="number"
                   class="form-control"
-                  id="quantity"
+                  id="new_quantity"
                   placeholder=""
                 />
               </div>
@@ -339,18 +339,18 @@
           success: function (data) {
             data.forEach((p) => {
               productsHTML += `
-              <tr>
+              <tr id="product-${i}"">
                 <th scope="row">${i}</th>
                 <td>
                   <img src="${p.product_img}" alt="" />
                 </td>
                 <td>${p.title}</td>
-                <td>Ера натурал</td>
+                <td>${p.description}</td>
                 <td>${p.category}</td>
                 <td>${p.price}</td>
-                <td style="width: 10%">5</td>
+                <td style="width: 10%">${p.quantity}</td>
                 <td style="width: 12%">
-                  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showEditProductModal('${p.product_id}')">
+                  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showEditProductModal('#product-${i}','${p.product_id}')">
                     <span class="material-symbols-outlined"> edit_document </span>
                   </button>
 
@@ -453,21 +453,26 @@
         })
       }
 
-      function showEditProductModal(id) {
-        globalProductId = id
-        $("#edit_product-modal").modal("show")
+      function showEditProductModal(product_index, id) {
+        globalProductId = id;
+        $('#new_title').val(`${$(product_index).find('td:nth-child(3)').text()}`);
+        $('#new_description').val(`${$(product_index).find('td:nth-child(4)').text()}`);
+        $('#new_category').val(`${$(product_index).find('td:nth-child(5)').text()}`);
+        $('#new_price').val(`${$(product_index).find('td:nth-child(6)').text()}`);
+        $('#new_quantity').val(`${$(product_index).find('td:nth-child(7)').text()}`);
+        $("#edit_product-modal").modal("show");
       }
 
       function editProduct() {
-        loading(2, (el = "#add_product_btn"))
-        let img = $("#new_product_img")[0].files[0]
-        let title = $("#new_title").val().trim()
-        let description = $("#new_description").val().trim()
-        let price = $("#new_price").val()
-        let category = $("#new_category").val().trim()
-        let status = $("#new_status").val().trim()
-        let quantity = $("#new_quantity").val()
-        let product_img_src = null
+        loading(2, (el = "#add_product_btn"));
+        let img = $("#new_product_img")[0].files[0];
+        let title = $("#new_title").val().trim();
+        let description = $("#new_description").val().trim();
+        let price = $("#new_price").val();
+        let category = $("#new_category").val().trim();
+        let status = $("#new_status").val().trim();
+        let quantity = $("#new_quantity").val();
+        let product_img_src = null;
 
         if (
           !img ||
