@@ -17,6 +17,9 @@ exports.getProducts = async function (req, res, next) {
                     status: product.data().status,
                     quantity: product.data().quantity,
                     product_img: product.data().product_img,
+                    kazniisa: product.data().kazniisa,
+                    articul: product.data().articul,
+                
                 };
                 data.push(product_data);
             });

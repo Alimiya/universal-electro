@@ -22,8 +22,10 @@ exports.createProduct = async function (req, res, next) {
     let status = req.body.status;
     let quantity = req.body.quantity;
     let product_img = req.file;
+    let kazniisa = req.body.kazniisa
+    let articul = req.body.articul
 
-    if (!title || !description || !price || !category || !status || !quantity) {
+    if (!title || !description || !price || !category || !status || !quantity || !kazniisa || articul) {
         res.send(r);
         fs.unlink(product_img.path, () => {
 
@@ -37,7 +39,9 @@ exports.createProduct = async function (req, res, next) {
         price: price,
         category: category,
         status: status,
-        quantity: quantity
+        quantity: quantity,
+        kazniisa: kazniisa,
+        articul: articul
     }).then(async (pd) => {
         await storage.upload(product_img.path, {
             gzip: true,
@@ -72,9 +76,11 @@ exports.updateProduct = async function (req, res, next) {
     let new_status = req.body.status;
     let new_quantity = req.body.quantity;
     let new_product_img = req.file;
+    let new_kazniisa = req.body.kazniisa;
+    let new_articul = req.body.articul;
 
 
-    if (!new_title || !new_description || !new_price || !new_category || !new_status || !new_quantity) {
+    if (!new_title || !new_description || !new_price || !new_category || !new_status || !new_quantity || !new_kazniisa || !new_articul) {
         res.send(r);
         return;
     }
@@ -85,7 +91,9 @@ exports.updateProduct = async function (req, res, next) {
         price: new_price,
         category: new_category,
         status: new_status,
-        quantity: new_quantity
+        quantity: new_quantity,
+        kazniisa: new_kazniisa,
+        articul: new_articul
     }).then(() => {
         r['r'] = 1;
         res.send(r);
