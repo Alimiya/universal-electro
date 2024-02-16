@@ -26,7 +26,7 @@
             <div class="mb-3 w-50 text-secondary">
                 <label for="pwd" >Забыли пароль?</label>
             </div>
-            <button type="submit" id="login_btn" class="btn btn-primary px-5 mt-4" onclick="signIn()">Войти</button>
+            <button type="submit" id="login_btn" class="btn btn-primary px-5 mt-4" onclick="signIn()"> Войти</button>
         </div>
     </main>
     <footer>
@@ -74,7 +74,7 @@
                         ambianceElement.html('<p>Success!</p>').addClass('success');
                         setTimeout(function () {
                             ambianceElement.removeClass('show success error info too-many-requests').html('');
-                            window.location.href = '/';
+                            window.location.href = '/admin/products';
                         }, 1000);
                     } else if (res.r == 0) {
                         ambianceElement.html('<p>Неверный пароль</p>').addClass('error');

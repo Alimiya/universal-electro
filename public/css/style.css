@@ -23,7 +23,7 @@
 /* End of Login page */
 
 
-
+/* Admin products page */
 
 .search-input {
   outline: none !important;
@@ -50,7 +50,35 @@
   .login {
     width: 90%;
   }
+
   .login div {
     width: 100% !important;
   }
 }
+
+/* End of Admin products page */
+
+
+/* Catalog page */
+
+.product {
+  max-width: 300px;
+  padding: 20px;
+  background-color: white;
+  transition: 0.3s;
+}
+
+.product:hover {
+  transform: scale(1.02);
+}
+
+.product img{
+  width: 100%;
+}
+
+.product button:hover{
+  background-color: orange;
+  border: 1px solid orange;
+}
+
+/* End of Catalog page */

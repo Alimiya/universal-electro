@@ -19,4 +19,8 @@ router.get('/admin/requests', (req, res) => {
     res.render('requests');
 });
 
+router.get('/catalog', (req, res) => {
+    res.render('catalog');
+});
+
 module.exports = router
