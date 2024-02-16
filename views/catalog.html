@@ -38,52 +38,45 @@
             <h1>Наш каталог</h1>
         </div>
         <div class="container d-flex flex-wrap gap-3" id="catalog">
-            <div class="product">
-                <img src="https://qazelectro.kz/img/36133689_1920_q55.avif" alt="">
-                <i>Артикул: 47856</i>
-                <h3>Кабель ВВГ НГ Ls 2х1,5, 0,66 кВ, ГОСТ, пог.м.</h3>
-                <p class="text-success">В наличии</p>
-                <h2>200 ₸</h2>
-                <button class="btn btn-dark px-4 py-2">В корзину</button>
-            </div>
-            <div class="product">
-                <img src="https://qazelectro.kz/img/36133689_1920_q55.avif" alt="">
-                <i>Артикул: 47856</i>
-                <h3>Кабель ВВГ НГ Ls 2х1,5, 0,66 кВ, ГОСТ, пог.м.</h3>
-                <p class="text-success">В наличии</p>
-                <h2>200 ₸</h2>
-                <button class="btn btn-dark px-4 py-2">В корзину</button>
-            </div>
-            <div class="product">
-                <img src="https://qazelectro.kz/img/36133689_1920_q55.avif" alt="">
-                <i>Артикул: 47856</i>
-                <h3>Кабель ВВГ НГ Ls 2х1,5, 0,66 кВ, ГОСТ, пог.м.</h3>
-                <p class="text-success">В наличии</p>
-                <h2>200 ₸</h2>
-                <button class="btn btn-dark px-4 py-2">В корзину</button>
-            </div>
-            <div class="product">
-                <img src="https://qazelectro.kz/img/36133689_1920_q55.avif" alt="">
-                <i>Артикул: 47856</i>
-                <h3>Кабель ВВГ НГ Ls 2х1,5, 0,66 кВ, ГОСТ, пог.м.</h3>
-                <p class="text-success">В наличии</p>
-                <h2>200 ₸</h2>
-                <button class="btn btn-dark px-4 py-2">В корзину</button>
-            </div>
-            <div class="product">
-                <img src="https://qazelectro.kz/img/36133689_1920_q55.avif" alt="">
-                <i>Артикул: 47856</i>
-                <h3>Кабель ВВГ НГ Ls 2х1,5, 0,66 кВ, ГОСТ, пог.м.</h3>
-                <p class="text-success">В наличии</p>
-                <h2>200 ₸</h2>
-                <button class="btn btn-dark px-4 py-2">В корзину</button>
-            </div>
-           
+
         </div>
     </main>
     <footer></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(() => {
+            showCatalog()
+        });
+
+
+
+        function showCatalog() {
+            let i = 1;
+            $("#catalog").html('');
+            let productsHTML = "";
+            $.ajax({
+                url: "/api/catalog/products",
+                method: "get",
+                success: function (data) {
+                    data.forEach((p) => {
+                        productsHTML += `
+                        <div class="product">
+                            <img src="${p.product_img}" alt="">
+                            <i>Артикул: ${p.articul}</i>
+                            <h3>${p.title}</h3>
+                            ${p.status=='1' ? '<p class="text-success">В наличии</p>' : '<p class="text-danger">Нет в наличии</p>'}
+                            <h2>${p.price} ₸</h2>
+                            <button class="btn btn-dark px-4 py-2" onclick="addToBucket(${p.product_id})">В корзину</button>
+                        </div>`
+                        i++
+                    })
+                    $("#catalog").append(productsHTML)
+                },
+            })
+        }
+    </script>
 
 </body>
 

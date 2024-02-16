@@ -62,7 +62,7 @@
 /* Catalog page */
 
 .product {
-  max-width: 300px;
+  width: 300px;
   padding: 20px;
   background-color: white;
   transition: 0.3s;
