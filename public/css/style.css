@@ -60,6 +60,9 @@
 
 
 /* Catalog page */
+#bucket_content .temp{
+  opacity: 0.5;
+}
 
 .product {
   width: 300px;
