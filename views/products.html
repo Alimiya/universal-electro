@@ -29,7 +29,7 @@
               <a class="nav-link" href="#">Запросы</a>
             </li>
           </ul>
-          <a class="btn btn-outline-primary" href="/login">Выйти</a>
+          <a class="btn btn-outline-dark" onclick="logout()">Выйти</a>
         </div>
       </div>
     </nav>
@@ -85,7 +85,7 @@
         <div class="modal-body">
           <form>
             <div class="mb-3">
-              <img src="" alt="" id="add_product_src"  class="mb-1" width="200">
+              <img src="" alt="" id="add_product_src"  class="mb-1" width="150">
               <label for="formFile" class="form-label">Загрузите изображение</label>
               <input class="form-control" type="file" id="product_img" />
             </div>
@@ -150,9 +150,9 @@
         </div>
         <div class="modal-body">
           <form>
-            <div class="mb-3">
-              <img src="" alt="" id="new_product_src" class="mb-1" width="200" >
-              <label for="formFile" class="form-label">Обновить изображение</label>
+            <div class="mb-3 d-flex align-items-center ">
+              <img src="" alt="" id="new_product_src" class="mb-1" width="150" >
+              
               <input class="form-control" type="file" id="new_product_img" placeholder="" />
             </div>
             <div class="mb-3">
@@ -288,7 +288,7 @@
                   </button>
 
                   <button type="button" class="btn table-icon" data-toggle="modal" data-target="#deleteModal" onclick="showDeleteProductModal('${p.product_id}')">
-                    <span class="material-symbols-outlined"> delete </span>
+                    <span class="material-symbols-outlined text-danger"> delete </span>
                   </button>
                 </td>
               </tr>`
@@ -541,7 +541,7 @@
                   </button>
 
                   <button type="button" class="btn table-icon" data-toggle="modal" data-target="#deleteModal" onclick="showDeleteProductModal('${p.product_id}')">
-                    <span class="material-symbols-outlined"> delete </span>
+                    <span class="material-symbols-outlined text-danger"> delete </span>
                   </button>
                 </td>
               </tr>`
@@ -550,6 +550,17 @@
         i++;
       });
       $("#products").append(productsHTML)
+    }
+
+    function logout(){
+      $.ajax({
+        url: '/api/auth/logout',
+        method: 'POST',
+        success: function(r){
+          window.location.replace("/login");
+          
+        }
+      })
     }
   </script>
 </body>
