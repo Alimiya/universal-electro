@@ -153,8 +153,9 @@
 
         function showBucketProducts() {
             let productsList = JSON.parse(localStorage.getItem('products_list'));
-            var bucketContentHTML = ''
-            if (productsList) {
+            let productsCount = showCountProducts();
+            var bucketContentHTML = '';
+            if (productsCount) {
                 productsList.forEach((product) => {
                     if (!product.count) return;
                     bucketContentHTML += `
@@ -186,13 +187,8 @@
                     У вас нет выбранных товаров.
                 </div>
                 `;
-
                 $('#bucket_content').html(bucketContentHTML);
             }
-
-
-
-
         }
 
         function getProductById(products_list, productId) {
@@ -207,8 +203,10 @@
                     count += product.count;
                 });
                 $('#products_count').html(count);
+                return count;
             } else {
                 $('#products_count').html(0);
+                return 0;
             }
         }
 
@@ -220,8 +218,6 @@
                     return { ...product, count: product.count + 1 };
                 }
                 return product;
-
-
             });
 
             localStorage.setItem('products_list', JSON.stringify(updatedProductsList));
@@ -232,7 +228,8 @@
         function decreaseCount(product_id) {
             let productsList = localStorage.getItem('products_list');
             var updatedProductsList = JSON.parse(productsList).map(product => {
-                if (product.count >= 0) {
+                if (product.count > 0) {
+                    console.log(product.count)
                     if (product.product_id == product_id) {
                         return { ...product, count: product.count - 1 };
                     }

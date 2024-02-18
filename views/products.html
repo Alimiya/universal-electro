@@ -146,10 +146,10 @@
         <div class="modal-body">
           <form>
             <div class="mb-3">
-              <label for="formFile" class="form-label">Загрузите изображение</label>
-              <input class="form-control" type="file" id="product_img" placeholder="" />
+              <img src="" alt="" id="new_product_src" width="80">
+              <label for="formFile" class="form-label">Обновить изображение</label>
+              <input class="form-control" type="file" id="new_product_img" placeholder="" />
             </div>
-
             <div class="mb-3">
               <label for="new_title" class="form-label">Название</label>
               <input type="text" class="form-control" id="new_title" placeholder="" />
@@ -370,6 +370,7 @@
 
     function showEditProductModal(product_index, id) {
       globalProductId = id;
+      $('#new_product_src').attr('src', $(product_index).find('td:nth-child(2) img').attr('src'))
       $('#new_title').val(`${$(product_index).find('td:nth-child(3)').text()}`);
       $('#new_description').val(`${$(product_index).find('td:nth-child(4)').text()}`);
       $('#new_category').val(`${$(product_index).find('td:nth-child(5)').text()}`);
@@ -379,7 +380,7 @@
     }
 
     function editProduct() {
-      loading(2, (el = "#add_product_btn"));
+      loading(2, (el = "#edit_product_btn"));
       let img = $("#new_product_img")[0].files[0];
       let title = $("#new_title").val().trim();
       let description = $("#new_description").val().trim();
@@ -389,14 +390,14 @@
       let quantity = $("#new_quantity").val();
       let product_img_src = null;
 
-      if (!img || !title || !description || !price || !category || !status || !quantity) {
+      if (!title || !description || !price || !category || !status || !quantity) {
         $.ambiance({
           message: "Заполните все поля",
           type: "error",
           fade: true,
           width: 400,
         })
-        return loading(20, (el = "#add_product_btn"));
+        return loading(20, (el = "#edit_product_btn"));
       }
 
       if (title.length > 30 || category.length > 20) {
@@ -409,13 +410,13 @@
           fade: true,
           width: 400,
         })
-        return loading(20, (el = "#add_product_btn"));
+        return loading(20, (el = "#edit_product_btn"));
       }
 
       if (!img || img == undefined) {
-        profile_img_src = $('#profile_img').attr('src')
-        if (profile_img_src == './public/images/default_product.png') {
-          profile_img_src = null;
+        product_img_src = $('#new_product_src').attr('src')
+        if (product_img_src == './public/images/default_product.png') {
+          product_img_src = null;
           img = null;
         }
       }
@@ -446,7 +447,7 @@
             $("#add_product-modal").modal("hide");
             $("#add_product-modal input").val("");
           }
-          return loading(20, (el = "#add_product_btn"))
+          return loading(20, (el = "#edit_product_btn"))
         },
         error: function (err) {
           console.log(err)
@@ -456,7 +457,7 @@
             fade: true,
             width: 400,
           })
-          return loading(20, (el = "#add_product_btn"))
+          return loading(20, (el = "#edit_product_btn"))
         },
       })
     }
