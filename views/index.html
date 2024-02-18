@@ -1,238 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Universal Electro</title>
-  </head>
-  <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
 
-    p,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      margin: 0;
-    }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Universal Electro</title>
+  <%- include('./components/head.ejs.html') %>  
+  <link rel="stylesheet" href="/public/css/landing.css">
+</head>
 
-    /* .container {
-  max-width: 1320px;
-  width: 100%;
-  margin: 0 auto;
-} */
 
-    /* Header */
-
-    .header {
-      position: absolute !important;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-
-      width: 100%;
-      margin-top: 20px;
-    }
-
-    /* .header__inner {
-  padding: 20px 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-} */
-
-    .header__logo {
-      width: 200px;
-    }
-
-    .header ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .header ul li {
-      display: inline-block;
-      margin-right: 50px;
-    }
-
-    .header ul li:last-child {
-      margin-right: 0;
-    }
-
-    .header ul li a {
-      font-size: 23px;
-      font-weight: 400;
-      color: #19181d;
-      line-height: 1.55;
-      text-decoration: none;
-      transition: 0.3s ease color;
-    }
-
-    .header ul li a:hover {
-      color: #f95005;
-    }
-
-    /* Intor */
-
-    .intro {
-      background: url("/public/images/intro__background.png");
-      height: 100vh;
-      background-size: cover;
-      background-position: center;
-      width: 100%;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .intro__inner {
-      margin-top: 20px;
-    }
-
-    .intro__title {
-      font-size: 40px;
-      line-height: 47px;
-      letter-spacing: 5px;
-      font-weight: 700;
-
-      text-transform: uppercase;
-    }
-
-    .intro__title span:nth-child(1) {
-      color: #eaeaea;
-      text-shadow: 0px 0px 10px #f95005;
-      -webkit-text-stroke-color: #f95005;
-    }
-
-    .intro__title span:nth-child(2) {
-      color: #f95005;
-      text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff;
-    }
-
-    .intro__subtitle {
-      margin-top: 5px;
-
-      font-size: 16px;
-      color: #f95005;
-      text-align: right;
-    }
-
-    /* Mission */
-
-    .mission {
-      padding: 100px 0;
-    }
-
-    .p {
-      padding: 140px;
-
-      padding: 120px 100px;
-
-      padding: 120px 100px 80px;
-
-      padding: 120px 100px 80px 60px;
-    }
-  </style>
-  <body>
-    <header class="header">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="index.html"
-            ><img src="/public/images/logo.png" alt="" width="200"
-          /></a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Про нас</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Команда</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Работы</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Контакты</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Галлерея</a>
-              </li>
-            </ul>
-
-            <button class="btn btn-light" type="submit">Search</button>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <!-- <header class="header">
-      <div class="container">
-        <div class="header__inner">
-          <a href="index.html"
-            ><img class="header__logo" src="img/logo.png" alt="Logo"
-          /></a>
-          <nav>
-            <ul>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Team</a></li>
-              <li><a href="#">Works</a></li>
-              <li><a href="#">Contacts</a></li>
-              <li><a href="#">Gallery</a></li>
-            </ul>
-          </nav>
-
-          <button class="header__contact">Let's talk</button>
+<body>
+  <header class="header">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html"><img src="/public/images/logo.png" alt="" width="200" /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Про нас</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Команда</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Работы</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Контакты</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Галлерея</a>
+            </li>
+          </ul>
         </div>
       </div>
-    </header> -->
-    <div class="intro">
-      <div class="intro__inner">
-        <h1 class="intro__title">
-          <span>Universal</span>
-          <span>Electro</span>
-        </h1>
-        <h3 class="intro__subtitle">НАДЕЖНО КАЧЕСТВЕННО ВЫГОДНО</h3>
+    </nav>
+  </header>
+
+  <div class="intro">
+    <div class="intro__inner">
+      <h1 class="intro__title">
+        <span>Universal</span>
+        <span>Electro</span>
+      </h1>
+      <h3 class="intro__subtitle">НАДЕЖНО КАЧЕСТВЕННО ВЫГОДНО</h3>
+    </div>
+  </div>
+
+  <section class="mission">
+    <img src="/public/images/mission__hero-image.png" alt="" />
+    <div class="mission__inner">
+      <h1 class="mission__title">НАША МИССИЯ</h1>
+      <p class="mission__text">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nulla
+        iste et aut obcaecati iure voluptatum possimus pariatur quos culpa
+        mollitia cupiditate hic consectetur distinctio numquam similique magni
+        deleniti harum earum, quisquam placeat laborum reiciendis repellendus!
+        Ipsa cum assumenda explicabo libero.
+      </p>
+      <div class="mission__exp">
+        <h3 class="mission__exp-element">Lorem ipsum dolor sit amet.</h3>
+        <h3 class="mission__exp-element">Lorem ipsum dolor sit amet.</h3>
+        <h3 class="mission__exp-element">Lorem ipsum dolor sit amet.</h3>
       </div>
     </div>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 
-    <section class="mission">
-      <img src="/public/images/mission__hero-image.png" alt="" />
-      <div class="mission__inner">
-        <h1 class="mission__title">НАША МИССИЯ</h1>
-        <p class="mission__text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nulla
-          iste et aut obcaecati iure voluptatum possimus pariatur quos culpa
-          mollitia cupiditate hic consectetur distinctio numquam similique magni
-          deleniti harum earum, quisquam placeat laborum reiciendis repellendus!
-          Ipsa cum assumenda explicabo libero.
-        </p>
-        <div class="mission__exp">
-          <h3 class="mission__exp-element">Lorem ipsum dolor sit amet.</h3>
-          <h3 class="mission__exp-element">Lorem ipsum dolor sit amet.</h3>
-          <h3 class="mission__exp-element">Lorem ipsum dolor sit amet.</h3>
-        </div>
-      </div>
-    </section>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
 </html>
 
 <div class="text"></div>
