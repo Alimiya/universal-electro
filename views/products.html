@@ -22,11 +22,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">Товары</a>
+              <a class="nav-link active" aria-current="page" href="#">Товары</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Запросы</a>
+              <a class="nav-link" href="/admin/requests">Запросы</a>
             </li>
           </ul>
           <a class="btn btn-outline-dark" onclick="logout()">Выйти</a>
@@ -294,7 +294,7 @@
               </tr>`
             i++
           })
-          $("#products").append(productsHTML)
+          $("#products").append(productsHTML);
         },
       })
     }

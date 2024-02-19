@@ -64,8 +64,14 @@
   opacity: 0.5;
 }
 
+#catalog{
+  width: 78%;
+  margin: 20px auto;
+}
+
 .product {
-  width: 300px;
+  width: 270px;
+  min-height: 600px;
   padding: 20px;
   background-color: white;
   transition: 0.3s;
@@ -77,6 +83,11 @@
 
 .product img{
   width: 100%;
+}
+
+
+.product h3{
+  height: 50px;
 }
 
 .product button:hover{

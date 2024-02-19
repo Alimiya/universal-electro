@@ -25,7 +25,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Запросы</a>
+                            <a class="nav-link" href="/requests">Запросы</a>
                         </li>
                     </ul>
                     <a class="btn btn-outline-primary" href="/login">Выйти</a>
@@ -34,7 +34,7 @@
         </nav>
     </header>
     <main>
-        <div class="container d-flex align-items-center gap-5">
+        <div class="container d-flex align-items-center gap-5" style="width: 78%;">
             <h1>Наш каталог</h1>
             <div class="bucket_btn bg-light rounded pt-1 px-2 d-flex align-items-center btn" onclick="showBucket()">
                 <span class="material-symbols-outlined" style="font-size: 30px; font-variant: bold;">
@@ -43,7 +43,25 @@
                 <div id="products_count" class="h1"></div>
             </div>
         </div>
-        <div class="container d-flex flex-wrap gap-3" id="catalog">
+        <div class="container d-flex align-items-center gap-3" style="width: 78%;">
+
+            <div class="search position-relative w-75">
+                <input class="form-control me-2 w-100 search-input border-secondary ps-5"
+                    onkeyup="searchProduct(this.value)" type="search" placeholder="Введите" aria-label="Search" />
+                <span class="material-symbols-outlined position-absolute top-50 translate-middle ps-5">
+                    search
+                </span>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button class="btn btn-primary" type="button" onclick="showAddProductModal()">
+                    + Добавить
+                </button>
+            </div>
+
+        </div>
+
+        <div class="container d-flex flex-wrap gap-3 " id="catalog">
 
         </div>
     </main>
@@ -73,6 +91,7 @@
                     <div class="bucket flex-fill">
                         <h3>Корзина</h3>
                         <div id="bucket_content"></div>
+                        <h4>Общая сумма: <span id="total_amount">492</span> ₸</h4>
                     </div>
                 </div>
             </div>
@@ -100,20 +119,22 @@
                     data.forEach((p) => {
                         productsHTML += `
                         <div class="product" id="product-${i}">
-                            <img src="${p.product_img}" alt="">
+                            <div class="h-50">
+                                <img src="${p.product_img}" alt="">
+                            </div>
                             <i>Артикул: ${p.articul}</i>
                             <h3>${p.title}</h3>
                             ${p.status == '1' ? '<p class="text-success">В наличии</p>' : '<p class="text-danger">Нет в наличии</p>'}
                             <h2>${p.price} ₸</h2>
                             <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')">В корзину</button>
                         </div>`
-                        i++
-                    })
+                        i++;
+                    });
                     $("#catalog").append(productsHTML);
                     showCountProducts();
                     loading(0);
                 },
-            })
+            });
         }
 
         function addToBucket(product_index) {
@@ -189,6 +210,7 @@
                 `;
                 $('#bucket_content').html(bucketContentHTML);
             }
+            showTotalAmount();
         }
 
         function getProductById(products_list, productId) {
@@ -302,6 +324,24 @@
                     $('#bucket_content').html('');
                 }
             });
+        }
+
+        function showTotalAmount(){
+            let total_amount = 0;
+            let productsList = JSON.parse(localStorage.getItem('products_list'));
+            let productsCount = showCountProducts();
+            console.log(productsCount)
+            if (productsCount) {
+                productsList.forEach((product) => {
+                    console.log(product)
+                    if (!product.count) return;
+                    total_amount+= Number(product.price) * product.count
+                });
+                $('#total_amount').parent().css('display', 'block');
+                $('#total_amount').html(total_amount);
+            } else {
+                $('#total_amount').parent().css('display', 'none');
+            }
         }
 
     </script>
