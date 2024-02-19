@@ -50,58 +50,78 @@ exports.createProduct = async function (req, res, next) {
             r['r'] = 1;
             r['product_id'] = pd.id;
             res.send(r);
-            fs.unlink(product_img.path, () => {});
+            fs.unlink(product_img.path, () => { });
         });
     }).catch((e) => {
         console.log(e);
         res.send(r);
-        fs.unlink(product_img.path, () => {});
+        fs.unlink(product_img.path, () => { });
     });
 }
 // POST /product/update/:id
 exports.updateProduct = async function (req, res, next) {
     let r = { r: 0 };
-    console.log(req.file)
     let product_id = req.body.product_id;
-    let new_title = req.body.new_title;
-    let new_description = req.body.new_description;
+    let new_title = req.body.title;
+    let new_description = req.body.description;
     let new_price = req.body.price;
     let new_category = req.body.category;
     let new_status = req.body.status;
     let new_quantity = req.body.quantity;
-    let new_product_img = req.file; 
+    let new_product_img = req.file;
     let new_kazniisa = req.body.kazniisa;
     let new_articul = req.body.articul;
-    storage.de
 
     if (!new_title || !new_description || !new_price || !new_category || !new_status || !new_quantity || !new_kazniisa || !new_articul) {
         res.send(r);
         return;
-    }   
+    }
+    // if new_product_img is not undefined then 1) First delete image from storage 2) upload image to storage and 3) then to firestore update 
+    if (new_product_img != undefined) {
+        try {
+            var file = storage.file(`products/${product_id}`);
+            console.log(file);
+            await file.delete().then(async() => {
+                storage.upload(new_product_img.path, {
+                    gzip: true,
+                    metadata: metadata,
+                    destination: `products/${product_id}`
+                }).then(()=>{
+                    fs.unlink(new_product_img.path, () => { });
 
-    res.send(r)
-    // if new_product_img is not undefined then 1) First delete image from storage 2)  upload image to storage and 3) then to firestore update 
+                });
 
-  
+            })
 
-    // await fdb.collection('products').doc(product_id).update({
-    //     title: new_title,
-    //     description: new_description,
-    //     price: new_price,
-    //     category: new_category,
-    //     status: new_status,
-    //     quantity: new_quantity,
-    //     kazniisa: new_kazniisa,
-    //     articul: new_articul
-    // }).then(() => {
-    //     r['r'] = 1;
-    //     r['product_id'] = product_id;
-    //     res.send(r);
-    // }).catch((e) => {
-    //     console.log(e);
-    //     res.send(r);
-    // })
-}
+        } catch (error) {
+            console.log(error);
+            res.send(r);
+            return;
+        }
+    }
+
+    try {
+        await fdb.collection('products').doc(product_id).update({
+            title: new_title,
+            description: new_description,
+            price: new_price,
+            category: new_category,
+            status: new_status,
+            quantity: new_quantity,
+            kazniisa: new_kazniisa,
+            articul: new_articul
+        });
+
+        r['r'] = 1;
+        r['product_id'] = product_id;
+        res.send(r);
+
+    } catch (error) {
+        console.log(error);
+        res.send(r);
+    }
+};
+
 
 // POST /product/delete/:id
 exports.deleteProduct = async function (req, res, next) {

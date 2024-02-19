@@ -5,7 +5,6 @@ const verifyAdminToken = (secretKey) => (req, res, next) => {
     secretKey = ADMIN_TOKEN_SECRET
     const token = req.cookies['admin']
     if (!token) return res.redirect('/login')
-    console.log(token)
     jwt.verify(token, secretKey, (err, decoded) => {
         if (err) return res.json({message: "No token"})
 
