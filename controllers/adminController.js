@@ -149,13 +149,13 @@ exports.getRequests = async (req, res) => {
     try {
         await fdb.collection('requests').get().then((requests) => {
             requests.forEach((request) => {
-                const request_data = {
+                var request_data = {
                     request_id: request.id,
-                    question: request.data().question,
+                    products_list: request.data().products_list,
                     phone: request.data().phone,
-                    email: request.data().email,
+                    name: request.data().name,
                 }
-                data.push(request_data)
+                data.push(request_data);
             })
         })
         res.send(data)

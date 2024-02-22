@@ -36,23 +36,24 @@ exports.getProducts = async function (req, res, next) {
 
 exports.createRequest = async (req, res) => {
     let r = { r: 0 }
-    let question = req.body.question
+    console.log(req.body)
+    let products_list = req.body.products;
     let phone = req.body.phone
-    let email = req.body.email
+    let name = req.body.name
 
-    if (!question || !phone || !email) return res.send(r)
+    if (!products_list || !phone || !name) return res.send(r);
 
     await fdb.collection('requests').add({
-        question: question,
+        products_list: products_list,
         phone: phone,
-        email: email
+        name: name
     }).then(()=>{
         r['r'] = 1;
         res.send(r);
     }).catch((e) => {
         console.log(e);
         res.send(r);
-    })
+    });
 }
 
 // POST / - сделать запрос на покупку корзины с покрытием в пдф

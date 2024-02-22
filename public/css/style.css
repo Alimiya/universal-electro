@@ -96,3 +96,39 @@
 }
 
 /* End of Catalog page */
+
+/* Requests page */
+
+#requests{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.request{
+  width: 400px;
+  background-color: white;
+  float: left;
+  transition: 0.2s;
+}
+
+.request:hover{
+  box-shadow: 0 0 5px #0d6efd;
+}
+
+.request .requester{
+  font-size: 20px;
+}
+
+.request .requester_phone{
+  font-size: 14px;
+}
+
+.request .amount{
+  font-size: 14px;
+  text-align:center;
+}
+
+
+
+/* End of Requests page */

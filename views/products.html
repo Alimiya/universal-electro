@@ -85,7 +85,7 @@
         <div class="modal-body">
           <form>
             <div class="mb-3">
-              <img src="" alt="" id="add_product_src"  class="mb-1" width="150">
+              <img src="" alt="" id="add_product_src" class="mb-1" width="150">
               <label for="formFile" class="form-label">Загрузите изображение</label>
               <input class="form-control" type="file" id="product_img" />
             </div>
@@ -151,8 +151,8 @@
         <div class="modal-body">
           <form>
             <div class="mb-3 d-flex align-items-center ">
-              <img src="" alt="" id="new_product_src" class="mb-1" width="150" >
-              
+              <img src="" alt="" id="new_product_src" class="mb-1" width="150">
+
               <input class="form-control" type="file" id="new_product_img" placeholder="" />
             </div>
             <div class="mb-3">
@@ -402,6 +402,8 @@
       $('#new_category').val(`${$(product_index).find('td:nth-child(5)').text()}`);
       $('#new_price').val(`${$(product_index).find('td:nth-child(6)').text()}`);
       $('#new_quantity').val(`${$(product_index).find('td:nth-child(7)').text()}`);
+      $('#new_kazniisa').val(`${$(product_index).find('td:nth-child(8)').text()}`);
+      $('#new_articul').val(`${$(product_index).find('td:nth-child(9)').text()}`);
       $("#edit_product-modal").modal("show");
     }
 
@@ -414,6 +416,8 @@
       let category = $("#new_category").val().trim();
       let status = $("#new_status").val().trim();
       let quantity = $("#new_quantity").val();
+      let kazniisa = $("#new_kazniisa").val();
+      let articul = $("#new_articul").val().trim();
       let product_img_src = null;
 
       if (!title || !description || !price || !category || !status || !quantity) {
@@ -448,6 +452,8 @@
       }
 
       let formData = new FormData();
+
+      formData.append("product_id", globalProductId);
       formData.append("product_img", img);
       formData.append("title", title);
       formData.append("description", description);
@@ -455,6 +461,10 @@
       formData.append("category", category);
       formData.append("status", status);
       formData.append("quantity", quantity);
+      formData.append("status", status);
+      formData.append("quantity", quantity);
+      formData.append("kazniisa", kazniisa);
+      formData.append("articul", articul);
 
       $.ajax({
         url: "/api/admin/product/update",
@@ -470,10 +480,11 @@
               fade: true,
               width: 400,
             });
-            $("#add_product-modal").modal("hide");
-            $("#add_product-modal input").val("");
+            $("#edit_product-modal").modal("hide");
+            $("#edit_product-modal input").val("");
+            location.reload(true)
           }
-          return loading(20, (el = "#edit_product_btn"))
+          return loading(20, (el = "#edit_product_btn"));
         },
         error: function (err) {
           console.log(err)
@@ -552,13 +563,13 @@
       $("#products").append(productsHTML)
     }
 
-    function logout(){
+    function logout() {
       $.ajax({
         url: '/api/auth/logout',
         method: 'POST',
-        success: function(r){
+        success: function (r) {
           window.location.replace("/login");
-          
+
         }
       })
     }

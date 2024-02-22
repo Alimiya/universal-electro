@@ -81,9 +81,9 @@
                             <input type="text" class="form-control" id="name" placeholder="Введите имя" name="name">
                         </div>
                         <div class="mb-3">
-                            <label for="phone_number" class="form-label">Ваш номер:</label>
-                            <input type="tel" class="form-control" id="phone_number" placeholder="Введите номер"
-                                name="phone_number">
+                            <label for="phone" class="form-label">Ваш номер:</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="Введите номер"
+                                name="phone">
                         </div>
                         <button type="submit" id="place_older_btn" class="btn btn-primary"
                             onclick="placeOrder()">Отправить</button>
@@ -284,9 +284,9 @@
         function placeOrder() {
             loading(2, el = '#place_older_btn');
             let name = $('#name').val().trim();
-            let phone_number = $('#phone_number').val();
+            let phone = $('#phone').val();
             let products = localStorage.getItem('products_list');
-            if (!name || !phone_number) {
+            if (!name || !phone) {
                 $.ambiance({
                     message: "Заполните все поля",
                     type: "error",
@@ -311,12 +311,11 @@
                 method: 'POST',
                 data: {
                     name: name,
-                    phone_number: phone_number,
+                    phone: phone,
                     products: products
                 },
                 success: function (r) {
-                    console.log(r);
-                    $.ambiance({ type: 'success', message: 'Success' });
+                    $.ambiance({ type: 'success', message: 'Ваш заказ оформлен. Ждите звонка' });
                     loading(20, el = '#place_older_btn');
                     localStorage.removeItem('products_list');
                     $('#show_bucket-modal').modal('hide');
