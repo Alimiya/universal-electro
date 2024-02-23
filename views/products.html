@@ -100,7 +100,25 @@
             </div>
             <div class="mb-3">
               <label for="category" class="form-label">Категория</label>
-              <input type="text" class="form-control" id="category" placeholder="Введите категорию" />
+              <select class="form-control" id="category">
+                <option disabled selected value="none">Не выбрано</option>
+                <option value="Вводно-распределительное устройство ГОСТ 30011.1-2003">Вводно-распределительное
+                  устройство ГОСТ 30011.1-2003</option>
+                <option value="Блок автоматического управления освещением">Блок автоматического управления освещением
+                </option>
+                <option value="АВР (автоматическое включение резерва)">АВР (автоматическое включение резерва)</option>
+                <option value="Ящик управления освещением">Ящик управления освещением</option>
+                <option
+                  value="Устройства комплектные низковольтные управления, ввода и распределения энергии ГОСТ 30011.1-2003">
+                  Устройства комплектные низковольтные управления, ввода и распределения энергии ГОСТ 30011.1-2003
+                </option>
+                <option value="Устройство компенсации реактивной мощности, конденсаторная установка">Устройство
+                  компенсации реактивной мощности, конденсаторная установка</option>
+                <option value="Щит распределительный, этажный ГОСТ 32397-2013, типа ЩЭ">Щит распределительный, этажный
+                  ГОСТ 32397-2013, типа ЩЭ</option>
+                <option value="Ящик силовой распределительный, типа ЯРВ">Ящик силовой распределительный, типа ЯРВ
+                </option>
+              </select>
             </div>
             <div class="mb-3">
               <label for="price" class="form-label">Цена</label>
@@ -165,7 +183,24 @@
             </div>
             <div class="mb-3">
               <label for="new_category" class="form-label">Категория</label>
-              <input type="text" class="form-control" id="new_category" placeholder="" />
+              <select class="form-control" id="new_category">
+                <option value="Вводно-распределительное устройство ГОСТ 30011.1-2003">Вводно-распределительное
+                  устройство ГОСТ 30011.1-2003</option>
+                <option value="Блок автоматического управления освещением">Блок автоматического управления освещением
+                </option>
+                <option value="АВР (автоматическое включение резерва)">АВР (автоматическое включение резерва)</option>
+                <option value="Ящик управления освещением">Ящик управления освещением</option>
+                <option
+                  value="Устройства комплектные низковольтные управления, ввода и распределения энергии ГОСТ 30011.1-2003">
+                  Устройства комплектные низковольтные управления, ввода и распределения энергии ГОСТ 30011.1-2003
+                </option>
+                <option value="Устройство компенсации реактивной мощности, конденсаторная установка">Устройство
+                  компенсации реактивной мощности, конденсаторная установка</option>
+                <option value="Щит распределительный, этажный ГОСТ 32397-2013, типа ЩЭ">Щит распределительный, этажный
+                  ГОСТ 32397-2013, типа ЩЭ</option>
+                <option value="Ящик силовой распределительный, типа ЯРВ">Ящик силовой распределительный, типа ЯРВ
+                </option>
+              </select>
             </div>
             <div class="mb-3">
               <label for="new_price" class="form-label">Цена</label>
@@ -335,18 +370,19 @@
         return loading(20, (el = "#add_product_btn"))
       }
 
-      if (title.length > 30 || category.length > 20) {
-        if (title.length > 20) $("#title").focus()
-        if (category.length > 20) $("#category").focus()
+
+      if (title.length > 20) {
+        $("#title").focus();
         $.ambiance({
           message:
-            "Длина заголовка и категории должна составлять не более 30",
+            "Длина заголовка должна составлять не более 30",
           type: "error",
           fade: true,
           width: 400,
-        })
-        return loading(20, (el = "#add_product_btn"))
+        });
+        return loading(20, (el = "#add_product_btn"));
       }
+
 
       let formData = new FormData();
       formData.append("product_img", img);

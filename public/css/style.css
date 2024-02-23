@@ -129,6 +129,12 @@
   text-align:center;
 }
 
+#selected_requester_block{
+  width: 100%;
+  background-color: white;
+  float: left;
+  transition: 0.2s;
+}
 
 
 /* End of Requests page */

@@ -45,7 +45,7 @@
           </span>
         </div>
 
-       
+
       </form>
 
       <div id="requests" class="mt-4">
@@ -54,12 +54,18 @@
 
       </div>
 
-      <div class="selected_requester" style="display: none;">
-
+      <div id="selected_requester_block" class="rounded mt-3 p-3" style="display: none;">
+        <div class="d-flex align-items-center gap-4 flex-wrap">
+          <button class="btn btn-warning text-light d-flex align-items-center" onclick="showRequests()"><span
+              class="material-symbols-outlined">
+              arrow_back
+            </span> Другие заказы</button>
+          <div class="selected_requester_info"></div>
+        </div>
       </div>
 
       <div id="table_block" style="width: 100%; overflow-x: auto; display: none;">
-        <table class="table table-hover table-bordered border-secondary mt-5 text-center align-middle">
+        <table class="table table-hover table-bordered border-secondary mt-3 text-center align-middle">
           <thead class="thead-dark">
             <tr>
               <th scope="col">#</th>
@@ -67,7 +73,7 @@
               <th scope="col">Название</th>
               <th scope="col">Описание</th>
               <th scope="col">Категория</th>
-              <th scope="col">Цена</th>
+              <th scope="col">Общая сумма</th>
               <th scope="col">Количество</th>
               <th scope="col">КазНИИСА</th>
               <th scope="col">Артикул</th>
@@ -109,7 +115,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     var globalRequestId;
-    var globalRequests=[];
+    var globalRequests = [];
 
     $(() => {
       loading(1);
@@ -119,6 +125,9 @@
 
     function showRequests() {
       let i = 0;
+      $('#table_block').hide();
+      $('#selected_requester_block').hide();
+      $('#requests').show();
       $("#requests").html('');
       let requestsHTML = "";
       $.ajax({
@@ -142,12 +151,16 @@
       })
     }
 
-    function showRequestData(request_index){
-        var productsList = JSON.parse(globalRequests[request_index].products_list);
-        var productsHTML = '';
-        $("#products").html('');
-        productsList.forEach((p) => {
-          productsHTML += `
+    function showRequestData(request_index) {
+      $('#selected_requester_block').show();
+      $('#requests').hide();
+      var productsList = JSON.parse(globalRequests[request_index].products_list);
+      var productsHTML = '';
+      var requesterName = globalRequests[request_index].name;
+      var requesterPhone = globalRequests[request_index].phone;
+      $("#products").html('');
+      productsList.forEach((p) => {
+        productsHTML += `
               <tr id="product-${request_index}"">
                 <th scope="row">${request_index}</th>
                 <td>
@@ -156,7 +169,7 @@
                 <td>${p.title}</td>
                 <td>${p.description}</td>
                 <td>${p.category}</td>
-                <td>${p.price}</td>
+                <td>${p.price * p.count}</td>
                 <td style="width: 10%">${p.count}</td>
                 <td style="width: 10%">${p.kazniisa}</td>
                 <td style="width: 10%">${p.articul}</td>
@@ -170,15 +183,21 @@
                     <span class="material-symbols-outlined text-danger"> delete </span>
                   </button>
                 </td>
-              </tr>` 
+              </tr>`
       });
+      var requesterInfo = `
+        <div>${requesterName}</div>
+        <div>Общая сумма заказа: ${getTotalAmount(globalRequests[request_index].products_list)} ₸</div>
+      `;
+
       $("#table_block").show()
       $("#products").append(productsHTML);
+      $("#selected_requester_block .selected_requester_info").html(requesterInfo);
     }
 
     function getTotalAmount(productsList) {
       let total_amount = 0;
-     
+
       JSON.parse(productsList).forEach((product) => {
         console.log(product)
         if (!product.count) return;
