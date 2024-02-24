@@ -124,6 +124,10 @@
   font-size: 14px;
 }
 
+.request .request_time{
+  font-size: 13px;
+}
+
 .request .amount{
   font-size: 14px;
   text-align:center;

@@ -221,11 +221,17 @@
         success: function (data) {
           globalRequests = data;
           data.forEach((r) => {
+            var date = new Date(r.created_time);
+            var options = { day: 'numeric', month: 'long', hour: 'numeric', minute: 'numeric', hour12: false };
+            var formattedDate = date.toLocaleDateString('ru-RU', options);
             requestsHTML += `
             <div class="request p-3 rounded" onclick="showRequestData(${i})">
               <div class="requester">${r.name}</div>
               <div class="requester_phone text-secondary">Номер: ${r.phone}</div>
-              <div class="amount bg-primary w-50 text-light rounded p-2 mt-2">Общая сумма: ${getTotalAmount(r.products_list)} ₸</div>
+              <div class="d-flex justify-content-between flex-wrap align-items-end">
+                <div class="amount bg-primary w-50 text-light rounded p-2 mt-2">Общая сумма: ${getTotalAmount(r.products_list)} ₸</div>
+                <div class="request_time text-dark">${formattedDate}</div>  
+              </div>  
             </div>
               `
             i++;
