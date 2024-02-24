@@ -1,7 +1,7 @@
 // GET / - filter: title, description, img, price, category, status, quantity=
 
 const fdb = require('../firebase').fdb;
-const {jsPDF} = require('jspdf')
+const { jsPDF } = require('jspdf')
 require('jspdf-autotable')
 const doc = new jsPDF()
 
@@ -23,7 +23,7 @@ exports.getProducts = async function (req, res, next) {
                     product_img: product.data().product_img,
                     kazniisa: product.data().kazniisa,
                     articul: product.data().articul,
-                
+
                 };
                 data.push(product_data);
             });
@@ -35,6 +35,16 @@ exports.getProducts = async function (req, res, next) {
 };
 
 exports.createRequest = async (req, res) => {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); 
+    const day = String(currentDate.getDate()).padStart(2, '0'); 
+    const hours = String(currentDate.getHours()).padStart(2, '0');
+    const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+    const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}`;
+
+    console.log(formattedDateTime);
+
     let r = { r: 0 }
     console.log(req.body)
     let products_list = req.body.products;
@@ -46,27 +56,28 @@ exports.createRequest = async (req, res) => {
     await fdb.collection('requests').add({
         products_list: products_list,
         phone: phone,
-        name: name
-    }).then(()=>{
-        r['r'] = 1;
-        res.send(r);
-    }).catch((e) => {
-        console.log(e);
-        res.send(r);
-    });
+        name: name,
+        created_time: formattedDateTime
+    }).then(() => {
+            r['r'] = 1;
+            res.send(r);
+        }).catch((e) => {
+            console.log(e);
+            res.send(r);
+        });
 }
 
 // POST / - сделать запрос на покупку корзины с покрытием в пдф
-exports.createPdf = async (req,res) =>{
+exports.createPdf = async (req, res) => {
     doc.autoTable({ html: '#my-table' })
     console.log(doc)
-doc.autoTable( {
-  head: [['Name', 'Email', 'Country']],
-  body: [
-    ['David', 'david@example.com', 'Sweden'],
-    ['Castille', 'castille@example.com', 'Spain'],
-  ],
-})
+    doc.autoTable({
+        head: [['Name', 'Email', 'Country']],
+        body: [
+            ['David', 'david@example.com', 'Sweden'],
+            ['Castille', 'castille@example.com', 'Spain'],
+        ],
+    })
 
-doc.save('table.pdf')
+    doc.save('table.pdf')
 }
