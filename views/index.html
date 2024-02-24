@@ -6,71 +6,111 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Universal Electro</title>
   <%- include('./components/head.ejs.html') %>
-    <link rel="stylesheet" href="/public/css/landing.css">
+  <link rel="stylesheet" href="/public/css/landing.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 
 <body>
-  <header class="header">
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html"><img src="/public/images/logo.png" alt="" width="200" /></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mx-auto me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">Про нас</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Команда</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Работы</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Контакты</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Галлерея</a>
-            </li>
-          </ul>
+
+  <header>
+    <img class="header__logo" src="/public/images/logo.png" alt="">
+
+    <nav class="header__nav">
+      <a class="nav__link" href="#">О нас</a>
+      <a class="nav__link" href="#service">Производство</a>
+      <a class="nav__link" href="#">Каталог</a>
+      <a class="nav__link" href="#">Сотрудничество</a>
+      <a class="nav__link" href="#">Сертификаты</a>
+      <a class="nav__link" href="#">Контакты</a>
+    </nav>
+
+    <a class="header__btn" href="#">Связаться с нами</a>
+  </header>
+  <hr class="hr-temp hr-header" />
+  <main>
+    
+    <div class="intro">
+      <div class="intro-hero"></div>
+
+      <div class="intro-general">
+        <div class="container">
+          <div class="intro__inner">
+            <div class="intro__content">
+              <h1 class="intro__title">Доверьте свою электробезопасность профессионалам. <br /> Доверьтесь нам!</h1>
+              <div class="intro__text">
+                <p>Мы - ваш надёжный партнёр в обеспечении электробезопасности. Наши щитки - это не просто продукты, это гарантия защиты вашего дома или бизнеса от электрических рисков</p>
+              </div>
+              <a class="intro__btn" href="#">Напишите нам</a>
+            </div>
+
+            <div class="intro__img-container">
+              <img class="intro__img-hero" src="/public/images/intro__hero-img.png" alt="">
+              <div class="intro__img-overlay intro__img-overlay-out"></div>
+              <div class="intro__img-overlay intro__img-overlay-in"></div>
+            </div>
+
+          </div>
         </div>
       </div>
-    </nav>
-  </header>
-
-  <div class="intro">
-    <div class="intro__inner">
-      <h1 class="intro__title">
-        <span>Universal</span>
-        <span>Electro</span>
-      </h1>
-      <h3 class="intro__subtitle">НАДЕЖНО КАЧЕСТВЕННО ВЫГОДНО</h3>
     </div>
-  </div>
+   
+    <div id="service" class="service">
+      <div class="service-mainTitle">
+        <div class="container">
+          <h1>Мы не просто так выделяемся как ведущий бренд в области электротехнических решений</h1>
+        </div>
+      </div>
 
-  <section class="mission">
-    <img src="/public/images/mission__hero-image.png" alt="" />
-    <div class="mission__inner">
-      <h1 class="mission__title">НАША МИССИЯ</h1>
-      <p class="mission__text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nulla
-        iste et aut obcaecati iure voluptatum possimus pariatur quos culpa
-        mollitia cupiditate hic consectetur distinctio numquam similique magni
-        deleniti harum earum, quisquam placeat laborum reiciendis repellendus!
-        Ipsa cum assumenda explicabo libero.
-      </p>
-      <div class="mission__exp">
-        <h3 class="mission__exp-element">Lorem ipsum dolor sit amet.</h3>
-        <h3 class="mission__exp-element">Lorem ipsum dolor sit amet.</h3>
-        <h3 class="mission__exp-element">Lorem ipsum dolor sit amet.</h3>
+      <section class="service-section">
+        <div class="container">
+          <div class="service__inner">
+            <div class="service__content">
+              <h2 class="service__title">Простота для новичков, надежность для опытных профессионалов</h2>
+              <div class="service__text">
+                <p>Наша компания специализируется на производстве электрических панелей и коробок, электромонтаже, металлообработке, порошковой окраске металла и производстве кабельных лотков. Наши процессы оптимизированы для всех уровней опыта, обеспечивая эффективное выполнение задач.</p>
+              </div>
+            </div>
+
+            <img data-aos="fade-down" data-aos-once="true" class="service__img" src="/public/images/service__img1.png" alt="">
+          </div>
+        </div>
+      </section>
+      
+      <section class="service-section">
+        <div class="container">
+          <div class="service__inner">
+            <img data-aos="fade-down" data-aos-once="true" class="service__img" src="/public/images/service__img2.png" alt="">
+
+            <div class="service__content">
+              <h2 class="service__title">Расширяющие возможности электрических решений</h2>
+              <div class="service__text">
+                <p>Располагая самым современным оборудованием и командой квалифицированных специалистов, мы обслуживаем как начинающих энтузиастов, так и опытных экспертов в этой области. Приступаете ли вы к своему первому проекту или стремитесь оптимизировать сложные системы, наши индивидуальные решения превзойдут ваши ожидания.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="service-btn">
+        <div class="container">
+          <a href="#">Напишите нам</a>
+        </div>
       </div>
     </div>
-  </section>
+
+    <hr class="hr-temp hr-service" />
+    
+  </main>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // AOS
+    AOS.init();
+
+
+  </script>
 </body>
 
 </html>
