@@ -71,6 +71,7 @@ exports.updateProduct = async function (req, res, next) {
     let new_product_img = req.file;
     let new_kazniisa = req.body.kazniisa;
     let new_articul = req.body.articul;
+    let random = Math.floor(10000 + Math.random() * 90000)
 
     if (!new_title || !new_description || !new_price || !new_category || !new_status || !new_quantity || !new_kazniisa || !new_articul) {
         res.send(r);
@@ -80,17 +81,15 @@ exports.updateProduct = async function (req, res, next) {
     if (new_product_img != undefined) {
         try {
             var file = storage.file(`products/${product_id}`);
-            console.log(file);
-            await file.delete().then(async() => {
+            await file.delete().then(async () => {
                 storage.upload(new_product_img.path, {
                     gzip: true,
                     metadata: metadata,
-                    destination: `products/${product_id}`
-                }).then(()=>{
+                    destination: `products/${product_id + random}`
+                }).then(() => {
                     fs.unlink(new_product_img.path, () => { });
 
                 });
-
             })
 
         } catch (error) {
@@ -101,6 +100,7 @@ exports.updateProduct = async function (req, res, next) {
     }
 
     try {
+        let product_image_url = `https://firebasestorage.googleapis.com/v0/b/universal-electro.appspot.com/o/products%2F${product_id + random}?alt=media`
         await fdb.collection('products').doc(product_id).update({
             title: new_title,
             description: new_description,
@@ -109,7 +109,8 @@ exports.updateProduct = async function (req, res, next) {
             status: new_status,
             quantity: new_quantity,
             kazniisa: new_kazniisa,
-            articul: new_articul
+            articul: new_articul,
+            product_img: product_image_url
         });
 
         r['r'] = 1;
@@ -164,6 +165,25 @@ exports.getRequests = async (req, res) => {
         console.log(err)
     }
 }
+
+// POST /request/update/:id
+exports.updateRequest = async (req, res) => {
+    let r = { r: 0 };
+    let request_id = req.body.request_id;
+    let new_products_list = req.body.products_list;
+
+    await fdb.collection('requests').doc(request_id).update({
+        products_list: new_products_list
+    }).then(() => {
+        r['r'] = 1;
+        r['request_id'] = request_id;
+        res.send(r);
+    }).catch((e) => {
+        console.log(e);
+        res.send(r);
+    });
+}
+
 // POST /request/delete/:id
 exports.deleteRequest = async (req, res) => {
     let r = { r: 0 };
