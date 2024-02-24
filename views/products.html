@@ -371,7 +371,7 @@
       }
 
 
-      if (title.length > 20) {
+      if (title.length > 50) {
         $("#title").focus();
         $.ambiance({
           message:
@@ -385,15 +385,16 @@
 
 
       let formData = new FormData();
-      formData.append("product_img", img);
-      formData.append("title", title);
-      formData.append("description", description);
-      formData.append("price", price);
-      formData.append("category", category);
-      formData.append("status", status);
-      formData.append("quantity", quantity);
-      formData.append("kazniisa", kazniisa);
-      formData.append("articul", articul);
+      formData.set("product_img", img);
+      formData.set("title", title);
+      formData.set("description", description);
+      formData.set("price", price);
+      formData.set("category", category);
+      formData.set("status", status);
+      console.log(quantity);
+      formData.set("quantity", quantity);
+      formData.set("kazniisa", kazniisa);
+      formData.set("articul", articul);
 
 
       $.ajax({
@@ -466,19 +467,6 @@
         return loading(20, (el = "#edit_product_btn"));
       }
 
-      if (title.length > 30 || category.length > 20) {
-        if (title.length > 20) $("#title").focus()
-        if (category.length > 20) $("#category").focus()
-        $.ambiance({
-          message:
-            "Длина заголовка и категории должна составлять не более 30",
-          type: "error",
-          fade: true,
-          width: 400,
-        })
-        return loading(20, (el = "#edit_product_btn"));
-      }
-
       if (!img || img == undefined) {
         product_img_src = $('#new_product_src').attr('src')
         if (product_img_src == './public/images/default_product.png') {
@@ -488,20 +476,18 @@
       }
 
       let formData = new FormData();
-
-      formData.append("product_id", globalProductId);
-      formData.append("product_img", img);
-      formData.append("title", title);
-      formData.append("description", description);
-      formData.append("price", price);
-      formData.append("category", category);
-      formData.append("status", status);
-      formData.append("quantity", quantity);
-      formData.append("status", status);
-      formData.append("quantity", quantity);
-      formData.append("kazniisa", kazniisa);
-      formData.append("articul", articul);
-
+      console.log(quantity)
+      formData.set("product_id", globalProductId);
+      formData.set("product_img", img);
+      formData.set("title", title);
+      formData.set("description", description);
+      formData.set("price", price);
+      formData.set("category", category);
+      formData.set("status", status);
+      formData.set("quantity", quantity);
+      formData.set("kazniisa", kazniisa);
+      formData.set("articul", articul);
+      
       $.ajax({
         url: "/api/admin/product/update",
         method: "post",
@@ -517,7 +503,6 @@
               width: 400,
             });
             $("#edit_product-modal").modal("hide");
-            $("#edit_product-modal input").val("");
             location.reload(true)
           }
           return loading(20, (el = "#edit_product_btn"));
@@ -532,7 +517,7 @@
           })
           return loading(20, (el = "#edit_product_btn"))
         },
-      })
+      });
     }
 
     function showDeleteProductModal(id) {

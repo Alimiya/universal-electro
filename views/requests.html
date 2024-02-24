@@ -38,21 +38,15 @@
     <div class="container">
       <form class="d-flex justify-content-between mt-5" role="search">
         <div class="search position-relative w-100">
-          <input class="form-control me-2 w-100 search-input border-secondary ps-5" onkeyup="searchProduct(this.value)"
+          <input class="form-control me-2 w-100 search-input border-secondary ps-5" onkeyup="searchRequest(this.value)"
             type="search" placeholder="Введите" aria-label="Search" />
           <span class="material-symbols-outlined position-absolute top-50 translate-middle ps-5">
             search
           </span>
         </div>
-
-
       </form>
 
-      <div id="requests" class="mt-4">
-
-
-
-      </div>
+      <div id="requests" class="mt-4"></div>
 
       <div id="selected_requester_block" class="rounded mt-3 p-3" style="display: none;">
         <div class="d-flex align-items-center gap-4 flex-wrap">
@@ -60,7 +54,13 @@
               class="material-symbols-outlined">
               arrow_back
             </span> Другие заказы</button>
-          <div class="selected_requester_info"></div>
+          <div class="selected_requester_info flex-fill"></div>
+          <div class="action_buttons d-flex gap-4 flex-wrap">
+            <div class="btn btn-outline-primary" id="save_request_btn" style="display: none;" onclick="saveRequest()">
+              Сохранить</div>
+            <div class="btn btn-success" onclick="extractPDF()">Скачать PDF</div>
+            <div class="btn btn-danger" onclick="showDeleteRequestModal()">Удалить запрос</div>
+          </div>
         </div>
       </div>
 
@@ -89,6 +89,33 @@
 
 
   <!-- Modals -->
+  <div class="modal fade" id="add_product-modal">
+    <div class="modal-dialog text-left">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Обновить запрос</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="new_count" class="form-label">Название товара</label>
+              <select name="" id=""></select>
+            </div>
+          </form>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Отмена
+            </button>
+            <button type="button" class="btn btn-primary" onclick="editRequestItem()">
+              Сохранить
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="modal fade" id="delete_request-modal">
     <div class="modal-dialog text-left">
       <div class="modal-content">
@@ -112,14 +139,69 @@
     </div>
   </div>
 
+  <div class="modal fade" id="delete_request_item-modal">
+    <div class="modal-dialog text-left">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Удалить товар</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">Вы уверены что хотите удалить данный товар из списка?</div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Отмена
+            </button>
+            <button type="button" class="btn btn-danger" onclick="deleteRequestItem()">
+              Удалить
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="edit_request_item-modal">
+    <div class="modal-dialog text-left">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Обновить запрос</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="new_count" class="form-label">Количество</label>
+              <input type="number" class="form-control" id="new_count" placeholder="" />
+            </div>
+          </form>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Отмена
+            </button>
+            <button type="button" class="btn btn-primary" onclick="editRequestItem()">
+              Сохранить
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    var globalRequestId;
+    var x;
     var globalRequests = [];
+    var globalRequestItemId;
+    var globalRequestIndex;
+    var globalProducts;
+
 
     $(() => {
       loading(1);
       showRequests();
+      getProducts();
       loading(0);
     });
 
@@ -135,7 +217,6 @@
         method: "get",
         success: function (data) {
           globalRequests = data;
-          console.log(data)
           data.forEach((r) => {
             requestsHTML += `
             <div class="request p-3 rounded" onclick="showRequestData(${i})">
@@ -146,7 +227,7 @@
               `
             i++;
           });
-          $("#requests").append(requestsHTML)
+          $("#requests").append(requestsHTML);
         },
       })
     }
@@ -158,11 +239,16 @@
       var productsHTML = '';
       var requesterName = globalRequests[request_index].name;
       var requesterPhone = globalRequests[request_index].phone;
+      localStorage.setItem('request_data', JSON.stringify(globalRequests[request_index]));
+      globalRequestId = globalRequests[request_index].request_id;
+      globalRequestIndex = request_index;
       $("#products").html('');
+
+      let i = 1;
       productsList.forEach((p) => {
         productsHTML += `
-              <tr id="product-${request_index}"">
-                <th scope="row">${request_index}</th>
+              <tr id="request-item-${i}">
+                <th scope="row">${i}</th>
                 <td>
                   <img src="${p.product_img}" alt="" />
                 </td>
@@ -175,39 +261,29 @@
                 <td style="width: 10%">${p.articul}</td>
 
                 <td style="width: 12%">
-                  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showEditProductModal('#product-${request_index}','${p.product_id}')">
+                  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showEditRequestItemModal('request-item-${i}','${p.product_id}')">
                     <span class="material-symbols-outlined"> edit_document </span>
                   </button>
 
-                  <button type="button" class="btn table-icon" data-toggle="modal" data-target="#deleteModal" onclick="showDeleteProductModal('${p.product_id}')">
+                  <button type="button" class="btn table-icon" data-toggle="modal" data-target="#deleteModal" onclick="showDeleteRequestItemModal('${p.product_id}')">
                     <span class="material-symbols-outlined text-danger"> delete </span>
                   </button>
                 </td>
-              </tr>`
+              </tr>`;
+        i++;
       });
+
       var requesterInfo = `
         <div>${requesterName}</div>
         <div>Общая сумма заказа: ${getTotalAmount(globalRequests[request_index].products_list)} ₸</div>
       `;
-
-      $("#table_block").show()
+      productsHTML+='<tr><th><button class="btn btn-secondary" onclick="addProduct()">+</button></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>'
+      $("#table_block").show();
       $("#products").append(productsHTML);
       $("#selected_requester_block .selected_requester_info").html(requesterInfo);
     }
 
-    function getTotalAmount(productsList) {
-      let total_amount = 0;
-
-      JSON.parse(productsList).forEach((product) => {
-        console.log(product)
-        if (!product.count) return;
-        total_amount += Number(product.price) * product.count
-      });
-      return total_amount;
-    }
-
-    function showDeleteProductModal(id) {
-      globalRequestId = id;
+    function showDeleteRequestModal() {
       $("#delete_request-modal").modal("show");
     }
 
@@ -216,7 +292,7 @@
       $.ajax({
         url: "/api/admin/request/delete",
         method: "post",
-        data: { product_id: globalProductId },
+        data: { request_id: globalRequestId, },
         success: function (res) {
           if (res.r) {
             $.ambiance({
@@ -224,51 +300,138 @@
               type: "success",
               fade: true,
               width: 400,
-            })
+            });
             $("#delete_request-modal").modal("hide");
             loading(20, '#delete_request_btn');
-            showProducts();
+            showRequests();
           }
         },
       });
     }
 
-    // function searchProduct(text) {
-    //   let productsHTML = "";
-    //   let i = 1;
-    //   $("#products").html('');
-    //   globalProducts.forEach((p) => {
-    //     if (p.title.includes(text) || p.description.includes(text)) {
-    //       productsHTML += `
-    //           <tr id="product-${i}"">
-    //             <th scope="row">${i}</th>
-    //             <td>
-    //               <img src="${p.product_img}" alt="" />
-    //             </td>
-    //             <td>${p.title}</td>
-    //             <td>${p.description}</td>
-    //             <td>${p.category}</td>
-    //             <td>${p.price}</td>
-    //             <td style="width: 10%">${p.quantity}</td>
-    //             <td style="width: 10%">${p.kazniisa}</td>
-    //             <td style="width: 10%">${p.articul}</td>
+    function showDeleteRequestItemModal(productId) {
+      $("#delete_request_item-modal").modal("show");
+      globalRequestItemId = productId;
+    }
 
-    //             <td style="width: 12%">
-    //               <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showEditProductModal('#product-${i}','${p.product_id}')">
-    //                 <span class="material-symbols-outlined"> edit_document </span>
-    //               </button>
+    function deleteRequestItem() {
+      var requestData = JSON.parse(localStorage.getItem('request_data'));
+      var requestItemsList = JSON.parse(requestData.products_list);
+      console.log(requestItemsList)
+      console.log(globalRequestItemId)
+      var updatedRequestItemsList = requestItemsList.filter(item => item.product_id != globalRequestItemId);
+      requestData.products_list = JSON.stringify(updatedRequestItemsList)
+      console.log(requestData)
+      globalRequests[globalRequestIndex].products_list = JSON.stringify(updatedRequestItemsList)
+      localStorage.setItem('request_data', 'requestData');
+      showRequestData(globalRequestIndex);
+      $("#delete_request_item-modal").modal("hide");
+      $('#save_request_btn').show();
+      globalRequestItemId = '';
 
-    //               <button type="button" class="btn table-icon" data-toggle="modal" data-target="#deleteModal" onclick="showDeleteProductModal('${p.product_id}')">
-    //                 <span class="material-symbols-outlined text-danger"> delete </span>
-    //               </button>
-    //             </td>
-    //           </tr>`
+    }
 
-    //     }
-    //     i++;
-    //   });
-    //   $("#products").append(productsHTML)
-    // }
+    function saveRequest() {
+      loading(2, '#save_request_btn');
+      var requestData = JSON.parse(localStorage.getItem('request_data'));
+      var requestItemsList = requestData.products_list;
+
+      $.ajax({
+        url: '/api/admin/request/update',
+        method: 'POST',
+        dataType: 'json',
+        data: { request_id: globalRequestId, products_list: requestItemsList },
+        success: function (res) {
+          if (res.r) {
+            $.ambiance({
+              message: "Запрос был успешно обновлен", type: "success", fade: true, width: 400,
+            });
+            $('#save_request_btn').hide();
+          } else {
+            $.ambiance({
+              message: "Что-то пошло не так", type: "error", fade: true, width: 400,
+            });
+          }
+          loading(20, '#save_request_btn');
+
+        }
+      })
+    }
+
+    function showEditRequestItemModal(requestItemId, productId) {
+      $("#edit_request_item-modal").modal("show");
+
+      $('#new_count').val($(`#${requestItemId} td:nth-child(7)`).html())
+      globalRequestItemId = productId;
+    }
+
+    function editRequestItem() {
+      var requestData = JSON.parse(localStorage.getItem('request_data'));
+      var requestItemsList = JSON.parse(requestData.products_list);
+      var new_count = $('#new_count').val();
+      var updatedRequestItemsList = requestItemsList.map(item => {
+        if (item.product_id == globalRequestItemId) {
+          return { ...item, count: new_count };
+        }
+        return item;
+      });
+      requestData.products_list = JSON.stringify(updatedRequestItemsList)
+      globalRequests[globalRequestIndex].products_list = JSON.stringify(updatedRequestItemsList)
+      localStorage.setItem('request_data', 'requestData');
+      showRequestData(globalRequestIndex);
+      $("#edit_request_item-modal").modal("hide");
+      $('#save_request_btn').show();
+      globalRequestItemId = '';
+
+    }
+
+    function getProducts() {
+      $.ajax({
+        url: "/api/catalog/products",
+        method: "get",
+        success: function (data) {
+          globalProducts = data;
+        }
+      });
+    }
+
+    function showAddProductModal(){
+      
+    }
+
+    function addProduct(){
+
+    }
+    
+    function getTotalAmount(productsList) {
+      let total_amount = 0;
+
+      JSON.parse(productsList).forEach((product) => {
+        if (!product.count) return;
+        total_amount += Number(product.price) * product.count
+      });
+      return total_amount;
+    }
+
+    function extractPDF() {
+      var requestData = JSON.parse(localStorage.getItem('request_data'));
+      var requestItemsList = requestData.products_list;
+      var count = getTotalAmount(requestItemsList);
+      if (!count) {
+        return $.ambiance({
+          message: 'Нет товаров', type: "error", fade: true, width: 400,
+        });
+      }
+
+      $.ajax({
+        url: '/api/catalog/product/buy',
+        method: 'POST',
+        data: { request_id: globalRequestId },
+        success: function (res) {
+          console.log(res)
+        }
+      });
+    }
 
     function logout() {
       $.ajax({
@@ -276,9 +439,8 @@
         method: 'POST',
         success: function (r) {
           window.location.replace("/login");
-
         }
-      })
+      });
     }
   </script>
 </body>

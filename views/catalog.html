@@ -91,7 +91,7 @@
                     <div class="bucket flex-fill">
                         <h3>Корзина</h3>
                         <div id="bucket_content"></div>
-                        <h4>Общая сумма: <span id="total_amount">492</span> ₸</h4>
+                        <h4 class="border-top pt-2">Общая сумма: <span id="total_amount">492</span> ₸</h4>
                     </div>
                 </div>
             </div>
@@ -217,19 +217,23 @@
             return products_list.find(product => product.product_id == productId);
         }
 
-        function showCountProducts() {
+        function getCountProducts() {
             var count = 0;
             let productsList = JSON.parse(localStorage.getItem('products_list'));
             if (productsList) {
                 productsList.forEach((product) => {
                     count += product.count;
                 });
-                $('#products_count').html(count);
                 return count;
             } else {
-                $('#products_count').html(0);
                 return 0;
             }
+        }
+
+        function showCountProducts(){
+            var count = getCountProducts();
+            $('#products_count').html(count);
+            return count;
         }
 
         function increaseCount(product_id) {
@@ -265,7 +269,6 @@
         }
 
         function changeCount(product_id, count) {
-            console.log(Number(count))
             let productsList = localStorage.getItem('products_list');
             var updatedProductsList = JSON.parse(productsList).map(product => {
                 if (product.count >= 0) {
@@ -296,7 +299,7 @@
                 return loading(20, el = '#place_older_btn');
             }
 
-            if (!products) {
+            if (!products || !getCountProducts()) {
                 $.ambiance({
                     message: "Ваша корзина пуста",
                     type: "error",
@@ -329,7 +332,7 @@
             let total_amount = 0;
             let productsList = JSON.parse(localStorage.getItem('products_list'));
             let productsCount = showCountProducts();
-            console.log(productsCount)
+            
             if (productsCount) {
                 productsList.forEach((product) => {
                     console.log(product)
