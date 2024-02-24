@@ -4,6 +4,6 @@ const Controller = require('../controllers/catalogController')
 
 router.get('/products', Controller.getProducts);
 router.post('/request/create', Controller.createRequest);
-router.post('/product/buy', Controller.createPdf);
+router.get('/product/buy', Controller.createPdf);
 
 module.exports = router

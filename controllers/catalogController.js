@@ -57,7 +57,7 @@ exports.createRequest = async (req, res) => {
 }
 
 exports.createPdf = async (req, res) => {
-    const {request_id} = req.body
+    const {request_id} = req.query
 
     if (!request_id) return res.status(400).send("Missing request_id in request body")
 
@@ -79,12 +79,12 @@ exports.createPdf = async (req, res) => {
                 product.description,
                 product.category,
                 product.price,
-                product.count[0],
+                product.count,
                 product.kazniisa,
                 product.articul
             ]
             bodyData.push(rowData)
-            totalAmount += parseFloat(product.price) * parseInt(product.count[0])
+            totalAmount += parseFloat(product.price) * parseInt(product.count)
         })
         bodyData.push(['', '', '', 'Общая сумма:', totalAmount.toFixed(2), '', ''])
 
@@ -100,9 +100,19 @@ exports.createPdf = async (req, res) => {
             styles: {font: "Arial", fontSize: 9},
         })
         docPdf.save(`temp/${request_id}.pdf`, {returnPromise: true}).then(function () {
-            res.end(`temp/${request_id}.pdf`)
-            fs.unlink(`temp/${request_id}.pdf`, () => {
-            })
+            fs.readFile(`temp/${request_id}.pdf`, (err, data) => {
+                if (err) {
+                    res.writeHead(500, {'Content-Type': 'text/plain'});
+                    res.end('Error reading the file');
+                } else {
+                    res.setHeader('Content-Type', 'application/pdf');
+                    res.setHeader('Content-Disposition', 'attachment; filename=file.pdf'); 
+                    res.end(data);
+                    fs.unlink(`temp/${request_id}.pdf`, () => {
+                    })
+                }
+            });
+          
         })
     } catch (err) {
         console.log(err)

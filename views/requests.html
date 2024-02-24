@@ -93,21 +93,24 @@
     <div class="modal-dialog text-left">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5">Обновить запрос</h1>
+          <h1 class="modal-title fs-5">Добавить товар</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form>
             <div class="mb-3">
+
               <label for="new_count" class="form-label">Название товара</label>
-              <select name="" id=""></select>
+              <select name="" id="new_product" class="form-control">
+
+              </select>
             </div>
           </form>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
               Отмена
             </button>
-            <button type="button" class="btn btn-primary" onclick="editRequestItem()">
+            <button type="button" class="btn btn-primary" onclick="addProduct()">
               Сохранить
             </button>
           </div>
@@ -277,7 +280,7 @@
         <div>${requesterName}</div>
         <div>Общая сумма заказа: ${getTotalAmount(globalRequests[request_index].products_list)} ₸</div>
       `;
-      productsHTML+='<tr><th><button class="btn btn-secondary" onclick="addProduct()">+</button></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>'
+      productsHTML += '<tr><th><button class="btn btn-secondary" onclick="showAddProductModal()">+</button></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>'
       $("#table_block").show();
       $("#products").append(productsHTML);
       $("#selected_requester_block .selected_requester_info").html(requesterInfo);
@@ -323,7 +326,6 @@
       requestData.products_list = JSON.stringify(updatedRequestItemsList)
       console.log(requestData)
       globalRequests[globalRequestIndex].products_list = JSON.stringify(updatedRequestItemsList)
-      localStorage.setItem('request_data', 'requestData');
       showRequestData(globalRequestIndex);
       $("#delete_request_item-modal").modal("hide");
       $('#save_request_btn').show();
@@ -377,7 +379,6 @@
       });
       requestData.products_list = JSON.stringify(updatedRequestItemsList)
       globalRequests[globalRequestIndex].products_list = JSON.stringify(updatedRequestItemsList)
-      localStorage.setItem('request_data', 'requestData');
       showRequestData(globalRequestIndex);
       $("#edit_request_item-modal").modal("hide");
       $('#save_request_btn').show();
@@ -395,14 +396,38 @@
       });
     }
 
-    function showAddProductModal(){
-      
+    function showAddProductModal() {
+      $("#add_product-modal").modal("show");
+      var requestData = JSON.parse(localStorage.getItem('request_data'));
+
+      var productOptions = '<option disabled selected value="none">Не выбрано</option>';
+      globalProducts.forEach((product, index) => {
+        var stateExisting = false;
+        JSON.parse(requestData.products_list).forEach((exist_product) => {
+          if (product.product_id == exist_product.product_id) stateExisting = true;
+        });
+        if (!stateExisting) {
+          productOptions += `
+        <option value="${index}">${product.title}</option>
+        `;
+        }
+
+      });
+      $('#new_product').html(productOptions);
     }
 
-    function addProduct(){
+    function addProduct() {
+      var productIndex = $('#new_product').val();
+      var updatedRequestItemsList = JSON.parse(globalRequests[globalRequestIndex].products_list)
+      updatedRequestItemsList.push(globalProducts[productIndex]);
+      globalProducts[productIndex].count = 1;
 
+      globalRequests[globalRequestIndex].products_list = JSON.stringify(updatedRequestItemsList);
+      $('#save_request_btn').show();
+      $("#add_product-modal").modal("hide");
+      showRequestData(globalRequestIndex);
     }
-    
+
     function getTotalAmount(productsList) {
       let total_amount = 0;
 
@@ -423,14 +448,8 @@
         });
       }
 
-      $.ajax({
-        url: '/api/catalog/product/buy',
-        method: 'POST',
-        data: { request_id: globalRequestId },
-        success: function (res) {
-          console.log(res)
-        }
-      });
+      window.location.href = '/api/catalog/product/buy?request_id=' + globalRequestId;
+
     }
 
     function logout() {
