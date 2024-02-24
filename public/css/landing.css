@@ -1,3 +1,6 @@
+:root {
+    --intro__img-width: 500px;
+}
 html {
     font-size: 16px;
 }
@@ -91,7 +94,8 @@ header {
 }
 
 .intro-general {
-    padding: 50px 0;
+    width: 100%;
+    padding: 80px 0;
     background-color: rgba(232, 121, 0, .9);
 }
 
@@ -123,7 +127,7 @@ header {
 
 .intro__btn {
     display: inline-block;
-    margin-top: 24px;
+    margin: 24px auto 0;
     padding: 12px 36px;
     border: 1px solid;
     border-radius: 16px;
@@ -143,6 +147,7 @@ header {
 }
 
 .intro__img-hero {
+    width: 400px;
     transition: .5s ease-in filter;
 }
 
@@ -168,10 +173,10 @@ header {
 
 @keyframes circle-out {
   0% {
-    transform: translate(-50%, -50%) rotate(0deg) translateX(250px) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg) translateX(200px) rotate(0deg);
   }
   100% {
-    transform: translate(-50%, -50%) rotate(360deg) translateX(250px) rotate(-360deg);
+    transform: translate(-50%, -50%) rotate(360deg) translateX(200px) rotate(-360deg);
   }
 }
 
@@ -182,10 +187,10 @@ header {
 
 @keyframes circle-in {
   0% {
-    transform: translate(-50%, -50%) rotate(0deg) translateX(200px) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg) translateX(155px) rotate(0deg);
   }
   100% {
-    transform: translate(-50%, -50%) rotate(360deg) translateX(200px) rotate(-360deg);
+    transform: translate(-50%, -50%) rotate(360deg) translateX(155px) rotate(-360deg);
   }
 }
 
@@ -234,7 +239,7 @@ header {
 }
 
 .service__img {
-    width: 600px;
+    width: 500px;
     border-radius: 16px;
 }
 
@@ -255,3 +260,9 @@ header {
     border-radius: 16px;
 }
 
+
+/* Modal */
+
+.modal__company-name {
+    font-size: 20px;
+}
