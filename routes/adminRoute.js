@@ -27,6 +27,8 @@ router.post('/product/update', upload.single('product_img'), Controller.updatePr
 router.post('/product/delete', Controller.deleteProduct);
 
 router.get('/requests', Controller.getRequests)
+router.post('/request/update', Controller.updateRequest)
 router.post('/request/delete', Controller.deleteRequest)
+
 
 module.exports = router

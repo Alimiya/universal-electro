@@ -2,9 +2,8 @@
 
 const fdb = require('../firebase').fdb;
 const {jsPDF} = require('jspdf')
+const fs = require('fs')
 require('jspdf-autotable')
-const doc = new jsPDF()
-
 
 exports.getProducts = async function (req, res, next) {
     let data = [];
@@ -23,7 +22,7 @@ exports.getProducts = async function (req, res, next) {
                     product_img: product.data().product_img,
                     kazniisa: product.data().kazniisa,
                     articul: product.data().articul,
-                
+
                 };
                 data.push(product_data);
             });
@@ -31,11 +30,12 @@ exports.getProducts = async function (req, res, next) {
         res.send(data);
     } catch (err) {
         console.log(err);
-    };
+    }
+    ;
 };
 
 exports.createRequest = async (req, res) => {
-    let r = { r: 0 }
+    let r = {r: 0}
     console.log(req.body)
     let products_list = req.body.products;
     let phone = req.body.phone
@@ -47,7 +47,7 @@ exports.createRequest = async (req, res) => {
         products_list: products_list,
         phone: phone,
         name: name
-    }).then(()=>{
+    }).then(() => {
         r['r'] = 1;
         res.send(r);
     }).catch((e) => {
@@ -56,17 +56,55 @@ exports.createRequest = async (req, res) => {
     });
 }
 
-// POST / - сделать запрос на покупку корзины с покрытием в пдф
-exports.createPdf = async (req,res) =>{
-    doc.autoTable({ html: '#my-table' })
-    console.log(doc)
-doc.autoTable( {
-  head: [['Name', 'Email', 'Country']],
-  body: [
-    ['David', 'david@example.com', 'Sweden'],
-    ['Castille', 'castille@example.com', 'Spain'],
-  ],
-})
+exports.createPdf = async (req, res) => {
+    const {request_id} = req.body
 
-doc.save('table.pdf')
+    if (!request_id) return res.status(400).send("Missing request_id in request body")
+
+
+    try {
+        const docRef = fdb.collection('requests').doc(request_id)
+        const doc = await docRef.get()
+
+        if (!doc.exists) return res.status(404).send("Request not found")
+
+        const requestData = doc.data()
+        requestData.products_list = JSON.parse(requestData.products_list)
+
+        const bodyData = []
+        let totalAmount = 0
+        requestData.products_list.forEach((product) => {
+            const rowData = [
+                product.title,
+                product.description,
+                product.category,
+                product.price,
+                product.count[0],
+                product.kazniisa,
+                product.articul
+            ]
+            bodyData.push(rowData)
+            totalAmount += parseFloat(product.price) * parseInt(product.count[0])
+        })
+        bodyData.push(['', '', '', 'Общая сумма:', totalAmount.toFixed(2), '', ''])
+
+        const docPdf = new jsPDF()
+        docPdf.addFont("ArialRegular.ttf", "Arial", "normal")
+        docPdf.setFont("Arial")
+        docPdf.text(requestData.name, 10, 15)
+        docPdf.text(requestData.phone, 10, 25)
+        docPdf.autoTable({
+            head: [['Название', 'Описание', 'Категория', 'Сумма', 'Количество', 'КазНИИСА', 'Артикул']],
+            body: bodyData,
+            startY: 30,
+            styles: {font: "Arial", fontSize: 9},
+        })
+        docPdf.save(`temp/${request_id}.pdf`, {returnPromise: true}).then(function () {
+            res.end(`temp/${request_id}.pdf`)
+            fs.unlink(`temp/${request_id}.pdf`, () => {
+            })
+        })
+    } catch (err) {
+        console.log(err)
+    }
 }
