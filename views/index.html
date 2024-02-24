@@ -25,32 +25,33 @@
       <a class="nav__link" href="#">Контакты</a>
     </nav>
 
-    <a class="header__btn" href="#">Связаться с нами</a>
+    <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#show-contact-modal">Связаться с нами</button>
+
   </header>
-  <hr class="hr-temp hr-header" />
   <main>
     
     <div class="intro">
       <div class="intro-hero"></div>
 
       <div class="intro-general">
-        <div class="container">
-          <div class="intro__inner">
+        <div class="container text-center">
+          <div class="intro__inner text-start">
             <div class="intro__content">
               <h1 class="intro__title">Доверьте свою электробезопасность профессионалам. <br /> Доверьтесь нам!</h1>
               <div class="intro__text">
                 <p>Мы - ваш надёжный партнёр в обеспечении электробезопасности. Наши щитки - это не просто продукты, это гарантия защиты вашего дома или бизнеса от электрических рисков</p>
               </div>
-              <a class="intro__btn" href="#">Напишите нам</a>
             </div>
 
             <div class="intro__img-container">
-              <img class="intro__img-hero" src="/public/images/intro__hero-img.png" alt="">
+              <img class="intro__img-hero" id="intro-img" src="/public/images/intro__hero-img.png" alt="">
               <div class="intro__img-overlay intro__img-overlay-out"></div>
               <div class="intro__img-overlay intro__img-overlay-in"></div>
             </div>
 
           </div>
+
+          <a class="intro__btn" href="/catalog">Перейти в каталог</a>
         </div>
       </div>
     </div>
@@ -92,16 +93,66 @@
         </div>
       </section>
 
-      <div class="service-btn">
+      <!-- <div class="service-btn">
         <div class="container">
           <a href="#">Напишите нам</a>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="cert">
+      <div class="container">
+        <div class="cert__inner">
+
         </div>
       </div>
     </div>
 
     <hr class="hr-temp hr-service" />
+
+    <div class="coop">
+      <div class="container">
+        <div class="coop__inner">
+
+        </div>
+      </div>
+    </div>
     
   </main>
+
+
+ <!-- Modal -->
+  <div class="modal fade" id="show-contact-modal">
+    <div class="modal-dialog text-left">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Контакты</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-4 fs-4 text-center">ТОО «UniversalElectro»</p>
+          <p class="d-flex align-items-center mb-4">
+            <span class="material-symbols-outlined">home</span>
+            <span class="fw-bold" style="margin-right: 20px">Адрес:</span> 
+            <a class="text-decoration-none text-dark" href="https://www.google.com/maps/place/%D0%A1%D0%BA%D0%BB%D0%B0%D0%B4+%D0%A1%D0%B8%D1%82%D0%B8+GRUP/@51.177655,71.48081,133m/data=!3m1!1e3!4m6!3m5!1s0x424581c3dacb7113:0xab4bd753c74c4bca!8m2!3d51.1777008!4d71.4807249!16s%2Fg%2F11l2kmywb5?hl=en-US&entry=ttu">Республика Казахстан, 010000, г. Астана, ул. Жетiген, 28/2</a>
+          </p>
+          <p class="d-flex align-items-center">
+            <span class="material-symbols-outlined">mail</span>
+            <span class="fw-bold" style="margin-right: 20px">Почта:</span> 
+            <a style="color: #E87900;" href="mailto:universalvs@mail.ru">universalvs@mail.ru</a>
+          </p>
+        
+
+          <div class="">
+            <span class="material-symbols-outlined">call</span>
+            <span class="fw-bold" style="margin-right: 20px">Номера: </span>
+            <p class="modal__company-tel-home">8 (7172) 533027 8 (7172) 533079</p>
+            <p class="modal__company-tel-mob">Моб: 8-777-115-3735 8-777-533-5873</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -109,10 +160,7 @@
     // AOS
     AOS.init();
 
-
   </script>
 </body>
 
 </html>
-
-<div class="text"></div>
