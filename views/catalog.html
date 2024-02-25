@@ -6,32 +6,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Universal Electro</title>
     <%- include('./components/head.ejs.html') %>
+        <style>
+            header {
+                width: 100%;
+                padding: 0 20px;
+                margin: 20px 0;
+
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+
+            .header__logo {
+                width: 250px;
+            }
+
+            .header__nav {
+                display: flex;
+                gap: 40px;
+            }
+
+            .nav__link {
+                /* font-family: 'Armata', sans-serif; */
+                font-size: 1rem;
+                font-weight: 400;
+                color: #19181d;
+                line-height: 1.55;
+                text-decoration: none;
+                transition: 0.3s ease color;
+            }
+
+            .nav__link:hover {
+                color: #f95005;
+            }
+
+            .header__btn {
+                padding: 10px 12px;
+                border-radius: 16px;
+
+                color: #000;
+                text-decoration: none;
+                background-color: #E87900;
+            }
+
+            .header__btn:hover {
+                background-color: #d57105;
+            }
+        </style>
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="/public/images/logo.png" width="150" alt="" /></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Товары</a>
-                        </li>
+        <img class="header__logo" src="/public/images/logo.png" alt="">
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="/requests">Запросы</a>
-                        </li>
-                    </ul>
-                    <a class="btn btn-outline-primary" href="/login">Выйти</a>
-                </div>
-            </div>
+        <nav class="header__nav">
+            <a class="nav__link" href="#">О нас</a>
+            <a class="nav__link" href="#service">Производство</a>
+            <a class="nav__link" href="/catalog">Каталог</a>
+            <a class="nav__link" href="#">Сотрудничество</a>
+            <a class="nav__link" href="#">Сертификаты</a>
+            <a class="nav__link" href="#">Контакты</a>
         </nav>
+
+        <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
+            data-bs-target="#show-contact-modal">Связаться с нами</button>
+
     </header>
     <main>
         <div class="container d-flex align-items-center gap-5" style="width: 78%;">
@@ -45,7 +85,7 @@
         </div>
         <div class="container d-flex align-items-center gap-3" style="width: 78%;">
 
-            <div class="search position-relative w-75">
+            <div class="search position-relative w-100">
                 <input class="form-control me-2 w-100 search-input border-secondary ps-5"
                     onkeyup="searchProduct(this.value)" type="search" placeholder="Введите" aria-label="Search" />
                 <span class="material-symbols-outlined position-absolute top-50 translate-middle ps-5">
@@ -54,9 +94,28 @@
             </div>
 
             <div class="d-flex gap-2">
-                <button class="btn btn-primary" type="button" onclick="showAddProductModal()">
-                    + Добавить
-                </button>
+                <select class="form-select" id="category" onchange="showCatalogByCategory()">
+                    <option selected value="all">Все категории</option>
+                    <option value="Вводно-распределительное устройство ГОСТ 30011.1-2003">Вводно-распределительное
+                        устройство ГОСТ 30011.1-2003</option>
+                    <option value="Блок автоматического управления освещением">Блок автоматического управления
+                        освещением
+                    </option>
+                    <option value="АВР (автоматическое включение резерва)">АВР (автоматическое включение резерва)
+                    </option>
+                    <option value="Ящик управления освещением">Ящик управления освещением</option>
+                    <option
+                        value="Устройства комплектные низковольтные управления, ввода и распределения энергии ГОСТ 30011.1-2003">
+                        Устройства комплектные низковольтные управления, ввода и распределения энергии ГОСТ 30011.1-2003
+                    </option>
+                    <option value="Устройство компенсации реактивной мощности, конденсаторная установка">Устройство
+                        компенсации реактивной мощности, конденсаторная установка</option>
+                    <option value="Щит распределительный, этажный ГОСТ 32397-2013, типа ЩЭ">Щит распределительный,
+                        этажный
+                        ГОСТ 32397-2013, типа ЩЭ</option>
+                    <option value="Ящик силовой распределительный, типа ЯРВ">Ящик силовой распределительный, типа ЯРВ
+                    </option>
+                </select>
             </div>
 
         </div>
@@ -82,8 +141,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="phone" class="form-label">Ваш номер:</label>
-                            <input type="tel" class="form-control" id="phone" placeholder="Введите номер"
-                                name="phone">
+                            <input type="tel" class="form-control" id="phone" placeholder="Введите номер" name="phone">
                         </div>
                         <button type="submit" id="place_older_btn" class="btn btn-primary"
                             onclick="placeOrder()">Отправить</button>
@@ -101,7 +159,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        var products;
+        var globalProducts;
         $(() => {
             loading(1);
             showCatalog();
@@ -115,7 +173,7 @@
                 url: "/api/catalog/products",
                 method: "get",
                 success: function (data) {
-                    products = data;
+                    globalProducts = data;
                     data.forEach((p) => {
                         productsHTML += `
                         <div class="product" id="product-${i}">
@@ -137,8 +195,35 @@
             });
         }
 
+        function showCatalogByCategory() {
+            let i = 1;
+            let category = $('#category').val();
+            $("#catalog").html('');
+            let productsHTML = "";
+            globalProducts.forEach((p) => {
+                if (p.category == category || category == 'all') {
+                    productsHTML += `
+                        <div class="product" id="product-${i}">
+                            <div class="h-50">
+                                <img src="${p.product_img}" alt="">
+                            </div>
+                            <i>Артикул: ${p.articul}</i>
+                            <h3>${p.title}</h3>
+                            ${p.status == '1' ? '<p class="text-success">В наличии</p>' : '<p class="text-danger">Нет в наличии</p>'}
+                            <h2>${p.price} ₸</h2>
+                            <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')">В корзину</button>
+                        </div>`
+                }
+                i++;
+            });
+            if(!productsHTML)  productsHTML += `<div class="alert alert-light w-100">Ничего не найдено</div>`;
+
+            $("#catalog").append(productsHTML);
+            showCountProducts();
+        }
+
         function addToBucket(product_index) {
-            let product = products[product_index.split('-')[1] - 1];
+            let product = globalProducts[product_index.split('-')[1] - 1];
 
             if (localStorage.getItem('products_list')) {
                 let productsList = localStorage.getItem('products_list');
@@ -163,7 +248,6 @@
                 let productsList = [product];
                 localStorage.setItem('products_list', JSON.stringify(productsList));
             }
-
             showCountProducts();
         }
 
@@ -230,7 +314,7 @@
             }
         }
 
-        function showCountProducts(){
+        function showCountProducts() {
             var count = getCountProducts();
             $('#products_count').html(count);
             return count;
@@ -328,22 +412,46 @@
             });
         }
 
-        function showTotalAmount(){
+        function showTotalAmount() {
             let total_amount = 0;
             let productsList = JSON.parse(localStorage.getItem('products_list'));
             let productsCount = showCountProducts();
-            
+
             if (productsCount) {
                 productsList.forEach((product) => {
                     console.log(product)
                     if (!product.count) return;
-                    total_amount+= Number(product.price) * product.count
+                    total_amount += Number(product.price) * product.count
                 });
                 $('#total_amount').parent().css('display', 'block');
                 $('#total_amount').html(total_amount);
             } else {
                 $('#total_amount').parent().css('display', 'none');
             }
+        }
+
+        function searchProduct(text) {
+            let productsHTML = "";
+            let i = 1;
+            let category = $("#category").val();
+            globalProducts.forEach((p) => {
+                if ((p.title.includes(text.trim()) || p.description.includes(text.trim()))&& (p.category == category || category == 'all')) {
+                    productsHTML += `
+                        <div class="product" id="product-${i}">
+                            <div class="h-50">
+                                <img src="${p.product_img}" alt="">
+                            </div>
+                            <i>Артикул: ${p.articul}</i>
+                            <h3>${p.title}</h3>
+                            ${p.status == '1' ? '<p class="text-success">В наличии</p>' : '<p class="text-danger">Нет в наличии</p>'}
+                            <h2>${p.price} ₸</h2>
+                            <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')">В корзину</button>
+                        </div>`;
+                }
+                i++;
+            });
+            if(!productsHTML)  productsHTML += `<div class="alert alert-light w-100">Ничего не найдено</div>`;
+            $("#catalog").html(productsHTML)
         }
 
     </script>
