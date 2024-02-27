@@ -155,7 +155,8 @@ exports.getRequests = async (req, res) => {
                     products_list: request.data().products_list,
                     phone: request.data().phone,
                     name: request.data().name,
-                    created_time: request.data().created_time
+                    created_time: request.data().created_time,
+                    status: request.data().status
                 }
                 data.push(request_data);
             })
@@ -171,6 +172,42 @@ exports.updateRequest = async (req, res) => {
     let r = { r: 0 };
     let request_id = req.body.request_id;
     let new_products_list = req.body.products_list;
+    let action = req.body.action;
+    let status = req.body.status;
+
+    if (action == 'updateList') {
+        await fdb.collection('requests').doc(request_id).update({
+            products_list: new_products_list
+        }).then(() => {
+            r['r'] = 1;
+            r['request_id'] = request_id;
+            res.send(r);
+        }).catch((e) => {
+            console.log(e);
+            res.send(r);
+        });
+    }
+
+    else
+    
+    if (action == 'updateStatus') {
+        await fdb.collection('requests').doc(request_id).update({
+            status: status
+        }).then(() => {
+            r['r'] = 1;
+            r['request_id'] = request_id;
+            res.send(r);
+        }).catch((e) => {
+            console.log(e);
+            res.send(r);
+        });
+    }
+}
+
+exports.updateRequestStatus = async (req, res) => {
+    let r = { r: 0 };
+    let request_id = req.body.request_id;
+    let new_products_list = req.body.products_list;
 
     await fdb.collection('requests').doc(request_id).update({
         products_list: new_products_list
@@ -183,6 +220,7 @@ exports.updateRequest = async (req, res) => {
         res.send(r);
     });
 }
+
 
 // POST /request/delete/:id
 exports.deleteRequest = async (req, res) => {

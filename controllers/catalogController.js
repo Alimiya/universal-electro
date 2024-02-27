@@ -38,15 +38,25 @@ exports.createRequest = async (req, res) => {
     let r = {r: 0}
     console.log(req.body)
     let products_list = req.body.products;
-    let phone = req.body.phone
-    let name = req.body.name
+    let phone = req.body.phone;
+    let name = req.body.name;
+    let status = 0;
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); 
+    const day = String(currentDate.getDate()).padStart(2, '0'); 
+    const hours = String(currentDate.getHours()).padStart(2, '0');
+    const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+    const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}`;
 
     if (!products_list || !phone || !name) return res.send(r);
 
     await fdb.collection('requests').add({
         products_list: products_list,
         phone: phone,
-        name: name
+        name: name,
+        status: status,
+        created_time: formattedDateTime
     }).then(() => {
         r['r'] = 1;
         res.send(r);

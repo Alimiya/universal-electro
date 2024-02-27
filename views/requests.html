@@ -58,6 +58,7 @@
           <div class="action_buttons d-flex gap-4 flex-wrap">
             <div class="btn btn-outline-primary" id="save_request_btn" style="display: none;" onclick="saveRequest()">
               Сохранить</div>
+            <button class="btn btn-light" id="request_status" onclick="updateStatus()"></button>
             <div class="btn btn-success" onclick="extractPDF()">Скачать PDF</div>
             <div class="btn btn-danger" onclick="showDeleteRequestModal()">Удалить запрос</div>
           </div>
@@ -199,6 +200,7 @@
     var globalRequestItemId;
     var globalRequestIndex;
     var globalProducts;
+    var globalRequestId;
 
 
     $(() => {
@@ -224,14 +226,15 @@
             var date = new Date(r.created_time);
             var options = { day: 'numeric', month: 'long', hour: 'numeric', minute: 'numeric', hour12: false };
             var formattedDate = date.toLocaleDateString('ru-RU', options);
+            var statusClass = (r.status == 0) ? 'border-primary ' : (r.status == 1) ? 'border-success' : 'border-warning';
             requestsHTML += `
-            <div class="request p-3 rounded" onclick="showRequestData(${i})">
+            <div class="request p-3 border ${statusClass} border-2 rounded" onclick="showRequestData(${i})">
               <div class="requester">${r.name}</div>
               <div class="requester_phone text-secondary">Номер: ${r.phone}</div>
               <div class="d-flex justify-content-between flex-wrap align-items-end">
                 <div class="amount bg-primary w-50 text-light rounded p-2 mt-2">Общая сумма: ${getTotalAmount(r.products_list)} ₸</div>
                 <div class="request_time text-dark">${formattedDate}</div>  
-              </div>  
+              </div> 
             </div>
               `
             i++;
@@ -248,6 +251,7 @@
       var productsHTML = '';
       var requesterName = globalRequests[request_index].name;
       var requesterPhone = globalRequests[request_index].phone;
+      var requestStatus = Number(globalRequests[request_index].status);
       localStorage.setItem('request_data', JSON.stringify(globalRequests[request_index]));
       globalRequestId = globalRequests[request_index].request_id;
       globalRequestIndex = request_index;
@@ -285,7 +289,28 @@
       var requesterInfo = `
         <div>${requesterName}</div>
         <div>Общая сумма заказа: ${getTotalAmount(globalRequests[request_index].products_list)} ₸</div>
+        <div>Номер телефона: ${requesterPhone}</div>
       `;
+
+      if (requestStatus == 1) {
+        $('#request_status').html(' Статус: Выполнено');
+        $('#request_status').attr('status', 1);
+        $('#request_status').css({
+          "box-shadow": '0 0 5px green'
+        });
+      } else if (requestStatus == 2) {
+        $('#request_status').html(' Статус: В обработке');
+        $('#request_status').attr('status', 2);
+        $('#request_status').css({
+          "box-shadow": '0 0 5px orange'
+        });
+      } else {
+        $('#request_status').html(' Статус: Новый заказ');
+        $('#request_status').attr('status', 0);
+        $('#request_status').css({
+          "box-shadow": '0 0 5px blue'
+        });
+      }
       productsHTML += '<tr><th><button class="btn btn-secondary" onclick="showAddProductModal()">+</button></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>'
       $("#table_block").show();
       $("#products").append(productsHTML);
@@ -326,11 +351,8 @@
     function deleteRequestItem() {
       var requestData = JSON.parse(localStorage.getItem('request_data'));
       var requestItemsList = JSON.parse(requestData.products_list);
-      console.log(requestItemsList)
-      console.log(globalRequestItemId)
       var updatedRequestItemsList = requestItemsList.filter(item => item.product_id != globalRequestItemId);
       requestData.products_list = JSON.stringify(updatedRequestItemsList)
-      console.log(requestData)
       globalRequests[globalRequestIndex].products_list = JSON.stringify(updatedRequestItemsList)
       showRequestData(globalRequestIndex);
       $("#delete_request_item-modal").modal("hide");
@@ -348,7 +370,7 @@
         url: '/api/admin/request/update',
         method: 'POST',
         dataType: 'json',
-        data: { request_id: globalRequestId, products_list: requestItemsList },
+        data: { request_id: globalRequestId, products_list: requestItemsList, action: 'updateList' },
         success: function (res) {
           if (res.r) {
             $.ambiance({
@@ -366,9 +388,37 @@
       })
     }
 
+    function updateStatus() {
+      let status = $('#request_status').attr('status');
+      status = (status == 0) ? 2 : (status == 1) ? 0 : 1;
+      loading(2, '#request_status');
+      $.ajax({
+        url: "/api/admin/request/update",
+        method: "post",
+        data: { request_id: globalRequestId, status: status, action: 'updateStatus' },
+        success: function (res) {
+          if (res.r) {
+            $.ambiance({
+              message: "Запрос был успешно обновлен",
+              type: "success",
+              fade: true,
+              width: 400,
+            });
+            globalRequests[globalRequestIndex].status = status;
+            setTimeout(()=>{
+              showRequestData(globalRequestIndex);
+
+            loading(20, '#request_status');
+            },2000)
+
+
+          }
+        },
+      });
+    }
+
     function showEditRequestItemModal(requestItemId, productId) {
       $("#edit_request_item-modal").modal("show");
-
       $('#new_count').val($(`#${requestItemId} td:nth-child(7)`).html())
       globalRequestItemId = productId;
     }

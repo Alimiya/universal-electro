@@ -109,6 +109,7 @@
   width: 400px;
   background-color: white;
   float: left;
+  position: relative;
   transition: 0.2s;
 }
 
@@ -131,6 +132,12 @@
 .request .amount{
   font-size: 14px;
   text-align:center;
+}
+
+.request .actions{
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 #selected_requester_block{
