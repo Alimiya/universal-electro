@@ -74,10 +74,10 @@
               <th scope="col">Название</th>
               <th scope="col">Описание</th>
               <th scope="col">Категория</th>
-              <th scope="col">Общая сумма</th>
-              <th scope="col">Количество</th>
               <th scope="col">КазНИИСА</th>
               <th scope="col">Артикул</th>
+              <th scope="col">Количество</th>
+              <th scope="col">Общая сумма</th>
               <th scope="col">Действия</th>
             </tr>
           </thead>
@@ -268,11 +268,10 @@
                 <td>${p.title}</td>
                 <td>${p.description}</td>
                 <td>${p.category}</td>
-                <td>${p.price * p.count}</td>
-                <td style="width: 10%">${p.count}</td>
                 <td style="width: 10%">${p.kazniisa}</td>
                 <td style="width: 10%">${p.articul}</td>
-
+                <td style="width: 10%">${p.count}</td>
+                <td>${p.price * p.count}</td>
                 <td style="width: 12%">
                   <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showEditRequestItemModal('request-item-${i}','${p.product_id}')">
                     <span class="material-symbols-outlined"> edit_document </span>

@@ -143,6 +143,10 @@
                             <label for="phone" class="form-label">Ваш номер:</label>
                             <input type="tel" class="form-control" id="phone" placeholder="Введите номер" name="phone">
                         </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Ваша почта(Необязательно):</label>
+                            <input type="email" class="form-control" id="email" placeholder="Введите почту" name="email">
+                        </div>
                         <button type="submit" id="place_older_btn" class="btn btn-primary"
                             onclick="placeOrder()">Отправить</button>
                     </div>
@@ -174,6 +178,16 @@
                 method: "get",
                 success: function (data) {
                     globalProducts = data;
+
+                    data.sort((a, b) => {
+                        if (a.category === 'Ящик управления освещением' && b.category !== 'Ящик управления освещением') {
+                            return -1;
+                        } else if (a.category !== 'Ящик управления освещением' && b.category === 'Ящик управления освещением') {
+                            return 1; 
+                        } else {
+                            return 0; 
+                        }
+                    });
                     data.forEach((p) => {
                         productsHTML += `
                         <div class="product" id="product-${i}">
@@ -216,7 +230,7 @@
                 }
                 i++;
             });
-            if(!productsHTML)  productsHTML += `<div class="alert alert-light w-100">Ничего не найдено</div>`;
+            if (!productsHTML) productsHTML += `<div class="alert alert-light w-100">Ничего не найдено</div>`;
 
             $("#catalog").append(productsHTML);
             showCountProducts();
@@ -372,6 +386,7 @@
             loading(2, el = '#place_older_btn');
             let name = $('#name').val().trim();
             let phone = $('#phone').val();
+            let email = $('#email').val();
             let products = localStorage.getItem('products_list');
             if (!name || !phone) {
                 $.ambiance({
@@ -399,6 +414,7 @@
                 data: {
                     name: name,
                     phone: phone,
+                    email: email,
                     products: products
                 },
                 success: function (r) {
@@ -435,7 +451,7 @@
             let i = 1;
             let category = $("#category").val();
             globalProducts.forEach((p) => {
-                if ((p.title.includes(text.trim()) || p.description.includes(text.trim()))&& (p.category == category || category == 'all')) {
+                if ((p.title.includes(text.trim()) || p.description.includes(text.trim())) && (p.category == category || category == 'all')) {
                     productsHTML += `
                         <div class="product" id="product-${i}">
                             <div class="h-50">
@@ -450,7 +466,7 @@
                 }
                 i++;
             });
-            if(!productsHTML)  productsHTML += `<div class="alert alert-light w-100">Ничего не найдено</div>`;
+            if (!productsHTML) productsHTML += `<div class="alert alert-light w-100">Ничего не найдено</div>`;
             $("#catalog").html(productsHTML)
         }
 
