@@ -251,6 +251,7 @@
       var productsHTML = '';
       var requesterName = globalRequests[request_index].name;
       var requesterPhone = globalRequests[request_index].phone;
+      var requesterEmail = globalRequests[request_index].email ? globalRequests[request_index].email : 'Отсутствует';
       var requestStatus = Number(globalRequests[request_index].status);
       localStorage.setItem('request_data', JSON.stringify(globalRequests[request_index]));
       globalRequestId = globalRequests[request_index].request_id;
@@ -289,6 +290,7 @@
         <div>${requesterName}</div>
         <div>Общая сумма заказа: ${getTotalAmount(globalRequests[request_index].products_list)} ₸</div>
         <div>Номер телефона: ${requesterPhone}</div>
+        <div>Почта: ${requesterEmail}</div>
       `;
 
       if (requestStatus == 1) {
