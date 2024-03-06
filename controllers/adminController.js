@@ -119,13 +119,14 @@ exports.getRequests = async (req, res) => {
     let data = []
 
     try {
-        await fdb.collection('requests').get().then((requests) => {
+        await fdb.collection('requests').orderBy('status', 'asc').get().then((requests) => {
             requests.forEach((request) => {
                 var request_data = {
                     request_id: request.id,
                     products_list: request.data().products_list,
                     phone: request.data().phone,
                     name: request.data().name,
+                    email: request.data().email,
                     created_time: request.data().created_time,
                     status: request.data().status
                 }
