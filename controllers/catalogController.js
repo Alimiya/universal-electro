@@ -40,6 +40,7 @@ exports.createRequest = async (req, res) => {
     let products_list = req.body.products;
     let phone = req.body.phone;
     let name = req.body.name;
+    let email = req.body.email;
     let status = 0;
     const currentDate = new Date();
     const year = currentDate.getFullYear();
@@ -53,6 +54,7 @@ exports.createRequest = async (req, res) => {
 
     await fdb.collection('requests').add({
         products_list: products_list,
+        email: email,
         phone: phone,
         name: name,
         status: status,
@@ -65,78 +67,6 @@ exports.createRequest = async (req, res) => {
         res.send(r);
     });
 }
-
-// exports.createPdf = async (req, res) => {
-//     const { request_id } = req.query;
-
-//     if (!request_id) return res.status(400).send("Missing request_id in request body");
-
-//     try {
-//         const docRef = fdb.collection('requests').doc(request_id);
-//         const doc = await docRef.get();
-
-//         if (!doc.exists) return res.status(404).send("Request not found");
-
-//         const requestData = doc.data();
-//         requestData.products_list = JSON.parse(requestData.products_list);
-
-//         const bodyData = [];
-//         let totalAmount = 0;
-//         requestData.products_list.forEach((product) => {
-//             const rowData = [
-//                 product.title,
-//                 product.description,
-//                 product.category,
-//                 product.price,
-//                 product.count,
-//                 product.kazniisa,
-//                 product.articul,
-//             ];
-//             bodyData.push(rowData);
-//             totalAmount += parseFloat(product.price) * parseInt(product.count);
-//         });
-//         bodyData.push(['', '', '', 'Общая сумма:', totalAmount.toFixed(2), '', '']);
-
-//         const docPdf = new jsPDF();
-//         docPdf.addFont("ArialRegular.ttf", "Arial", "normal");
-//         docPdf.setFont("Arial");
-
-//         // Add the first image at the beginning of the PDF
-//         const firstImageBuffer = fs.readFileSync('path/to/first/image.jpg');
-//         docPdf.addImage(firstImageBuffer, 'JPEG', 10, 10, 50, 50); // Adjust the coordinates and dimensions
-
-//         docPdf.text(requestData.name, 10, 75); // Adjust Y coordinate based on the image size
-//         docPdf.text(requestData.phone, 10, 85);
-
-//         docPdf.autoTable({
-//             head: [['Название', 'Описание', 'Категория', 'Сумма', 'Количество', 'КазНИИСА', 'Артикул']],
-//             body: bodyData,
-//             startY: 100, // Adjust the starting Y coordinate based on the image size
-//             styles: { font: "Arial", fontSize: 9 },
-//         });
-
-//         // Add the second image at the end of the PDF
-//         const secondImageBuffer = fs.readFileSync('path/to/second/image.jpg');
-    
-//         docPdf.addImage(secondImageBuffer, 'JPEG', 10, docPdf.autoTable.previous.finalY + 10, 50, 50); // Adjust coordinates
-
-//         docPdf.save(`temp/${request_id}.pdf`, { returnPromise: true }).then(function () {
-//             fs.readFile(`temp/${request_id}.pdf`, (err, data) => {
-//                 if (err) {
-//                     res.writeHead(500, { 'Content-Type': 'text/plain' });
-//                     res.end('Error reading the file');
-//                 } else {
-//                     res.setHeader('Content-Type', 'application/pdf');
-//                     res.setHeader('Content-Disposition', 'attachment; filename=file.pdf');
-//                     res.end(data);
-//                     fs.unlink(`temp/${request_id}.pdf`, () => { });
-//                 }
-//             });
-//         });
-//     } catch (err) {
-//         console.log(err);
-//     }
-// };
 
 exports.createPdf = async (req, res) => {
     const { request_id } = req.query;
@@ -167,7 +97,7 @@ exports.createPdf = async (req, res) => {
             bodyData.push(rowData);
             totalAmount += parseFloat(product.price) * parseInt(product.count);
         });
-        bodyData.push(['', '', '', 'Общая сумма:', totalAmount.toFixed(2), '', '']);
+        // bodyData.push(['', '', '', 'Общая сумма:', totalAmount.toFixed(2), '', '']);
 
         const docPdf = new jsPDF();
         docPdf.addFont("ArialRegular.ttf", "Arial", "normal");
@@ -195,11 +125,14 @@ exports.createPdf = async (req, res) => {
         docPdf.setFontSize(12)
         docPdf.text("Заказчик: " + requestData.name, 10, 40); // Adjust Y coordinate based on the image size
         docPdf.text("Номер телефона: " + requestData.phone, 10, 50);
+        docPdf.text("Почта заказчика: " + requestData.email, 10, 60);
+        docPdf.setFont("ArialBold");
+        docPdf.text("Общая сумма заказа: " + totalAmount + "тг", 10, 70);
 
         docPdf.autoTable({
             head: [['Название', 'Описание', 'Категория', 'Сумма', 'Количество', 'КазНИИСА', 'Артикул']],
             body: bodyData,
-            startY: 60, // Adjust the starting Y coordinate based on the image size
+            startY: 80, // Adjust the starting Y coordinate based on the image size
             styles: { font: "Arial", fontSize: 10},
         });
 
@@ -210,7 +143,7 @@ exports.createPdf = async (req, res) => {
         const imgY = docPdf.internal.pageSize.height - imgHeight;
         docPdf.addImage(secondImageBuffer, 'PNG', 0, imgY, imgWidth, imgHeight);
 
-        docPdf.setFont("Arial");
+        docPdf.setFont("Arial");    
         docPdf.setFontSize(9);
         docPdf.text("+7(777)533-58-73", 60, 284.5);
         docPdf.text("universalvs@mail.ru", 91, 284.5);
