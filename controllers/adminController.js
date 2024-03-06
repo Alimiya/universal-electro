@@ -61,68 +61,39 @@ exports.createProduct = async function (req, res, next) {
 // POST /product/update/:id
 exports.updateProduct = async function (req, res, next) {
     let r = { r: 0 };
-    let product_id = req.body.product_id;
-    let new_title = req.body.title;
-    let new_description = req.body.description;
-    let new_price = req.body.price;
-    let new_category = req.body.category;
-    let new_status = req.body.status;
-    let new_quantity = req.body.quantity;
+    let { product_id, title, description, price, category, status, quantity, kazniisa, articul } = req.body;
     let new_product_img = req.file;
-    let new_kazniisa = req.body.kazniisa;
-    let new_articul = req.body.articul;
-    let random = Math.floor(10000 + Math.random() * 90000)
+    let random = Math.floor(10000 + Math.random() * 90000);
 
-    if (!new_title || !new_description || !new_price || !new_category || !new_status || !new_quantity || !new_kazniisa || !new_articul) {
+    if (!title || !description || !price || !category || !status || !quantity || !kazniisa || !articul) {
         res.send(r);
         return;
     }
-    // if new_product_img is not undefined then 1) First delete image from storage 2) upload image to storage and 3) then to firestore update 
-    if (new_product_img != undefined) {
-        try {
-            var file = storage.file(`products/${product_id}`);
-            await file.delete().then(async () => {
-                storage.upload(new_product_img.path, {
-                    gzip: true,
-                    metadata: metadata,
-                    destination: `products/${product_id + random}`
-                }).then(() => {
-                    fs.unlink(new_product_img.path, () => { });
-
-                });
-            })
-
-        } catch (error) {
-            console.log(error);
-            res.send(r);
-            return;
-        }
-    }
-
     try {
-        let product_image_url = `https://firebasestorage.googleapis.com/v0/b/universal-electro.appspot.com/o/products%2F${product_id + random}?alt=media`
-        await fdb.collection('products').doc(product_id).update({
-            title: new_title,
-            description: new_description,
-            price: new_price,
-            category: new_category,
-            status: new_status,
-            quantity: new_quantity,
-            kazniisa: new_kazniisa,
-            articul: new_articul,
-            product_img: product_image_url
-        });
+        if (new_product_img != undefined) {
+            var file = storage.file(`products/${product_id}`);
+            await file.delete();
+            await storage.upload(new_product_img.path, { gzip: true, metadata: metadata, destination: `products/${product_id + random}` });
+            fs.unlink(new_product_img.path, () => {});
+        }
 
+        let updateData = {
+            title, description, price, category, status, quantity, kazniisa, articul
+        };
+
+        if (new_product_img != undefined) {
+            updateData.product_img = `https://firebasestorage.googleapis.com/v0/b/universal-electro.appspot.com/o/products%2F${product_id + random}?alt=media`;
+        }
+
+        await fdb.collection('products').doc(product_id).update(updateData);
         r['r'] = 1;
         r['product_id'] = product_id;
         res.send(r);
-
     } catch (error) {
         console.log(error);
         res.send(r);
     }
 };
-
 
 // POST /product/delete/:id
 exports.deleteProduct = async function (req, res, next) {
@@ -189,19 +160,19 @@ exports.updateRequest = async (req, res) => {
     }
 
     else
-    
-    if (action == 'updateStatus') {
-        await fdb.collection('requests').doc(request_id).update({
-            status: status
-        }).then(() => {
-            r['r'] = 1;
-            r['request_id'] = request_id;
-            res.send(r);
-        }).catch((e) => {
-            console.log(e);
-            res.send(r);
-        });
-    }
+
+        if (action == 'updateStatus') {
+            await fdb.collection('requests').doc(request_id).update({
+                status: status
+            }).then(() => {
+                r['r'] = 1;
+                r['request_id'] = request_id;
+                res.send(r);
+            }).catch((e) => {
+                console.log(e);
+                res.send(r);
+            });
+        }
 }
 
 exports.updateRequestStatus = async (req, res) => {
