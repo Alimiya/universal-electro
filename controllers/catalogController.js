@@ -114,7 +114,7 @@ exports.createPdf = async (req, res) => {
         docPdf.setFont("Arial");
         docPdf.text("БИН 100240019098 ҚР, Астана қ., Жетiген к. 28/2 үй.", 28, 19);
         docPdf.text('ЖСН KZ908562203118898239 "Банк Центр Кредит" АҚ', 28, 23);
-        
+
         docPdf.setFont("ArialBold");
         docPdf.setFontSize(9);
         docPdf.text("ТОО “UNIVERSALELECTRO”", 112, 15);
@@ -125,7 +125,11 @@ exports.createPdf = async (req, res) => {
         docPdf.setFontSize(12)
         docPdf.text("Заказчик: " + requestData.name, 10, 40); // Adjust Y coordinate based on the image size
         docPdf.text("Номер телефона: " + requestData.phone, 10, 50);
-        docPdf.text("Почта заказчика: " + requestData.email, 10, 60);
+        if (requestData.email != undefined) {
+            docPdf.text("Почта заказчика: " + requestData.email, 10, 60);
+        } else {
+            docPdf.text("Почта заказчика: Отсутствует", 10, 60);
+        }
         docPdf.setFont("ArialBold");
         docPdf.text("Общая сумма заказа: " + totalAmount + "тг", 10, 70);
 
@@ -133,7 +137,7 @@ exports.createPdf = async (req, res) => {
             head: [['Название', 'Описание', 'Категория', 'Сумма', 'Количество', 'КазНИИСА', 'Артикул']],
             body: bodyData,
             startY: 80, // Adjust the starting Y coordinate based on the image size
-            styles: { font: "Arial", fontSize: 10},
+            styles: { font: "Arial", fontSize: 10 },
         });
 
         // Add the second image at the end of the PDF
@@ -143,7 +147,7 @@ exports.createPdf = async (req, res) => {
         const imgY = docPdf.internal.pageSize.height - imgHeight;
         docPdf.addImage(secondImageBuffer, 'PNG', 0, imgY, imgWidth, imgHeight);
 
-        docPdf.setFont("Arial");    
+        docPdf.setFont("Arial");
         docPdf.setFontSize(9);
         docPdf.text("+7(777)533-58-73", 60, 284.5);
         docPdf.text("universalvs@mail.ru", 91, 284.5);
@@ -159,7 +163,7 @@ exports.createPdf = async (req, res) => {
                     res.setHeader('Content-Type', 'application/pdf');
                     res.setHeader('Content-Disposition', 'attachment; filename=file.pdf');
                     res.end(data);
-                    fs.unlink(`temp/${request_id}.pdf`, () => {});
+                    fs.unlink(`temp/${request_id}.pdf`, () => { });
                 }
             });
         });
