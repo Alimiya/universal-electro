@@ -70,25 +70,27 @@
 }
 
 .product {
-  width: 270px;
-  min-height: 600px;
+  width: 215px;
+  min-height: 550px;
   padding: 20px;
   background-color: white;
   transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .product:hover {
   transform: scale(1.02);
 }
 
-.product img{
-  width: 100%;
-  height: 230px;
+.product .img_block{
+  height: 40%;
 }
 
-
-.product h3{
-  height: 50px;
+.product img{
+  width: 100%;
+  height: 200px;
 }
 
 .product button:hover{
@@ -150,3 +152,21 @@
 
 
 /* End of Requests page */
+
+
+
+@media (max-width: 550px) {
+  #catalog{
+    justify-content: center;
+  }
+  .product{
+    min-height: 500px; 
+    width: 90%;
+  }
+
+  .product_info{
+    flex: none !important;
+  }
+
+
+}
