@@ -11,6 +11,10 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
+router.get('/certificate', (req, res) => {
+    res.render('certificate');
+});
+
 router.get('/admin/products', verifyAdminToken(), (req, res) => {
     res.render('products');
 });
