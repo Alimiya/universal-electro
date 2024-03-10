@@ -137,7 +137,7 @@
             </div>
             <div class="mb-3">
               <label for="kazniisa" class="form-label">КазНИИСА</label>
-              <input type="number" class="form-control" id="kazniisa" placeholder="123" />
+              <input type="text" class="form-control" id="kazniisa" placeholder="123" />
             </div>
             <div class="mb-3">
               <label for="articul" class="form-label">Артикул</label>
@@ -219,7 +219,7 @@
             </div>
             <div class="mb-3">
               <label for="new_kazniisa" class="form-label">КазНИИСА</label>
-              <input type="number" class="form-control" id="new_kazniisa" placeholder="" />
+              <input type="text" class="form-control" id="new_kazniisa" placeholder="" />
             </div>
             <div class="mb-3">
               <label for="new_articul" class="form-label">Артикул</label>
@@ -551,7 +551,7 @@
       let i = 1;
       $("#products").html('');
       globalProducts.forEach((p) => {
-        if (p.title.includes(text) || p.description.includes(text)) {
+        if (p.title.toLowerCase().includes(text.toLowerCase()) || p.description.toLowerCase().includes(text.toLowerCase())) {
           productsHTML += `
               <tr id="product-${i}"">
                 <th scope="row">${i}</th>
@@ -559,7 +559,7 @@
                   <img src="${p.product_img}" alt="" />
                 </td>
                 <td>${p.title}</td>
-                <td>${p.description}</td>
+                <td><div style="max-height: 100px; overflow-y: auto; text-overflow: ellipsis">${p.description}</div></td>
                 <td>${p.category}</td>
                 <td>${p.price}</td>
                 <td style="width: 10%">${p.quantity}</td>
