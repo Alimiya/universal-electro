@@ -8,71 +8,33 @@
   <%- include('./components/head.ejs.html') %>
   <link rel="stylesheet" href="/public/css/landing.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 </head>
 
 
 <body>
-  <header>
-    <nav class="navbar sticky-top navbar-expand-xl bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img class="img-fluid" width="220"  src="/public/images/logo.png" alt="">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mx-auto  me-auto mb-2 mb-lg-0">
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="#">О&nbsp;нас</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="#">Производство</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="#">Каталог</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="#">Сотрудничество</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="#">Сертификаты</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="#">Контакты</a>
-            </li>
-          </ul>
-          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#show-contact-modal">
-            Связаться&nbsp;с&nbsp;нами
-          </button>
-        </div>
-      </div>
-    </nav>
-  </header>
-
+  <%- include('./partials/header.html') %>
   <main>
-    
     <div class="intro">
-      <div class="intro-hero"></div>
+      <!-- <div class="intro-hero w-100">
+
+      </div> -->
 
       <div class="w-100 py-5" style="background-color: #E87900;">
         <div class="container text-center">
           <div class="intro__inner d-flex justify-content-between align-items-center text-start">
-            <div class="intro__content">
-              <h1 class="intro__title">Доверьте свою электробезопасность профессионалам. <br /> Доверьтесь нам!</h1>
-              <div class="intro__text">
-                <p>Мы - ваш надёжный партнёр в обеспечении электробезопасности. Наши щитки - это не просто продукты, это гарантия защиты вашего дома или бизнеса от электрических рисков</p>
-              </div>
+            <div class="intro__content mx-auto" style="max-width: 720px;">
+              <h1 class="intro__title fs-1 mb-3">Доверьте свою электробезопасность профессионалам. <br /> Доверьтесь нам!</h1>
+              <p class="intro__text fs-4">Мы - ваш надёжный партнёр в обеспечении электробезопасности. Наши щитки - это не просто продукты, это гарантия защиты вашего дома или бизнеса от электрических рисков</p>
             </div>
 
-            <div class="intro__img-container">
+            <div class="intro__img-container mx-auto position-relative">
               <img class="intro__img-hero" id="intro-img" src="/public/images/intro__hero-img.png" alt="">
               <div class="intro__img-overlay intro__img-overlay-out"></div>
               <div class="intro__img-overlay intro__img-overlay-in"></div>
             </div>
 
           </div>
-
           <a href="/catalog" class="btn btn-light mt-5" style="font-size: 1.3rem !important;">Перейти в каталог</a>
         </div>
       </div>
@@ -110,27 +72,34 @@
         </div>
       </section>
 
-      <!-- <div class="service-btn">
-        <div class="container">
-          <a href="#">Напишите нам</a>
+      <div class="service-btn mt-5">
+        <div class="container text-center">
+          <a class="btn btn-lg btn-custom--orange text-dark" href="#">Напишите нам</a>
         </div>
       </div>
-    </div> -->
 
-    <div class="cert">
+    <hr class="mt-5">
+    <div class="catalog">
       <div class="container">
-        <div class="cert__inner">
-
+        <div class="catalog__inner">
+          <div class="catalog__content text-center">
+            <h1>Наш Каталог</h1>
+            <p class="w-75 mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula sapien at libero viverra, non pharetra metus pretium. Proin nec libero arcu. Sed volutpat eget nulla eget scelerisque. Nullam tincidunt leo ut ipsum laoreet aliquet. Mauris auctor elit ut justo varius, eget interdum magna suscipit.</p>
+          </div>
+          <section id="product-slider" class="splide" aria-label="Splide Basic HTML Example">
+            <div class="splide__track text-center">
+              <ul class="splide__list" id="product-carousel">
+               
+              </ul>
+            </div>
+          </section>
         </div>
       </div>
-    </div>
+    </div> 
 
-    <hr class="hr-temp hr-service" />
-
-    <div class="coop">
+    <div class="coop" style="margin-top: 200px;">
       <div class="container">
         <div class="coop__inner">
-
         </div>
       </div>
     </div>
@@ -197,11 +166,57 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
   <script>
     // AOS
     AOS.init();
-
+  
+    // Splide js
+    const productSlider = new Splide("#product-slider", {
+      type: 'loop', 
+      perPage: 3,
+      gap: "50px"
+    });
+  
+    $(document).ready(() => {
+      fetchProducts();
+    });
+  
+    function fetchProducts() {
+      $.ajax({
+        url: "/api/catalog/products",
+        method: "get",
+        success: function (data) {
+          populateSlider(data);
+        },
+        error: function (error) {
+          console.error('Error fetching products:', error);
+        }
+      });
+    }
+  
+    function populateSlider(products) {
+      const productCarousel = $("#product-carousel");
+      productCarousel.empty(); 
+  
+      const limitedProducts = products.slice(0, 4);
+      limitedProducts.forEach(product => {
+        if (product.product_img) { 
+          const slide = `
+            <li class="splide__slide">
+              <div class="img-container">
+                <img src="${product.product_img}" alt="${product.title}">
+              </div>
+              <div class="splide__title">${product.title}</div>
+            </li>`;
+          productCarousel.append(slide);
+        }
+      });
+  
+      productSlider.mount();
+    }
   </script>
+  
 </body>
 
 </html>

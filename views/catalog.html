@@ -6,73 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Universal Electro</title>
     <%- include('./components/head.ejs.html') %>
-        <style>
-            header {
-                width: 100%;
-                padding: 0 20px;
-                margin: 20px 0;
-
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-
-            .header__logo {
-                width: 250px;
-            }
-
-            .header__nav {
-                display: flex;
-                gap: 40px;
-            }
-
-            .nav__link {
-                /* font-family: 'Armata', sans-serif; */
-                font-size: 1rem;
-                font-weight: 400;
-                color: #19181d;
-                line-height: 1.55;
-                text-decoration: none;
-                transition: 0.3s ease color;
-            }
-
-            .nav__link:hover {
-                color: #f95005;
-            }
-
-            .header__btn {
-                padding: 10px 12px;
-                border-radius: 16px;
-
-                color: #000;
-                text-decoration: none;
-                background-color: #E87900;
-            }
-
-            .header__btn:hover {
-                background-color: #d57105;
-            }
-        </style>
 </head>
 
 <body>
-    <header>
-        <img class="header__logo" src="/public/images/logo.png" alt="">
-
-        <nav class="header__nav">
-            <a class="nav__link" href="#">О нас</a>
-            <a class="nav__link" href="#service">Производство</a>
-            <a class="nav__link" href="/catalog">Каталог</a>
-            <a class="nav__link" href="#">Сотрудничество</a>
-            <a class="nav__link" href="#">Сертификаты</a>
-            <a class="nav__link" href="#">Контакты</a>
-        </nav>
-
-        <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
-            data-bs-target="#show-contact-modal">Связаться с нами</button>
-
-    </header>
+    <%- include('./partials/header.html') %>
     <main>
         <div class="container d-flex align-items-center gap-5" style="width: 78%;">
             <h1>Наш каталог</h1>
@@ -161,6 +98,7 @@
         </div>
     </div>
 
+    <%- include('./partials/footer.html') %>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>

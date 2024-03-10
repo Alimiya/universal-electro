@@ -4,46 +4,15 @@
     opacity: 1 !important;
 }
 
-.hr-header {
-    background-color: #f95005;
-}
-
 .hr-service {
     background-color: #000;
 }
 
 .intro-hero {
     background: url("/public/images/main__hero-img.png");
-    min-height: 90vh;
+    min-height: 92vh;
     background-size: cover;
     background-position: center;
-    width: 100%;
-}
-
-.intro__content {
-    max-width: 720px;
-    margin: 0 auto;
-    font-size: 1.5rem;
-}
-
-.intro__title {
-    font-size: 3rem;
-    line-height: 1.4;
-
-    margin-bottom: 16px;
-}
-
-.intro__text {
-    font-size: 1.5rem;
-}
-
-.intro__text p {
-    font-size: 1.5rem;
-}
-
-.intro__img-container {
-    position: relative;
-    margin: 0 auto;
 }
 
 .intro__img-hero {
@@ -71,6 +40,11 @@
     animation: circle-out 10s infinite linear;
 }
 
+.btn-custom--orange {
+    background-color: #E87900 !important;
+    font-size: 1.3rem !important
+}
+
 @keyframes circle-out {
   0% {
     transform: translate(-50%, -50%) rotate(0deg) translateX(200px) rotate(0deg);
@@ -92,6 +66,25 @@
   100% {
     transform: translate(-50%, -50%) rotate(360deg) translateX(155px) rotate(-360deg);
   }
+}
+
+/* Slide */
+
+.splide__title {
+}
+
+.splide__slide .img-container {
+    width: 400px;
+    height: 400px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.splide__slide img {
+    position: relative;
+    width: 300px;
 }
 
 
