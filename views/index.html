@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Universal Electro</title>
-  <%- include('./components/head.ejs.html') %>
   <link rel="stylesheet" href="/public/css/landing.css">
+  <%- include('./components/head.ejs.html') %>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 </head>
@@ -24,8 +24,8 @@
         <div class="container text-center">
           <div class="intro__inner d-flex justify-content-between align-items-center text-start">
             <div class="intro__content mx-auto" style="max-width: 720px;">
-              <h1 class="intro__title fs-1 mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates incidunt esse totam?</h1>
-              <p class="intro__text fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit id repellendus voluptas dicta optio odit quos veniam quia inventore totam, quibusdam sapiente odio maiores! Voluptates exercitationem sapiente sunt iste eius.</p>
+              <h1 class="intro__title mb-3 pb-0" style="font-size: 70px !important;"><span class="text-uppercase">Universal Electro</span> <br><span class="fs-2" style="color: rgb(255, 255, 255);">Качественно. Надежно. Выгодно.</span</h1>
+              <p class="intro__text fs-4 fw-normal text-dark">Наша компания является отечественным производителем товаров. В штате компании работают квалифицированные специалисты с опытом работы более 10 лет.</p>
             </div>
 
             <div class="intro__img-container mx-auto position-relative">
@@ -49,7 +49,7 @@
 
       <section class="service-section" style="margin-top: 60px !important;">
         <div class="container">
-          <div class="service__inner d-flex justify-content-between align-items-center flex-wrap">
+          <div class="service__body d-flex justify-content-between align-items-center flex-wrap">
             <div class="service__content w-50">
               <h2 class="mb-5" style="font-size: 2rem !important;">Щитовое электрооборудование</h2>
               <p style="font-size: 1.25rem !important;">В компании <b>«Универсал Электро»</b> в г. Астане вы можете заказать и купить щиты электрические, боксы, распределительные щитки. <br  /> <br>Наши специалисты спроектируют щиты по вашим требованиям, рассчитают стоимость и произведут высококачественную сборку щитового электрооборудования. <br/> <br> Наша компания производит щитовое электрооборудование низковольтных комплектных устройств  <span><a style="color: #E87900" href="/catalog">(НКУ)...</a></span></p>
@@ -61,7 +61,7 @@
       
       <section class="service-section" style="margin-top: 60px !important;">
         <div class="container">
-          <div class="service__inner d-flex justify-content-between align-items-center flex-wrap te">
+          <div class="service__body d-flex justify-content-between align-items-center flex-wrap te">
             <img data-aos="fade-down" data-aos-once="true" class="h-auto rounded-3 section__img" src="/public/images/product/электро.jpg" alt="" style="max-width: 500px">
 
             <div class="w-50 service__content">
@@ -83,80 +83,320 @@
 
       <section class="service-section" style="margin-top: 60px !important;">
         <div class="container">
-          <div class="service__inner d-flex justify-content-between align-items-center flex-wrap te">
+          <div class="service__inner">
+            <div class="service__body d-flex justify-content-between align-items-center flex-wrap te">
 
-            <div class="w-50 service__content">
-              <h2 class="mb-5" style="font-size: 2rem !important;">Лазерная резка металла</h2>
-              <p style="font-size: 1.25rem !important;">Предлагаем Вам тонкую лазерную резку листового металла, в том числе нержавеющей стали. Это многофункциональный метод обработки металла. Используя его, получают номерки, шильды, бейджи, таблички, сувениры, панели из нержавеющей стали и алюминия, промышленные детали и многое другое. <br><br>Станок при обработке материалов дает тонкий и точный разрез, не требующий дополнительной обработки. Лазерный станок снабжен зубчатыми рельсами, что заметно повышает скорость резки. <br> <br><i>Есть возможность обработки неровных металлов.</i></p>
+              <div class="w-50 service__content">
+                <h2 class="mb-5" style="font-size: 2rem !important;">Лазерная резка металла</h2>
+                <p style="font-size: 1.25rem !important;">Предлагаем Вам тонкую лазерную резку листового металла, в том числе нержавеющей стали. Это многофункциональный метод обработки металла. Используя его, получают номерки, шильды, бейджи, таблички, сувениры, панели из нержавеющей стали и алюминия, промышленные детали и многое другое. <br><br>Станок при обработке материалов дает тонкий и точный разрез, не требующий дополнительной обработки. Лазерный станок снабжен зубчатыми рельсами, что заметно повышает скорость резки. <br> <br><i>Есть возможность обработки неровных металлов.</i></p>
+              </div>
+
+              <img data-aos="fade-down" data-aos-once="true" class="h-auto rounded-3 section__img" src="/public/images/product/laser-2819138_1280.jpg" alt="" style="max-width: 500px">
             </div>
 
-            <img data-aos="fade-down" data-aos-once="true" class="h-auto rounded-3 section__img" src="/public/images/product/laser-2819138_1280.jpg" alt="" style="max-width: 500px">
-          </div>
+            <div class="service__footer">
+              <div class="row">
+                <div class="col">
+                  <h4>Рабочая поверхность станка:</h4>
+                  <p>2500 х 1300 мм</p>
+                  <ul>
+                    <li>Ось Х: 2500 мм</li>
+                    <li>Ось Y: 1300 мм</li>
+                    <li>Ось Z: 100 мм</li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <h4>Допустимая толщина металла:</h4>
+                  <ul>
+                    <li>6 мм (для черных металлов)</li>
+                    <li>2-3 мм (для нержавеющей стали)</li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <h4>Точность позиционирования:</h4>
+                  <p>0,05 мм</p>
 
-          <div class="service__outer">
-            <div class="row">
-              <div class="col">
-                <h4>Рабочая поверхность станка:</h4>
-                <p>2500 х 1300 мм</p>
-                <ul>
-                  <li>Ось Х: 2500 мм</li>
-                  <li>Ось Y: 1300 мм</li>
-                  <li>Ось Z: 100 мм</li>
-                </ul>
-              </div>
-              <div class="col">
-                <h4>Допустимая толщина металла:</h4>
-                <ul>
-                  <li>6 мм (для черных металлов)</li>
-                  <li>2-3 мм (для нержавеющей стали)</li>
-                </ul>
-              </div>
-              <div class="col">
-                <h4>Точность позиционирования:</h4>
-                <p>0,05 мм</p>
-
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      <section class="service-section" style="margin-top: 60px !important;">
+        <div class="container">
+          <div class="service__body d-flex justify-content-between align-items-center flex-wrap te">
+            <img data-aos="fade-down" data-aos-once="true" class="h-auto rounded-3 section__img" src="/public/images/product/RAL-650.png" alt="" style="max-width: 500px">
+
+            <div class="w-50 service__content">
+              <h2 class="mb-5" style="font-size: 2rem !important;">Покраска металлических изделий</h2>
+              <p style="font-size: 1.25rem !important;">
+                Покраска производится на оборудовании <i>Wagner Sprint X 60L.</i>
+                <br><br>
+                <i>Sprint X 60L</i> — универсальная установка для электростатического и трибостатического способа окрашивания с доставкой порошковой краски из стационарного контейнера.
+                <br><br>
+                Электронный блок управления <i>EPG-Sprint X</i>, позволяет произвести точную настройку всех необходимых параметров нанесения порошка и добиться идеальных результатов окрашивания.
+                <br><br>
+                </p>
+            </div>
+
+    
+          </div>
+
+          <div class="service__footer">
+            <p>Точная настройка всех электростатических характеристик нанесения порошка при совместимости с окраской трибо позволяет <b>максимально эффективно использовать любой порошок.</b></p>
+            <i>Мы отдаем предпочтение проверенным краскам RAL CLASSIC (Германия) и PULVER (Турция)</i>
+          </div>
+
+        </div>
+      </section>
+
+      
+      <section class="service-section" style="margin-top: 50px !important;">
+        <div class="container">
+          <div class="service__body d-flex justify-content-between align-items-center flex-wrap">
+
+            <div class="w-50 service__content">
+              <h2 style="font-size: 2rem !important;">Перфорированные и неперфорированные лотки. Лестничные лотки</h2>
+              <p>ТОО «Universal Electro» занимается производство металлических лотков следующих видов: неперфорированный (сплошной), перфорированный, лестничный.
+
+              </p>
+              <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      <b>Перфорированные и неперфорированные лотки</b>
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      Перфорированный и неперфорированный лоток используется для удержания и защиты кабелей на протяжении всего срока эксплуатации сети. При этом главной конструктивной особенностью, которой обладает перфорированный лоток металлический электрический, является наличие перфорации (отверстий), которая значительно упрощает прокладку кабелей. Перфорация делает удобной установку разрезанного на нестандартные элементы лотка. Также через отверстия расположенные в днище конструкции может производиться прикрепление жестких и гофрированных кабелей. Перфорация обеспечивает хорошую вентиляцию, тем самым предупреждая риск перегрева проводки.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      <b>Лестничные лотки</b>
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      Лотки лестничного типа состоят из боковых профилей и перемычек и выделяются высокой несущей способностью. Объясняется данный факт возможностью ее равномерного распределения. Боковые профили лестничного лотка могут быть профилированными и неперфорированные используются во всех типах зданий, не исключается возможность их установки и на улице.
+                    </div>
+                  </div>
+                </div>
+             
+              </div>
+            </div>
+
+            <img data-aos="fade-down" data-aos-once="true" class="h-auto rounded-3 section__img" src="/public/images/product/tray.jpg" alt="" style="max-width: 500px">
+          </div>
+
+          <div class="service__footer">
+            
+          </div>
+        </div>
+      </section>
+
       <div class="service-btn mt-5">
         <div class="container text-center">
-          <a class="btn btn-lg btn-custom--orange text-dark" href="#">Напишите нам</a>
+          <button class="btn btn-lg btn-custom--orange text-dark" href="#">Оставьте заявку</button>
         </div>
       </div>
 
     <hr class="mt-5">
-    <div class="catalog">
+    <div class="faq pt-5" id="faq">
       <div class="container">
-        <div class="catalog__inner">
-          <div class="catalog__content text-center">
-            <h1>Наш Каталог</h1>
-            <p class="w-75 mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula sapien at libero viverra, non pharetra metus pretium. Proin nec libero arcu. Sed volutpat eget nulla eget scelerisque. Nullam tincidunt leo ut ipsum laoreet aliquet. Mauris auctor elit ut justo varius, eget interdum magna suscipit.</p>
+        <div class="faq__inner">
+          <div class="faq__content text-center">
+            <h1>Сотрудничество</h1>
+            <p class="w-75 mx-auto mb-5">Мы работаем только с лучшими производителями, которые делают постоянные инвестиции в развитие новых технологий. Наша компания является дистрибьютором и партнером:</p>
           </div>
-          <section id="product-slider" class="splide" aria-label="Splide Basic HTML Example">
+          <section id="companies-slider" class="splide" aria-label="Splide Basic HTML Example">
             <div class="splide__track text-center">
-              <ul class="splide__list" id="product-carousel">
-               
+              <ul class="splide__list">
+                <li class="splide__slide">
+                  <img src="/public/images/companies/biGroup.png" alt="">
+                </li>
+                <li class="splide__slide text-center">
+                  <img src="/public/images/companies/elordaDamu.png" alt="">
+                </li>
+                <li class="splide__slide text-center">
+                  <img src="/public/images/companies/ordaInvest.png" alt="">
+                </li>
+                <li class="splide__slide text-center">
+                  <img src="/public/images/companies/tumar.png" alt="">
+                </li>
+                <li class="splide__slide text-center">
+                  <img src="/public/images/companies/kazMunaiGaz.svg" alt="">
+                </li>
+                <li class="splide__slide text-center">
+                  <img src="/public/images/companies/mangistauMunaiGaz.png" alt="">
+                </li>
+                <li class="splide__slide text-center">
+                  <img src="/public/images/companies/abb.png" alt="">
+                </li>
+                <li class="splide__slide text-center">
+                  <img src="/public/images/companies/electron.png" alt="">
+                </li>
+                <li class="splide__slide text-center">
+                  <img src="/public/images/companies/iek.png" alt="">
+                </li>
+                <li class="splide__slide text-center">
+                  <img src="/public/images/companies/incotex.png" alt="">
+                </li>
+                <li class="splide__slide text-center">
+                  <img src="/public/images/companies/legrand.png" alt="">
+                </li>
+                <li class="splide__slide text-center">
+                  <img src="/public/images/companies/oez.svg" alt="">
+                </li>
+                <li class="splide__slide text-center">
+                  <img src="/public/images/companies/ordaInvest.png" alt="">
+                </li>
+                <li class="splide__slide text-center">
+                  <img src="/public/images/companies/saiman.webp" alt="">
+                </li>
+                <li class="splide__slide text-center">
+                  <img src="/public/images/companies/schneider.png" alt="">
+                </li>
+                <li class="splide__slide text-center">
+                  <img src="/public/images/companies/siemens.png" alt="">
+                </li>
+                <li class="splide__slide text-center">
+                  <img src="/public/images/companies/tdmElectric.jpeg" alt="">
+                </li>
               </ul>
             </div>
           </section>
-          <!-- <div class="mt-5 d-flex align-items-center gap-4">
-            <p class="fs-5">Можете посмотреть наш полный каталог по ссылке: </p>
-            <a href="/catalog" class="btn btn-info" style="font-size: 1rem !important;">Посмотреть каталог</a>
-          </div> -->
+          
         </div>
       </div>
     </div> 
 
-    <div class="coop" style="margin-top: 200px;">
+    
+    
+    <div class="faq">
       <div class="container">
-        <div class="coop__inner">
+        <div class="faq__inner">
+          <div class="faq__content text-center">
+            <h1>Часто-задаваемые вопросы</h1>
+          </div>
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fs-6" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  Вы изготавливаете щитовое оборудование?
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  Да, изготавливаем. Обратитесь к нам по контактам в разделе <b>«Контакты»</b> или вышлете запрос на e-mail:  <a href="mailto:universalelectro.kz@gmail.com">universalelectro.kz@gmail.com</a>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fs-6" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                  Как к вам проехать?
+                </button>
+              </h2>
+              <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Мы находимся по адресу <b>РК  г. Астана, улица Жетіген 28/2. </b>Пройдите по ссылке 2gis: 
+                  <a href="https://2gis.kz/astana/geo/9570784863344814 ">https://2gis.kz/astana/geo/9570784863344814 </a>
+                  </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fs-6" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                  Вы изготавливаете фасадные эллементы, кондиционерные карзины?
+                </button>
+              </h2>
+              <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Да, изготавливаем. Застройщики, которые ценят качество и надежность заказывают у нас. <a href="/catalog">Каталог</a> <br>Обратитесь к нам по контактам в разделе <b>«Контакты»</b> или вышлете запрос на e-mail:  <a href="mailto:universalelectro.kz@gmail.com">universalelectro.kz@gmail.com</a>
+                  </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fs-6" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                  У вас сертифицированная продукция?
+                </button>
+              </h2>
+              <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Да, конечно. Вся выпускаемая нами продукция сертифицирована. При необходимости предоставляем сертификат СТ KZ. <a href="/certificate">Сертификаты</a>
+                  <br> 
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fs-6" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                  Комплектующие каких брендов вы используете?
+                </button>
+              </h2>
+              <div id="flush-collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Разных. Мы уже более 8 лет являемся дистрибьютерами продукции EKF в РК. В основном используем материалы данного бренда,  проверенного временем. По пожеланию заказчика или согласно заявки  можем использовать другие.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fs-6" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                  За какой срок изготовите мой заказ?
+                </button>
+              </h2>
+              <div id="flush-collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">За максимально низкий срок. Вышлете проект для получения коммерческого предложения с указанием более точных сроков.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fs-6" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
+                  Какую краску вы используете при покраске щитов?
+                </button>
+              </h2>
+              <div id="flush-collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Полимерная (порошковая) покраска. Производитель:  Казахстан, Турция, Россия и Беларусь.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fs-6" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight">
+                  Могу ли я выбрать цвет щитов?
+                </button>
+              </h2>
+              <div id="flush-collapseEight" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Конечно, RAL цвета согласовывается с заказчиком. Так же предоставляются образцы для согласования.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fs-6" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseNine">
+                  Могу ли я приобрести у вас автоматические выключатели?
+                </button>
+              </h2>
+              <div id="flush-collapseNine" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Мы являемся дистрибьюторами завода ЕКФ. Имеются позиции как на складе, так и под заказ.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fs-6" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseTen">
+                  Возможна ли доставка до объекта?
+                </button>
+              </h2>
+              <div id="flush-collapseTen" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Да. Условия поставки обсуждаются с заказчиком перед заключением договор.</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    
+
+    <%- include('./partials/footer.html') %>
   </main>
 
 
@@ -220,22 +460,38 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <script type="text/javascript" src="https://s2.webapi.ai/chat-widget/uniq-chat.js"></script>
+  
+  <script>
+    var ailabs_user_info = {
+      'client':'c1416',     
+      'welcome_message':'Welcome to the chat 👋',
+      'popup_mode':0, //0-off, 1-auto popup after 10 seconds for new users
+      'input_comment': 'Type your message or /start to restart'
+    }; 
+    AILabsChatStart();
+  </script>
   <script>
     // AOS
     AOS.init();
   
     // Splide js
-    const productSlider = new Splide("#product-slider", {
+    const productSlider = new Splide("#companies-slider", {
       type: 'loop', 
-      perPage: 4,
+      speed: 3000,
+      interval: 2000,
+      perPage: 5,
+      perMove: 1,
       pagination: false,
+      arrows: false,
+      autoplay: true,
+      rewind: false,
+      pauseOnHover: false,
       breakpoints: {
         767.98: {
           perPage: 1
         },
         991.98: {
-          arrows: false,
-          pagination: true,
           perPage: 2
         },
         1199.98: {
@@ -265,18 +521,16 @@
       const productCarousel = $("#product-carousel");
       productCarousel.empty(); 
   
-      const limitedProducts = products.slice(0, 6);
-      limitedProducts.forEach(product => {
+      products.forEach(product => {
         if (product.product_img) { 
           const slide = `
-            <li class="splide__slide">
+            <li class="splide__slide text-center">
               <div class="img-container">
                 <img src="${product.product_img}" alt="${product.title}">
               </div>
-              <div class="splide__content d-flex flex-column align-items-center">
-                <p class="splide__title fs-5">${product.title}</p>
-                <p class="splide__price fs-5 fw-bold">${product.price} ₸</p>
-              </div
+           
+              <p class="splide__title fs-5">${product.title}</p>
+              <p class="splide__price fs-5 fw-bold">${product.price} ₸</p>
             </li>`;
           productCarousel.append(slide);
         }

@@ -1,3 +1,7 @@
+body {
+    background-color: rgb(211, 209, 209) !important;
+    background-image: none !important;
+}
 .hr-temp {
     height: 3px;
     border: 0;
@@ -68,13 +72,45 @@
   }
 }
 
+/* Service */
+
+.service__title{
+   color:#E87900;
+}
+
+.service__inner {
+    border-bottom: 1px solid #E87900;
+    padding-bottom: 30px;
+}
+
+.service__content {
+    padding: 30px;
+    border: 2px solid #E87900;
+    border-radius: 16px;
+}
+
+.service__content h2 {
+    color:#E87900 ;
+}
+
+.service__body {
+    margin-bottom: 30px;
+}
+.service__footer .col {
+    border: 1px solid #E87900;
+    padding-bottom: 15px;
+    border-radius: 16px;
+
+    margin: 0 20px;
+}
+
+.service .service-section:nth-child(1) {
+    background-color: gray !important;
+}
+
 /* Slide */
 
-.splide__slide .img-container {
-    width: 300px;
-    height: 300px;
-    
-    margin: 0 auto !important;
+.splide__slide {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,24 +118,22 @@
 
 .splide__slide img {
     position: relative;
-    max-width: 200px;
+    max-width: 150px;
 }
 
-.splide__title {
-    width: 250px;
-    height: 60px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2; 
-    -webkit-box-orient: vertical;
-    overflow: hidden; /* Hide overflow */
+/* Accordion */
+
+.accordion-item {
+    margin-bottom: 10px !important;
 }
 
-.splide__arrow--next {
-    right: 0em !important;
+.accordion-header {
+    margin-top: 0 !important;
+    background-color: #E87900 !important;
 }
 
-.splide__pagination {
-    bottom: -2em !important;
+.accordion-button:focus {
+    background-color: #E87900 !important;
 }
 
 @media (max-width: 575.98px) { 
@@ -136,9 +170,8 @@
 }
 
 @media (max-width: 1199.98px) {
-    .service__inner {
+    .service__body {
         justify-content: center !important;
-        gap: 30px;
     }
     
     .service__content{
@@ -149,8 +182,5 @@
 
     .service__content ul {
         text-align: left !important;
-    }
-    .service .service-section:nth-child(2) .service__inner .service__content {
-        order: 1;
     }
 }
