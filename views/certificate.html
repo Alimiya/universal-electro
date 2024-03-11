@@ -6,8 +6,162 @@
     <title>Certificates</title>
     <%- include('./components/head.ejs.html') %>
     <link rel="stylesheet" href="/public/css/certificate.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 </head>
 <body>
+    <%- include('./partials/header.html') %>
+    <main>
+        <div class="pageTitle text-center mt-5 mb-5">
+            <h1>Сертификаты</h1>
+            <div></div>
+        </div>
+
+        <div class="slider">
+            <section id="certificate-slider" class="splide" aria-label="Splide Basic HTML Example">
+                <div class="splide__track text-center">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <img src="/public/images/cert/cert1.jpg" alt="">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="/public/images/cert/cert2.jpg" alt="">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="/public/images/cert/cert3.png" alt="">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="/public/images/cert/cert4.jpg" alt="">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="/public/images/cert/cert5.jpg" alt="">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="/public/images/cert/cert6.jpg" alt="">
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <div class="upload">
+            <div class="container">
+
+                <h2 class="upload__header">Тут вы можете посмотреть каждый сертификат по отдельности в формате PDF</h2>
+                <ol class="upload__body">
+
+                    <li class="upload__element">
+                        <h3>Основной сертификат соответствия ТОО «UniversalElectro»</h3>
+                        <a href="/public/pdf/certificates-confirmaty/Сертификат соответствия ТОО UniversalElectro ЕАЭС KZ 7100841.01.01.00558 до 18 10 2025.pdf" target="_blank">Скачать в формате PDF</a>
+                    </li>
+                    <li class="upload__element">
+                        <h3>Индустриальный сертификат</h3>
+                        <a href="/public/pdf/certificates-confirmaty/Индустриальный сертифика 11 11 22т.pdf" target="_blank">Скачать в формате PDF</a>
+                    </li>
+                    <li class="upload__element">
+                        <h3>Сертификат официального дистрибьютора ООО «ЭКФ Электротехника»</h3>
+                        <a href="/public/pdf/certificates-confirmaty/Сертификат EKF - UniversalElectro ТОО  ДИСТРЫ.pdf" target="_blank">Скачать в формате PDF</a>
+                    </li>
+                    <li class="upload__element">
+                        <h3>Орган по подтверждению соответствия: ТОО «Фирма Торговая палата»</h3>
+                        <a href="/public/pdf/certificates-confirmaty/Сертификат соответствия КТП КСО ЯКНО КМ КТПМ КТПГ.pdf" target="_blank">Скачать в формате PDF</a>
+                    </li>
+                    <li class="upload__element">
+                        <h3>Орган по подтверждению соответствия: ТОО «Казпром Серт»</h3>
+                        <a href="/public/pdf/certificates-confirmaty/Сертификат соответствия СТ РК ISO 9001-2016 Система менеджмента качества Требования.PDF" target="_blank">Скачать в формате PDF</a>
+                    </li>
+                    <li class="upload__element">
+                        <h3>Орган по подтверждению соответствия Систем Менеджмента (СМ): ТОО «Казпром Серт»</h3>
+                        <a href="/public/pdf/certificates-confirmaty/Сертификат СТ РК ISO 9001 2016 14001 2016.pdf" target="_blank">Скачать в формате PDF</a>
+                    </li>
+                    <li class="upload__element">
+                        <h3>Сертификаты о происхождении товаров </h3>
+                    </li>
+
+                    <p id="upload-toggle" class="text-decoration-underline">Посмотреть</p>
+                    <div id="upload-block" class="upload__block">
+                        <ol>
+                            <div class="d-flex align-items-center gap-3">
+                                <li>Комплектная трансформаторная странция КТП (Б)</li>
+                                <a href="/public/pdf/certificates-product/СТ КЗ на КТП и ЯУО .PDF" target="_blank">PDF</a>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <li>Шкаф металлический для одежды</li>
+                                <div>
+                                    <a href="/public/pdf/certificates-product/ст кз от 05 05 23.PDF" target="_blank">PDF</a>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <li>Шкаф управления, для насоса с частотным преобразователем, IP 41</li>
+                                <a href="/public/pdf/certificates-product/ст кз шкаф управления для насоса.PDF" target="_blank">PDF</a>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <li>Шкаф распределения переменного тока ПР 11 3078 21 У3</li>
+                                <a href="/public/pdf/certificates-product/ст кз ШР ПР 11 3 078 21У3.PDF" target="_blank">PDF</a>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <li>Щит учетно-распределительный для производственных и общественных зданий</li>
+                                <a href="/public/pdf/certificates-product/ст кз ЩРН от 17 11 23.PDF" target="_blank">PDF</a>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <li>Шкаф распределения переменного тока, ШАОТ</li>
+                                <a href="/public/pdf/certificates-product/ст-кз ЩАОТ.PDF" target="_blank">PDF</a>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <li>Щит распределительный переносной 3xl6/3+3x16/5 У1 IP44</li>
+                                <a href="/public/pdf/certificates-product/ст-кз щит распред.PDF" target="_blank">PDF</a>
+                            </div>
+                        </ol>
+                    </div>
+                </ol>
+            </div>
+            
+        </div>
+
+        
+        
+    </main>
+
+    <%- include('./partials/footer.html') %>
     
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Splide js
+        const certSlider = new Splide("#certificate-slider", {
+        type: 'loop', 
+        speed: 2000,
+        perPage: 3,
+        perMove: 1,
+        pagination: false,
+        rewind: false,
+        pauseOnHover: false,
+        breakpoints: {
+            850: {
+            perPage: 1
+            },
+            1250: {
+            perPage: 2
+            }
+        }
+        });
+
+        certSlider.mount()
+
+        // Upload Block
+        const toggleText = document.getElementById('upload-toggle');
+        const block = document.getElementById('upload-block');
+
+        function toggleBlock() {
+            block.classList.toggle('upload__block--visible');
+            const isVisible = block.classList.contains('upload__block--visible');
+            localStorage.setItem('blockVisibility', isVisible);
+        }
+        const storedVisibility = localStorage.getItem('blockVisibility');
+        if (storedVisibility === 'true') {
+            block.classList.add('upload__block--visible');
+        }
+
+        toggleText.addEventListener('click', toggleBlock);
+    </script>
 </body>
 </html>

@@ -1,0 +1,45 @@
+.header__btn {
+    background-color:#E87900 !important; 
+    font-weight: 500;
+    transition: .2s ease color;
+}
+
+.header__btn:hover {
+    color: #fff !important;
+}
+
+.text-orange {
+    color: #E87900;
+}
+
+
+
+/* Splide */
+
+.splide__slide img {
+    width: 350px;
+}
+
+/* Upload */
+
+.upload {
+    margin-top: 50px;
+}
+
+.upload__element a {
+    color: #E87900;
+}
+
+.upload__block a {
+    color: #E87900;
+}
+
+.upload__block {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.upload__block--visible {
+    max-height: 300px;
+}
