@@ -15,6 +15,10 @@ router.get('/certificate', (req, res) => {
     res.render('certificate');
 });
 
+router.get('/service', (req, res) => {
+    res.render('service');
+});
+
 router.get('/admin/products', verifyAdminToken(), (req, res) => {
     res.render('products');
 });

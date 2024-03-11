@@ -3,6 +3,40 @@ body {
     background-size: cover;
 }
 
+/* Accordion Bootstrap */
+
+.accordion-item {
+    margin-bottom: 10px;
+}
+
+.accordion-header {
+    margin-top: 0;
+    background-color: #E87900;
+}
+
+.accordion-button {
+    color: black;
+}
+
+.accordion-button:focus {
+    background-color: #E87900;
+    box-shadow: 0 0 0 .1rem #f09431;
+}
+
+.accordion-button:not(.collapsed) {
+    color: black;
+    background-color: #f09431;
+}
+
+.accordion-item:first-of-type .accordion-button {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.accordion-item:last-of-type .accordion-button.collapsed {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
 
 #ambiance {
     color: #fff;
