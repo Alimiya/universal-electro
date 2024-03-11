@@ -15,83 +15,80 @@
 <body>
   <%- include('./partials/header.html') %>
   <main>
-    <div class="intro">
-      <!-- <div class="intro-hero w-100">
-
-      </div> -->
-
-      <div class="w-100 py-5" style="background-color: #E87900;">
-        <div class="container text-center">
-          <div class="intro__inner d-flex justify-content-between align-items-center text-start">
-            <div class="intro__content mx-auto" style="max-width: 720px;">
-              <h1 class="intro__title mb-3 pb-0" style="font-size: 70px !important;"><span class="text-uppercase">Universal Electro</span> <br><span class="fs-2" style="color: rgb(255, 255, 255);">Качественно. Надежно. Выгодно.</span</h1>
-              <p class="intro__text fs-4 fw-normal text-dark">Наша компания является отечественным производителем товаров. В штате компании работают квалифицированные специалисты с опытом работы более 10 лет.</p>
-            </div>
-
-            <div class="intro__img-container mx-auto position-relative">
-              <img class="intro__img-hero" id="intro-img" src="/public/images/intro__hero-img.png" alt="">
-              <div class="intro__img-overlay intro__img-overlay-out"></div>
-              <div class="intro__img-overlay intro__img-overlay-in"></div>
-            </div>
-
+    <div class="intro w-100 py-5">
+      <div class="container text-center">
+        <div class="intro__inner d-flex justify-content-between align-items-center text-start">
+          <div class="intro__content mx-auto">
+            <h1 class="intro__title text-uppercase">Universal Electro</h1>
+            <div class="intro__subtitle text-light fs-2 fw-bold">Качественно. Надежно. Выгодно.</div>
+            <p class="intro__text fs-4">Наша компания является отечественным производителем товаров. В штате компании работают квалифицированные специалисты с опытом работы более 10 лет.</p>
           </div>
-          <a href="/catalog" class="btn btn-light mt-5" style="font-size: 1.3rem !important;">Перейти в каталог</a>
+
+          <div class="intro__img-container mx-auto position-relative">
+            <img class="intro__img-hero" id="intro-img" src="/public/images/intro__hero-img.png" alt="">
+            <div class="intro__img-overlay intro__img-overlay-out"></div>
+            <div class="intro__img-overlay intro__img-overlay-in"></div>
+          </div>
         </div>
+        <a href="/catalog" class="intro__btn btn btn-light mt-5">Перейти в каталог</a>
       </div>
     </div>
    
     <div id="service" class="service">
-      <div class="fw-bold fs-6 w-75 mx-auto" style="margin-top: 100px !important;">
-        <div class="container">
-          <h1 class="text-center">Компания «Универсал Электро» в г. Астана производит:</h1>
-        </div>
+      <div class="container text-center">
+        <div class="service__mainTitle fw-bold fs-2">«Универсал Электро» в г. Астана производит:</div>
       </div>
 
-      <section class="service-section" style="margin-top: 60px !important;">
+      <section class="service__section">
         <div class="container">
           <div class="service__body d-flex justify-content-between align-items-center flex-wrap">
             <div class="service__content w-50">
-              <h2 class="mb-5" style="font-size: 2rem !important;">Щитовое электрооборудование</h2>
-              <p style="font-size: 1.25rem !important;">В компании <b>«Универсал Электро»</b> в г. Астане вы можете заказать и купить щиты электрические, боксы, распределительные щитки. <br  /> <br>Наши специалисты спроектируют щиты по вашим требованиям, рассчитают стоимость и произведут высококачественную сборку щитового электрооборудования. <br/> <br> Наша компания производит щитовое электрооборудование низковольтных комплектных устройств  <span><a style="color: #E87900" href="/catalog">(НКУ)...</a></span></p>
+              <h2 class="service__title mb-5">Щитовое электрооборудование</h2>
+              <div class="service__text">
+                <p>В компании <b>«Универсал Электро»</b> в г. Астане вы можете заказать и купить щиты электрические, боксы, распределительные щитки. 
+                  <p>Наши специалисты спроектируют щиты по вашим требованиям, рассчитают стоимость и произведут высококачественную сборку щитового электрооборудования.</p>
+                  <p>Наша компания производит щитовое электрооборудование низковольтных комплектных устройств (НКУ)...</p>
+              </div>
             </div>
-            <img data-aos="fade-down" data-aos-once="true" class="section__img h-auto w-100% rounded-3" src="/public/images/product/universalelectro_0006.jpg" alt="" style="max-width: 500px">
+            <img data-aos="fade-down" data-aos-once="true" class="service__img h-auto rounded-3" src="/public/images/product/universalelectro_0006.jpg" alt="Service Image">
           </div>
         </div>
       </section>
       
-      <section class="service-section" style="margin-top: 60px !important;">
+      <section class="service__section">
         <div class="container">
-          <div class="service__body d-flex justify-content-between align-items-center flex-wrap te">
-            <img data-aos="fade-down" data-aos-once="true" class="h-auto rounded-3 section__img" src="/public/images/product/электро.jpg" alt="" style="max-width: 500px">
+          <div class="service__body d-flex justify-content-between align-items-center flex-wrap">
+            <img data-aos="fade-down" data-aos-once="true" class="service__img h-auto rounded-3" src="/public/images/product/электро.jpg" alt="Section Image">
 
-            <div class="w-50 service__content">
-              <h2 class="mb-5" style="font-size: 2rem !important;">Электромонтажные работы</h2>
-              <p style="font-size: 1.25rem !important;">Монтажные работы по прокладке кабеля также проводятся по проектным данным.
-                Наша компания осуществляет следующие виды электромонтажных работ: </p>
+            <div class="service__content w-50">
+              <h2 class="service__title mb-5">Электромонтажные работы</h2>
+              <p class="service__text">Монтажные работы по прокладке кабеля также проводятся по проектным данным. Наша компания осуществляет следующие виды электромонтажных работ:</p>
                 <ul>
                   <li>Монтаж электрических щитков и боксов, распределительных щитков и прочих видов щитового электрооборудования низковольтных комплектных устройств (НКУ)</li>
                   <li>Монтаж кабельных лотков</li>
                   <li>Прокладка кабеля</li>
                 </ul>
-
-                <p style="font-size: 1.25rem !important;"><i>Стоимость элекромонтажных работ расчитывается по конкретному проекту объекта.</i> </p>
+                <i class="text-1-25-rem">Стоимость элекромонтажных работ расчитывается по конкретному проекту объекта.</i>
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="service-section" style="margin-top: 60px !important;">
+      <section class="service-section">
         <div class="container">
           <div class="service__inner">
-            <div class="service__body d-flex justify-content-between align-items-center flex-wrap te">
+            <div class="service__body d-flex justify-content-between align-items-center flex-wrap">
 
-              <div class="w-50 service__content">
-                <h2 class="mb-5" style="font-size: 2rem !important;">Лазерная резка металла</h2>
-                <p style="font-size: 1.25rem !important;">Предлагаем Вам тонкую лазерную резку листового металла, в том числе нержавеющей стали. Это многофункциональный метод обработки металла. Используя его, получают номерки, шильды, бейджи, таблички, сувениры, панели из нержавеющей стали и алюминия, промышленные детали и многое другое. <br><br>Станок при обработке материалов дает тонкий и точный разрез, не требующий дополнительной обработки. Лазерный станок снабжен зубчатыми рельсами, что заметно повышает скорость резки. <br> <br><i>Есть возможность обработки неровных металлов.</i></p>
+              <div class="service__content w-50">
+                <h2 class="service__title mb-5">Лазерная резка металла</h2>
+                <div class="service__text">
+                  <p>Предлагаем Вам тонкую лазерную резку листового металла, в том числе нержавеющей стали. Это многофункциональный метод обработки металла. Используя его, получают номерки, шильды, бейджи, таблички, сувениры, панели из нержавеющей стали и алюминия, промышленные детали и многое другое.</p>
+                  <p>Станок при обработке материалов дает тонкий и точный разрез, не требующий дополнительной обработки. Лазерный станок снабжен зубчатыми рельсами, что заметно повышает скорость резки.</p>
+                  <i>Есть возможность обработки неровных металлов.</i>
+                </div>
               </div>
-
-              <img data-aos="fade-down" data-aos-once="true" class="h-auto rounded-3 section__img" src="/public/images/product/laser-2819138_1280.jpg" alt="" style="max-width: 500px">
+              <img data-aos="fade-down" data-aos-once="true" class="service__img h-auto rounded-3" src="/public/images/product/laser-2819138_1280.jpg" alt="Service Image">
             </div>
 
             <div class="service__footer">
@@ -115,7 +112,6 @@
                 <div class="col">
                   <h4>Точность позиционирования:</h4>
                   <p>0,05 мм</p>
-
                 </div>
               </div>
             </div>
@@ -123,44 +119,37 @@
         </div>
       </section>
 
-      <section class="service-section" style="margin-top: 60px !important;">
+      <section class="service__section">
         <div class="container">
-          <div class="service__body d-flex justify-content-between align-items-center flex-wrap te">
-            <img data-aos="fade-down" data-aos-once="true" class="h-auto rounded-3 section__img" src="/public/images/product/RAL-650.png" alt="" style="max-width: 500px">
+          <div class="service__inner">
+            <div class="service__body d-flex justify-content-between align-items-center flex-wrap">
+              <img data-aos="fade-down" data-aos-once="true" class="service__img h-auto rounded-3 section__img" src="/public/images/product/RAL-650.png" alt="Service Image">
 
-            <div class="w-50 service__content">
-              <h2 class="mb-5" style="font-size: 2rem !important;">Покраска металлических изделий</h2>
-              <p style="font-size: 1.25rem !important;">
-                Покраска производится на оборудовании <i>Wagner Sprint X 60L.</i>
-                <br><br>
-                <i>Sprint X 60L</i> — универсальная установка для электростатического и трибостатического способа окрашивания с доставкой порошковой краски из стационарного контейнера.
-                <br><br>
-                Электронный блок управления <i>EPG-Sprint X</i>, позволяет произвести точную настройку всех необходимых параметров нанесения порошка и добиться идеальных результатов окрашивания.
-                <br><br>
-                </p>
+              <div class="service__content w-50">
+                <h2 class="service__title mb-5">Покраска металлических изделий</h2>
+                <div class="service__text">
+                  <p>Покраска производится на оборудовании <i>Wagner Sprint X 60L.</i></p>
+                  <p><i>Sprint X 60L</i> — универсальная установка для электростатического и трибостатического способа окрашивания с доставкой порошковой краски из стационарного контейнера.</p>
+                  <p>Электронный блок управления <i>EPG-Sprint X</i>, позволяет произвести точную настройку всех необходимых параметров нанесения порошка и добиться идеальных результатов окрашивания.</p>
+                </div>
+              </div>
             </div>
 
-    
+            <div class="service__footer">
+              <p>Точная настройка всех электростатических характеристик нанесения порошка при совместимости с окраской трибо позволяет <b>максимально эффективно использовать любой порошок.</b></p>
+              <i>Мы отдаем предпочтение проверенным краскам RAL CLASSIC (Германия) и PULVER (Турция)</i>
+            </div>
           </div>
-
-          <div class="service__footer">
-            <p>Точная настройка всех электростатических характеристик нанесения порошка при совместимости с окраской трибо позволяет <b>максимально эффективно использовать любой порошок.</b></p>
-            <i>Мы отдаем предпочтение проверенным краскам RAL CLASSIC (Германия) и PULVER (Турция)</i>
-          </div>
-
         </div>
       </section>
 
       
-      <section class="service-section" style="margin-top: 50px !important;">
+      <section class="service__section">
         <div class="container">
           <div class="service__body d-flex justify-content-between align-items-center flex-wrap">
-
-            <div class="w-50 service__content">
-              <h2 style="font-size: 2rem !important;">Перфорированные и неперфорированные лотки. Лестничные лотки</h2>
-              <p>ТОО «Universal Electro» занимается производство металлических лотков следующих видов: неперфорированный (сплошной), перфорированный, лестничный.
-
-              </p>
+            <div class="service__content w-50">
+              <h2 class="service__title">Перфорированные и неперфорированные лотки. Лестничные лотки</h2>
+              <p class="service__text">ТОО «Universal Electro» занимается производство металлических лотков следующих видов: неперфорированный (сплошной), перфорированный, лестничный.</p>
               <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                   <h2 class="accordion-header">
@@ -186,22 +175,17 @@
                     </div>
                   </div>
                 </div>
-             
               </div>
             </div>
 
-            <img data-aos="fade-down" data-aos-once="true" class="h-auto rounded-3 section__img" src="/public/images/product/tray.jpg" alt="" style="max-width: 500px">
-          </div>
-
-          <div class="service__footer">
-            
+            <img data-aos="fade-down" data-aos-once="true" class="service__img h-auto rounded-3" src="/public/images/product/tray.jpg" alt="Service Image">
           </div>
         </div>
       </section>
 
       <div class="service-btn mt-5">
         <div class="container text-center">
-          <button class="btn btn-lg btn-custom--orange text-dark" href="#">Оставьте заявку</button>
+          <button class="btn btn-orange btn-lg text-dark text-1-25-rem" href="#">Оставьте заявку</button>
         </div>
       </div>
 

@@ -2,21 +2,38 @@ body {
     background-color: rgb(211, 209, 209) !important;
     background-image: none !important;
 }
-.hr-temp {
-    height: 3px;
-    border: 0;
-    opacity: 1 !important;
+
+/* Custom for Bootstrap */
+
+.btn-orange {
+    background-color: #E87900 !important;
 }
 
-.hr-service {
-    background-color: #000;
+.text-1-25-rem {
+    font-size: 1.25rem !important;
 }
 
-.intro-hero {
-    background: url("/public/images/main__hero-img.png");
-    min-height: 92vh;
-    background-size: cover;
-    background-position: center;
+.header__btn {
+    background-color:#E87900 !important; 
+    font-weight: 500;
+    transition: .2s ease color;
+}
+
+.header__btn:hover {
+    color: #fff !important;
+}
+
+.intro {
+    background-color: #E87900;
+}
+
+.intro__content {
+    max-width: 720px;
+}
+
+.intro__title {
+    font-size: 70px;
+    margin: 0;
 }
 
 .intro__img-hero {
@@ -44,9 +61,8 @@ body {
     animation: circle-out 10s infinite linear;
 }
 
-.btn-custom--orange {
-    background-color: #E87900 !important;
-    font-size: 1.3rem !important
+.intro__btn {
+    font-size: 1.3rem !important;
 }
 
 @keyframes circle-out {
@@ -74,8 +90,12 @@ body {
 
 /* Service */
 
-.service__title{
-   color:#E87900;
+.service__mainTitle {
+    margin-top: 100px;
+}
+
+.service__section {
+    margin-top: 50px;
 }
 
 .service__inner {
@@ -96,16 +116,29 @@ body {
 .service__body {
     margin-bottom: 30px;
 }
-.service__footer .col {
+/* .service__footer .col {
     border: 1px solid #E87900;
     padding-bottom: 15px;
     border-radius: 16px;
 
     margin: 0 20px;
-}
+} */
 
 .service .service-section:nth-child(1) {
     background-color: gray !important;
+}
+
+.service__title {
+    font-size: 2rem !important;
+    color:#E87900;
+}
+
+.service__text {
+    font-size: 1.25rem !important;
+}
+
+.service__img {
+    max-width: 600px;
 }
 
 /* Slide */
