@@ -3,7 +3,11 @@ body {
     background-size: cover;
 }
 
-/* Accordion Bootstrap */
+/* Bootstrap */
+
+.background-orange {
+    background-color: #E87900 !important;
+}
 
 .accordion-item {
     margin-bottom: 10px;

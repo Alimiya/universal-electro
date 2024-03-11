@@ -1,0 +1,58 @@
+/* Header */
+.header__btn {
+    background-color:#E87900 !important; 
+    font-weight: 500;
+    transition: .2s ease color;
+    color: #fff !important;
+}
+
+.header__btn:hover {
+    color: #000 !important;
+}
+
+
+
+/* Footer */
+
+.footer {
+    margin-top: 70px;
+    background-color: #E87900 !important;
+}
+
+.footer .nav li a i{
+    padding: 3px;
+    font-size: 1.4rem;
+    transition: .2s ease color;
+}
+
+.footer .nav li a i:hover {
+    background-color: rgb(0, 0, 0);
+    border-radius: 8px;
+}
+
+.footer .nav li:nth-child(1) a i:hover {
+    color: #25D366;
+}
+.footer .nav li:nth-child(2) a i:hover {
+    color: #C13584;
+}
+.footer .nav li:nth-child(3) a i:hover {
+    color: #FF0000;
+}
+.footer .nav li:nth-child(4) a i:hover {
+    color: #4267B2;
+}
+.footer .nav li:nth-child(5) a i:hover {
+    color: #087bff;
+}
+
+@media (max-width: 575.98px) { 
+    .footer {
+        flex-direction: column;
+        gap: 30px
+    }
+
+    .footer__title {
+        font-size: 1.1rem;
+    }
+}

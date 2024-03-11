@@ -86,7 +86,7 @@
                     <div id="upload-block" class="upload__block">
                         <ul>
                             <div class="d-flex align-items-center gap-3">
-                                <li>Комплектная трансформаторная странция КТП (Б)</li>
+                                <li>Комплектная трансформаторная странция КТП (Б)а</li>
                                 <a href="/public/pdf/certificates-product/СТ КЗ на КТП и ЯУО .PDF" target="_blank">PDF</a>
                             </div>
                             <div class="d-flex align-items-center gap-3">
@@ -168,28 +168,19 @@
 
 
         // Popover Image in Slider
-        
+        const slideArrows = document.querySelector('.splide__arrows')
 
         document.querySelectorAll(".splide__slide img").forEach(image => {
             image.onclick = () => {
-                certSlider.options.arrows = false
-                certSlider.refresh()
                 document.querySelector(".popup-image").style.display = "block";
                 document.querySelector(".popup-image img").src = image.getAttribute("src");
-
-                // Hide Splide arrows
-                certSlider.on('click', function(){
-                    certSlider.options.arrows = false
-                })
+                slideArrows.style.display = "none"
             }
         });
 
         document.querySelector(".popup-image span").onclick = () => {
             document.querySelector(".popup-image").style.display = "none";
-
-            // Show Splide arrows
-            certSlider.options.arrows = true;
-            certSlider.refresh();
+            slideArrows.style.display = "block"
         };
     </script>
 </body>

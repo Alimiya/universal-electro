@@ -2,218 +2,276 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Услуги - Universal Electro</title>
-  <link rel="stylesheet" href="/public/css/service.css">
-  <%- include('./components/head.ejs.html') %>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Услуги - Universal Electro</title>
+    <link rel="stylesheet" href="/public/css/service.css">
+    <%- include('./components/head.ejs.html') %>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 </head>
-
-
 <body>
-  <%- include('./partials/header.html') %>
-  <main>
-    <div class="intro w-100 py-5">
-      <div class="container text-center">
-        <div class="intro__inner d-flex justify-content-between align-items-center">
-          <div class="intro__content mx-auto">
-            <h1 class="intro__title text-uppercase">Universal Electro</h1>
-            <h2 class="intro__subtitle text-light fw-bold">Качественно. Надежно. Выгодно.</h2>
-            <p class="intro__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae atque provident cumque commodi, minima temporibus veniam id eos sit minus nisi nemo beatae sapiente nam eum saepe aliquid voluptatem quisquam velit totam ullam. Quaerat, dolorem!</p>
-          </div>
-
-          <div class="intro__img-container mx-auto position-relative">
-            <img class="intro__img-hero" id="intro-img" src="/public/images/intro__hero-img.png" alt="">
-            <div class="intro__img-overlay intro__img-overlay-out"></div>
-            <div class="intro__img-overlay intro__img-overlay-in"></div>
-          </div>
-        </div>
-        <a href="/catalog" class="intro__btn btn btn-light mt-5">Перейти в каталог</a>
-      </div>
-    </div>
-   
-    <div id="service" class="service">
-      <div class="container text-center">
-        <div class="service__mainTitle fw-bold fs-2">«Универсал Электро» в г. Астана производит:</div>
-      </div>
-
-      <section class="service__section">
-        <div class="container">
-          <div class="service__inner">
-            <div class="service__body d-flex justify-content-between align-items-center flex-wrap">
-              <div class="service__content">
-                <h2 class="service__title mb-5">Щитовое электрооборудование</h2>
-                <div class="service__text">
-                  <p>В компании <b>«Универсал Электро»</b> в г. Астане вы можете заказать и купить щиты электрические, боксы, распределительные щитки. 
-                    <p>Наши специалисты спроектируют щиты по вашим требованиям, рассчитают стоимость и произведут высококачественную сборку щитового электрооборудования.</p>
-                    <p>Наша компания производит щитовое электрооборудование низковольтных комплектных устройств (НКУ)...</p>
-                </div>
-              </div>
-              <img data-aos="fade-down" data-aos-once="true" class="service__img h-auto rounded-3" src="/public/images/product/universalelectro_0006.jpg" alt="Service Image">
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <section class="service__section">
-        <div class="container">
-          <div class="service__inner">
-            <div class="service__body d-flex justify-content-between align-items-center flex-wrap">
-              <img data-aos="fade-down" data-aos-once="true" class="service__img h-auto rounded-3" src="/public/images/product/электро.jpg" alt="Section Image">
-
-              <div class="service__content">
-                <h2 class="service__title mb-5">Электромонтажные работы</h2>
-                <p class="service__text">Монтажные работы по прокладке кабеля также проводятся по проектным данным. Наша компания осуществляет следующие виды электромонтажных работ:</p>
-                  <ul>
-                    <li>Монтаж электрических щитков и боксов, распределительных щитков и прочих видов щитового электрооборудования низковольтных комплектных устройств (НКУ)</li>
-                    <li>Монтаж кабельных лотков</li>
-                    <li>Прокладка кабеля</li>
-                  </ul>
-                  <i class="text-1-25-rem">Стоимость элекромонтажных работ расчитывается по конкретному проекту объекта.</i>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="service__section">
-        <div class="container">
-          <div class="service__inner">
-            <div class="service__body d-flex justify-content-between align-items-center flex-wrap">
-
-              <div class="service__content">
-                <h2 class="service__title mb-5">Лазерная резка металла</h2>
-                <div class="service__text">
-                  <p>Предлагаем Вам тонкую лазерную резку листового металла, в том числе нержавеющей стали. Это многофункциональный метод обработки металла. Используя его, получают номерки, шильды, бейджи, таблички, сувениры, панели из нержавеющей стали и алюминия, промышленные детали и многое другое.</p>
-                  <p>Станок при обработке материалов дает тонкий и точный разрез, не требующий дополнительной обработки. Лазерный станок снабжен зубчатыми рельсами, что заметно повышает скорость резки.</p>
-                  <i>Есть возможность обработки неровных металлов.</i>
-                </div>
-              </div>
-              <img data-aos="fade-down" data-aos-once="true" class="service__img h-auto rounded-3" src="/public/images/product/laser-2819138_1280.jpg" alt="Service Image">
-            </div>
-
-            <div class="service__footer">
-              <div class="row">
-                <div class="col">
-                  <h4>Рабочая поверхность станка:</h4>
-                  <p>2500 х 1300 мм</p>
-                  <ul>
-                    <li>Ось Х: 2500 мм</li>
-                    <li>Ось Y: 1300 мм</li>
-                    <li>Ось Z: 100 мм</li>
-                  </ul>
-                </div>
-                <div class="col">
-                  <h4>Допустимая толщина металла:</h4>
-                  <ul>
-                    <li>6 мм (для черных металлов)</li>
-                    <li>2-3 мм (для нержавеющей стали)</li>
-                  </ul>
-                </div>
-                <div class="col">
-                  <h4>Точность позиционирования:</h4>
-                  <p>0,05 мм</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="service__section">
-        <div class="container">
-          <div class="service__inner">
-            <div class="service__body d-flex justify-content-between align-items-center flex-wrap">
-              <img data-aos="fade-down" data-aos-once="true" class="service__img h-auto rounded-3 section__img" src="/public/images/product/RAL-650.png" alt="Service Image">
-
-              <div class="service__content">
-                <h2 class="service__title mb-5">Покраска металлических изделий</h2>
-                <div class="service__text">
-                  <p>Покраска производится на оборудовании <i>Wagner Sprint X 60L.</i></p>
-                  <p><i>Sprint X 60L</i> — универсальная установка для электростатического и трибостатического способа окрашивания с доставкой порошковой краски из стационарного контейнера.</p>
-                  <p>Электронный блок управления <i>EPG-Sprint X</i>, позволяет произвести точную настройку всех необходимых параметров нанесения порошка и добиться идеальных результатов окрашивания.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="service__footer">
-              <p>Точная настройка всех электростатических характеристик нанесения порошка при совместимости с окраской трибо позволяет <b>максимально эффективно использовать любой порошок.</b></p>
-              <i>Мы отдаем предпочтение проверенным краскам RAL CLASSIC (Германия) и PULVER (Турция)</i>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      
-      <section class="service__section">
-        <div class="container">
-          <div class="service__inner">
-            <div class="service__body d-flex justify-content-between align-items-center flex-wrap">
-              <div class="service__content">
-                <h2 class="service__title">Перфорированные и неперфорированные лотки. Лестничные лотки</h2>
-                <p class="service__text">ТОО «Universal Electro» занимается производство металлических лотков следующих видов: неперфорированный (сплошной), перфорированный, лестничный.</p>
-                <div class="accordion" id="accordionExample">
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        <b>Перфорированные и неперфорированные лотки</b>
-                      </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                        Перфорированный и неперфорированный лоток используется для удержания и защиты кабелей на протяжении всего срока эксплуатации сети. При этом главной конструктивной особенностью, которой обладает перфорированный лоток металлический электрический, является наличие перфорации (отверстий), которая значительно упрощает прокладку кабелей. Перфорация делает удобной установку разрезанного на нестандартные элементы лотка. Также через отверстия расположенные в днище конструкции может производиться прикрепление жестких и гофрированных кабелей. Перфорация обеспечивает хорошую вентиляцию, тем самым предупреждая риск перегрева проводки.
-                      </div>
+<%- include('./partials/header.html') %>
+    <main>
+        <div class="intro w-100 py-5">
+            <div class="container text-center">
+                <div class="intro__inner d-flex justify-content-between align-items-center">
+                    <div class="intro__content mx-auto">
+                        <h1 class="intro__title text-uppercase">Universal Electro</h1>
+                        <h2 class="intro__subtitle text-light fw-bold">Качественно. Надежно. Выгодно.</h2>
+                        <p class="intro__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae atque provident cumque commodi, minima temporibus veniam id eos sit minus nisi nemo beatae sapiente nam eum saepe aliquid voluptatem quisquam velit totam ullam. Quaerat, dolorem!</p>
                     </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        <b>Лестничные лотки</b>
-                      </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                        Лотки лестничного типа состоят из боковых профилей и перемычек и выделяются высокой несущей способностью. Объясняется данный факт возможностью ее равномерного распределения. Боковые профили лестничного лотка могут быть профилированными и неперфорированные используются во всех типах зданий, не исключается возможность их установки и на улице.
-                      </div>
+
+                    <div class="intro__img-container mx-auto position-relative">
+                        <img class="intro__img-hero" id="intro-img" src="/public/images/intro__hero-img.png" alt="">
+                        <div class="intro__img-overlay intro__img-overlay-out"></div>
+                        <div class="intro__img-overlay intro__img-overlay-in"></div>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <img data-aos="fade-down" data-aos-once="true" class="service__img h-auto rounded-3" src="/public/images/product/tray.jpg" alt="Service Image">
+                <a href="/catalog" class="intro__btn btn btn-light mt-5">Перейти в каталог</a>
             </div>
-          </div>
         </div>
-      </section>
 
-      <div class=" mt-5 text-center">
-        <button class="service__btn btn text-dark" href="#">Оставьте заявку</button>
-      </div>
+        <div id="service" class="service">
+            <div class="container text-center">
+                <div class="service__mainTitle fw-bold fs-2">«Универсал Электро» в г. Астана производит:</div>
+            </div>
 
-    </div>
-  </main>
-  
-  <%- include('./partials/footer.html') %>
+            <section class="service__section">
+                <div class="container">
+                    <div class="service__inner">
+                        <div class="service__body d-flex justify-content-between align-items-center flex-wrap">
+                            <div class="service__content">
+                                <h2 class="service__title mb-5">Щитовое электрооборудование</h2>
+                                <div class="service__text">
+                                    <p>В компании <b>«Универсал Электро»</b> в г. Астане вы можете заказать и купить щиты электрические, боксы, распределительные щитки. 
+                                    <p>Наши специалисты спроектируют щиты по вашим требованиям, рассчитают стоимость и произведут высококачественную сборку щитового электрооборудования.</p>
+                                    <p>Наша компания производит щитовое электрооборудование низковольтных комплектных устройств (НКУ)...</p>
+                                </div>
+                            </div>
+                            <img data-aos="fade-down" data-aos-once="true" class="service__img h-auto rounded-3" src="/public/images/service/universalelectro-1.jpg" alt="Service Image">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <section class="service__section">
+                <div class="container">
+                    <div class="service__inner">
+                        <div class="service__body d-flex justify-content-between align-items-center flex-wrap">
+                            <img data-aos="fade-down" data-aos-once="true" class="service__img h-auto rounded-3" src="/public/images/service/electro-work.jpg" alt="Section Image">
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-  
-  <script>
-    // AOS
-    AOS.init();
-  
-    function updateTextBasedOnViewport() {
-        if (window.matchMedia("(max-width: 420px)").matches) {
-            document.getElementById("elementID").textContent = "New Text for Small Screens";
-        } 
-    }
+                            <div class="service__content">
+                                <h2 class="service__title mb-5">Электромонтажные работы</h2>
+                                <p class="service__text">Монтажные работы по прокладке кабеля также проводятся по проектным данным. Наша компания осуществляет следующие виды электромонтажных работ:</p>
+                                <ul>
+                                    <li>Монтаж электрических щитков и боксов, распределительных щитков и прочих видов щитового электрооборудования низковольтных комплектных устройств (НКУ)</li>
+                                    <li>Монтаж кабельных лотков</li>
+                                    <li>Прокладка кабеля</li>
+                                </ul>
+                                <i class="text-1-25-rem">Стоимость элекромонтажных работ расчитывается по конкретному проекту объекта.</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    updateTextBasedOnViewport();
+            <section class="service__section">
+                <div class="container">
+                    <div class="service__inner">
+                        <div class="service__body d-flex justify-content-between align-items-center flex-wrap">
 
-    window.addEventListener("resize", updateTextBasedOnViewport);
-  </script>
+                            <div class="service__content">
+                                <h2 class="service__title mb-5">Лазерная резка металла</h2>
+                                <div class="service__text">
+                                    <p>Предлагаем Вам тонкую лазерную резку листового металла, в том числе нержавеющей стали. Это многофункциональный метод обработки металла. Используя его, получают номерки, шильды, бейджи, таблички, сувениры, панели из нержавеющей стали и алюминия, промышленные детали и многое другое.</p>
+                                    <p>Станок при обработке материалов дает тонкий и точный разрез, не требующий дополнительной обработки. Лазерный станок снабжен зубчатыми рельсами, что заметно повышает скорость резки.</p>
+                                    <i>Есть возможность обработки неровных металлов.</i>
+                                </div>
+                            </div>
+                            <img data-aos="fade-down" data-aos-once="true" class="service__img h-auto rounded-3" src="/public/images/service/laser-machine.jpg" alt="Service Image">
+                        </div>
+
+                        <div class="service__footer">
+                            <div class="row">
+                                <div class="col">
+                                    <h4>Рабочая поверхность станка:</h4>
+                                    <p>2500 х 1300 мм</p>
+                                    <ul>
+                                        <li>Ось Х: 2500 мм</li>
+                                        <li>Ось Y: 1300 мм</li>
+                                        <li>Ось Z: 100 мм</li>
+                                    </ul>
+                                </div>
+                                <div class="col">
+                                    <h4>Допустимая толщина металла:</h4>
+                                    <ul>
+                                        <li>6 мм (для черных металлов)</li>
+                                        <li>2-3 мм (для нержавеющей стали)</li>
+                                    </ul>
+                                </div>
+                                <div class="col">
+                                    <h4>Точность позиционирования:</h4>
+                                    <p>0,05 мм</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="service__section">
+                <div class="container">
+                    <div class="service__inner">
+                        <div class="service__body d-flex justify-content-between align-items-center flex-wrap">
+                            <img data-aos="fade-down" data-aos-once="true" class="service__img h-auto rounded-3 section__img" src="/public/images/service/ral-650.png" alt="Service Image">
+
+                            <div class="service__content">
+                                <h2 class="service__title mb-5">Покраска металлических изделий</h2>
+                                <div class="service__text">
+                                    <p>Покраска производится на оборудовании <i>Wagner Sprint X 60L.</i></p>
+                                    <p><i>Sprint X 60L</i> — универсальная установка для электростатического и трибостатического способа окрашивания с доставкой порошковой краски из стационарного контейнера.</p>
+                                    <p>Электронный блок управления <i>EPG-Sprint X</i>, позволяет произвести точную настройку всех необходимых параметров нанесения порошка и добиться идеальных результатов окрашивания.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="service__footer">
+                            <p>Точная настройка всех электростатических характеристик нанесения порошка при совместимости с окраской трибо позволяет <b>максимально эффективно использовать любой порошок.</b></p>
+                            <i>Мы отдаем предпочтение проверенным краскам RAL CLASSIC (Германия) и PULVER (Турция)</i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
+            <section class="service__section">
+                <div class="container">
+                    <div class="service__inner">
+                        <div class="service__body d-flex justify-content-between align-items-center flex-wrap">
+                            <div class="service__content">
+                                <h2 class="service__title">Перфорированные и неперфорированные лотки. Лестничные лотки</h2>
+                                <p class="service__text">ТОО «Universal Electro» занимается производство металлических лотков следующих видов: неперфорированный (сплошной), перфорированный, лестничный.</p>
+                                <div class="accordion" id="accordionExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                <b>Перфорированные и неперфорированные лотки</b>
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                Перфорированный и неперфорированный лоток используется для удержания и защиты кабелей на протяжении всего срока эксплуатации сети. При этом главной конструктивной особенностью, которой обладает перфорированный лоток металлический электрический, является наличие перфорации (отверстий), которая значительно упрощает прокладку кабелей. Перфорация делает удобной установку разрезанного на нестандартные элементы лотка. Также через отверстия расположенные в днище конструкции может производиться прикрепление жестких и гофрированных кабелей. Перфорация обеспечивает хорошую вентиляцию, тем самым предупреждая риск перегрева проводки.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                <b>Лестничные лотки</b>
+                                            </button>
+                                        </h2>
+                                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                Лотки лестничного типа состоят из боковых профилей и перемычек и выделяются высокой несущей способностью. Объясняется данный факт возможностью ее равномерного распределения. Боковые профили лестничного лотка могут быть профилированными и неперфорированные используются во всех типах зданий, не исключается возможность их установки и на улице.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <img data-aos="fade-down" data-aos-once="true" class="service__img h-auto rounded-3" src="/public/images/service/tray.jpg" alt="Service Image">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class=" mt-5 text-center">
+                <button type="button" class="service__btn btn text-dark" data-bs-toggle="modal" data-bs-target="#submit-request-modal">Оставьте заявку</button>
+            </div>
+        </div>
+    </main>
+
+    <%- include('./partials/footer.html') %>
+
+    <!-- Submit request Modal -->
+        <div class="modal modal-lg fade" id="submit-request-modal">
+            <div class="modal-dialog text-left">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Оставить заявку</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex">
+                        <div class="order_form w-50 px-5">
+                            <div class="mb-3 mt-3">
+                                <label for="name" class="form-label">* Ваше имя:</label>
+                                <input type="text" class="form-control" id="name" placeholder="Введите имя" name="name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">* Ваш номер:</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="Введите номер"
+                                    name="phone">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Ваша почта:</label>
+                                <input type="email" class="form-control" id="email" placeholder="Введите почту"
+                                    name="email">
+                            </div>
+                            <button type="submit" id="request-modal-btn" class="request-modal__btn btn background-orange"
+                                onclick="submitRequest()">Отправить</button>
+                        </div>
+                        <div class="flex-fill">
+                            <label for="message" class="form-label">* Ваша сообщение:</label>
+                            <textarea type="text" class="form-control form__textarea" id="message" placeholder="Введите сообщение" name="message"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+
+    <script>
+        // AOS
+        AOS.init();
+
+        // Submit Request
+        function submitRequest() {
+            loading(2, el = '#request-modal-btn');
+            let name = $('#name').val().trim();
+            let phone = $('#phone').val();
+            let email = $('#email').val();
+            let message = $('#message').val().trim()
+            if (!name || !phone || message) {
+                $.ambiance({
+                    message: "Заполните все поля",
+                    type: "error",
+                    fade: true,
+                    width: 400,
+                });
+                return loading(20, el = '#request-modal-btn');
+            }
+
+            $.ajax({
+                url: '/api/catalog/request/create',
+                method: 'POST',
+                data: {
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    message: message
+                },
+                success: function (r) {
+                    $.ambiance({ type: 'success', message: 'Ваша заявка принята. Ждите звонка!' });
+                    loading(20, el = '#request-modal-btn');
+                    $('#submit-request-modal').modal('hide');
+                }
+            });
+
+        }
+
+    </script>
 </body>
 </html>
