@@ -87,7 +87,6 @@ exports.createPdf = async (req, res) => {
         requestData.products_list.forEach((product) => {
             const rowData = [
                 product.title,
-                product.description,
                 product.category,
                 product.price,
                 product.count,
@@ -134,7 +133,7 @@ exports.createPdf = async (req, res) => {
         docPdf.text("Общая сумма заказа: " + totalAmount + "тг", 10, 70);
 
         docPdf.autoTable({
-            head: [['Название', 'Описание', 'Категория', 'Сумма', 'Количество', 'КазНИИСА', 'Артикул']],
+            head: [['Название', 'Категория', 'Сумма', 'Количество', 'КазНИИСА', 'Артикул']],
             body: bodyData,
             startY: 80, // Adjust the starting Y coordinate based on the image size
             styles: { font: "Arial", fontSize: 10 },
