@@ -21,24 +21,29 @@
                 <div class="splide__track text-center">
                     <ul class="splide__list">
                         <li class="splide__slide">
-                            <img src="/public/images/cert/cert1.jpg" alt="">
+                            <img id="slide-img" src="/public/images/cert/cert1.jpg" alt="">
                         </li>
                         <li class="splide__slide">
-                            <img src="/public/images/cert/cert2.jpg" alt="">
+                            <img id="slide-img" src="/public/images/cert/cert2.jpg" alt="">
                         </li>
                         <li class="splide__slide">
-                            <img src="/public/images/cert/cert3.png" alt="">
+                            <img id="slide-img" src="/public/images/cert/cert3.png" alt="">
                         </li>
                         <li class="splide__slide">
-                            <img src="/public/images/cert/cert4.jpg" alt="">
+                            <img id="slide-img" src="/public/images/cert/cert4.jpg" alt="">
                         </li>
                         <li class="splide__slide">
-                            <img src="/public/images/cert/cert5.jpg" alt="">
+                            <img id="slide-img" src="/public/images/cert/cert5.jpg" alt="">
                         </li>
                         <li class="splide__slide">
-                            <img src="/public/images/cert/cert6.jpg" alt="">
+                            <img id="slide-img" src="/public/images/cert/cert6.jpg" alt="">
                         </li>
                     </ul>
+
+                    <div class="popup-image" id="popup-image">
+                        <span>&times;</span>
+                        <img src="/public/images/cert/cert1.jpg" alt="">
+                    </div>
                 </div>
             </section>
         </div>
@@ -46,7 +51,7 @@
         <div class="upload">
             <div class="container">
 
-                <h2 class="upload__header">Тут вы можете посмотреть каждый сертификат по отдельности в формате PDF</h2>
+                <h2 class="upload__title">Тут вы можете посмотреть каждый сертификат по отдельности в формате PDF</h2>
                 <ol class="upload__body">
 
                     <li class="upload__element">
@@ -79,16 +84,14 @@
 
                     <p id="upload-toggle" class="text-decoration-underline">Посмотреть</p>
                     <div id="upload-block" class="upload__block">
-                        <ol>
+                        <ul>
                             <div class="d-flex align-items-center gap-3">
                                 <li>Комплектная трансформаторная странция КТП (Б)</li>
                                 <a href="/public/pdf/certificates-product/СТ КЗ на КТП и ЯУО .PDF" target="_blank">PDF</a>
                             </div>
                             <div class="d-flex align-items-center gap-3">
                                 <li>Шкаф металлический для одежды</li>
-                                <div>
-                                    <a href="/public/pdf/certificates-product/ст кз от 05 05 23.PDF" target="_blank">PDF</a>
-                                </div>
+                                <a href="/public/pdf/certificates-product/ст кз от 05 05 23.PDF" target="_blank">PDF</a>
                             </div>
                             <div class="d-flex align-items-center gap-3">
                                 <li>Шкаф управления, для насоса с частотным преобразователем, IP 41</li>
@@ -110,7 +113,7 @@
                                 <li>Щит распределительный переносной 3xl6/3+3x16/5 У1 IP44</li>
                                 <a href="/public/pdf/certificates-product/ст-кз щит распред.PDF" target="_blank">PDF</a>
                             </div>
-                        </ol>
+                        </ul>
                     </div>
                 </ol>
             </div>
@@ -162,6 +165,32 @@
         }
 
         toggleText.addEventListener('click', toggleBlock);
+
+
+        // Popover Image in Slider
+        
+
+        document.querySelectorAll(".splide__slide img").forEach(image => {
+            image.onclick = () => {
+                certSlider.options.arrows = false
+                certSlider.refresh()
+                document.querySelector(".popup-image").style.display = "block";
+                document.querySelector(".popup-image img").src = image.getAttribute("src");
+
+                // Hide Splide arrows
+                certSlider.on('click', function(){
+                    certSlider.options.arrows = false
+                })
+            }
+        });
+
+        document.querySelector(".popup-image span").onclick = () => {
+            document.querySelector(".popup-image").style.display = "none";
+
+            // Show Splide arrows
+            certSlider.options.arrows = true;
+            certSlider.refresh();
+        };
     </script>
 </body>
 </html>
