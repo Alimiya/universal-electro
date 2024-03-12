@@ -52,10 +52,6 @@
     animation: circle-out 10s infinite linear;
 }
 
-.intro__btn {
-    font-size: 1.3rem !important;
-}
-
 @keyframes circle-out {
   0% {
     transform: translate(-50%, -50%) rotate(0deg) translateX(200px) rotate(0deg);
@@ -118,15 +114,8 @@
 .service__img {
     max-width: 600px;
 }
+ 
 
-.service__btn {
-    font-size: 1.25rem;
-    background-color: #E87900 !important;
-}
-
-.service__btn:hover {
-    background-color: #ff8400 !important;
-}
 
 /* Modal */
 .form__textarea {
@@ -136,7 +125,6 @@
 .request-modal__btn:hover {
     background-color: #ff8400 !important;
 }
-
 
 
 @media (max-width: 1410px) {
@@ -250,10 +238,6 @@
         padding: 0 15px !important  ;
     }
 
-    .intro__btn {
-        font-size: 1.1rem !important;
-    }
-
     .intro__title {
         font-size: 2.5rem;
     }
@@ -281,10 +265,6 @@
     .service__img {
         width: 100%;
         height: auto;
-    }
-
-    .service__btn {
-        font-size: 1.1rem;
     }
 }
 

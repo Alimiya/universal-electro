@@ -31,8 +31,21 @@ main {
 
 /* Bootstrap */
 
+.container {}
+.text-125 {
+    font-size: 1.25rem !important;
+}
+
+.text-orange {
+    color: #E87900 !important;
+}
+
 .background-orange {
     background-color: #E87900 !important;
+}
+
+.background-orange:hover {
+    background-color: #ff8400 !important;;
 }
 
 .accordion-item {
@@ -152,7 +165,11 @@ main {
     animation: spinner-border .75s linear infinite;
 }
 
-
+@media (max-width: 575.98px) {  
+    .text-125 {
+        font-size: 1.1rem !important;
+    }
+}
 
 @media (max-width: 991.98px) {
     
