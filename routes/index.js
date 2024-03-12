@@ -24,10 +24,6 @@ router.get('/certificate', (req, res) => {
     res.render('certificate');
 });
 
-router.get('/partner', (req, res) => {
-    res.render('partner');
-})
-
 router.get('/contact', (req, res) => {
     res.render('contact');
 })

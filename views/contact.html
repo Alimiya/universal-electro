@@ -49,18 +49,26 @@
 
                 <div class="contact__outer text-center mt-5">
                     <h2>Схема проезда</h2>
-                    <img class="img-fluid" src="/public/images/path.png" alt="">
+                    <img class="path img-fluid" src="/public/images/path.png" alt="">
+                </div>
+                <div class="popup-image" id="popup-image">
+                    <span>&times;</span>
+                    <img src="/public/images/path.png" alt="">
                 </div>
             </div>
         </div>
     </main>
 
-    <%- include('./components/submit-modal.html') %>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- prettier-ignore -->
     <script>
+        document.querySelector('.path').onclick = () => {
+            document.querySelector(".popup-image").style.display = "block";
+        }
+
+        document.querySelector('.popup-image span').onclick = () => {
+            document.querySelector(".popup-image").style.display = "none";
+        }
     </script>   
 </body>
 </html>

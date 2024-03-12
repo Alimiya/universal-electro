@@ -8,6 +8,16 @@
     height: 400px;
 }
 
+.path {
+    cursor: pointer;
+    object-fit: cover;
+    transform: .2s linear;
+}
+
+.popup-image img {
+    max-width: 1000px !important;
+}
+
 @media (max-width: 1199.98px) {
     .contact__body {
         flex-direction: column;
@@ -65,9 +75,6 @@
     .contact__content__inner h2 {
         text-align: center;
         font-size: 1.5rem;
-    }
-
-    .contact__content__inner div:nth-child(2) {
     }
 
     .contact__content__inner div p{

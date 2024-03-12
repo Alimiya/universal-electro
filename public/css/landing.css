@@ -1,17 +1,11 @@
 /* Intro */
 .intro {
-    min-height: 90.5vh;
+    min-height: 80vh;
     background-color: #E87900;
 
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-@media (max-width: 991.98px) and (orientation: portrait) {
-    .intro {
-        max-height: 450px; /* Adjust the max-height value as needed */
-    }
 }
 
 .intro__content {
@@ -95,6 +89,18 @@
     max-width: 150px;
 }
 
+@media (min-height: 800px) {
+    .intro {
+        min-height: 30vh;
+    }
+}
+
+@media (min-height: 1000px) {
+    .intro {
+        min-height: 45vh;
+    }
+}
+
 @media (max-width: 1199.98px) {
     .intro__title {
         font-size: 3.4rem;
@@ -118,13 +124,6 @@
         margin-top: 60px;
     }
 }
-
-@media (orientation: portrait) {
-    .intro {
-        min-height: 50vh;
-    }
-}
-
 
 @media (max-width: 767.98px) {
     .intro__title {

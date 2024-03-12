@@ -13,23 +13,15 @@
 
     <%- body %>
 
+    <!-- Submit Request Modal -->
+    <%- include('../components/submit-modal.html') %>
+    
     <%- include('../partials/footer.html') %>
 
-    <!-- uniq-chat.js -->
-    <script type="text/javascript" src="https://s2.webapi.ai/chat-widget/uniq-chat.js"></script>
-    <script src="/public/js/uniq-chat.js"></script>
-    <script>
-        document.addEventListener('scroll', () => {
-            const height = window.innerHeight + 60
-            const scrollableHeight = document.documentElement.scrollHeight - height
-            const uniqChatButton = document.querySelector('.uniq-chat-button')
-
-            if (window.scrollY >= scrollableHeight) {
-                uniqChatButton.style.bottom = "80px"
-            } else {
-                uniqChatButton.style.bottom = "20px"
-            }
-        })
-    </script>
+    <% if (!isAdmin) {%>
+        <!-- uniq-chat.js -->
+        <script type="text/javascript" src="https://s2.webapi.ai/chat-widget/uniq-chat.js"></script>
+        <script src="/public/js/uniq-chat.js"></script>
+    <% } %>
 </body>
 </html>

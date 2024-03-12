@@ -5,7 +5,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    user-select: none;
 }
 
 main {
@@ -14,18 +13,59 @@ main {
 
 
 
+/* Popup Image */
+.popup-image {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .9);
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.popup-image span {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    font-size: 40px;
+    font-weight: bolder;
+    color: #fff;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.popup-image img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #fff;
+    border-radius: 5px;
+    max-width: 500px;
+    object-fit: cover;
+}
+
+
+
 /* Submit Modal */
-.form__textarea {
+#submit-request-modal .form__textarea {
     height: 75%;
 }
 
-.request-modal__btn:hover {
+#submit-request-modal .request-modal__btn:hover {
     background-color: #ff8400 !important;
 }
 
-.order_form {
+#submit-request-modal .order_form {
     width: 50%;
 }
+
+
+
+/* Header Modal */
+
 
 
 
@@ -184,5 +224,11 @@ main {
     
     .form__textarea {
         height: 150px;
+    }
+}
+
+@media (max-width: 420px) {
+    #show-contact-modal .modal-body .row {
+        flex-direction: column;
     }
 }
