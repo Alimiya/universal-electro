@@ -1,91 +1,120 @@
-<header>
-    <nav class="navbar sticky-top navbar-expand-xl bg-body-tertiary" style="z-index: 0;">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">
-          <img class="img-fluid" width="220"  src="/public/images/logo.png" alt="">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mx-auto  me-auto mb-2 mb-lg-0">
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="/">Производство</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="/service">Услуги</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="/catalog">Каталог</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="/partner">Сотрудничество</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="/certificate">Сертификаты</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="/contact">Контакты</a>
-            </li>
-          </ul>
-          <button type="button" class="header__btn btn" data-bs-toggle="modal" data-bs-target="#show-contact-modal">
-            Связаться&nbsp;с&nbsp;нами
+  <header>
+    <% if (!isAdmin) {%>
+      <nav class="navbar sticky-top navbar-expand-xl bg-body-tertiary" style="z-index: 0;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">
+            <img class="img-fluid" width="220"  src="/public/images/logo.png" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
           </button>
-        </div>
-      </div>
-    </nav>
-  </header>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto  me-auto mb-2 mb-lg-0">
+              <li class="nav-item mx-3">
+                <a class="nav-link" href="/">Производство</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a class="nav-link" href="/service">Услуги</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a class="nav-link" href="/catalog">Каталог</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a class="nav-link" href="/partner">Сотрудничество</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a class="nav-link" href="/certificate">Сертификаты</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a class="nav-link" href="/contact">Контакты</a>
+              </li>
+            </ul>
 
-
-  <!-- Modal -->
-  <div class="modal fade" id="show-contact-modal">
-    <div class="modal-dialog text-left">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Контакты</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <h2 class="text-center">ТОО «UniversalElectro»</h3>
-
-          <div class="row mb-4">
-            <div class="col-3 d-flex align-items-center gap-1">
-              <span class="material-symbols-outlined">home</span>
-              <span class="fw-bold" style="margin-right: 20px">Адрес:</span> 
-            </div>
-            <div class="col">
-              <a class="text-decoration-none text-dark" href="https://www.google.com/maps/place/%D0%A1%D0%BA%D0%BB%D0%B0%D0%B4+%D0%A1%D0%B8%D1%82%D0%B8+GRUP/@51.177655,71.48081,133m/data=!3m1!1e3!4m6!3m5!1s0x424581c3dacb7113:0xab4bd753c74c4bca!8m2!3d51.1777008!4d71.4807249!16s%2Fg%2F11l2kmywb5?hl=en-US&entry=ttu">Республика Казахстан, 010000, г. Астана, ул. Жетiген, 28/2</a>
+            <button type="button" class="header__btn btn" data-bs-toggle="modal" data-bs-target="#show-contact-modal">
+              Связаться&nbsp;с&nbsp;нами
+            </button>
             </div>
           </div>
-          <div class="row mb-4">
-            <div class="col-3 d-flex align-items-center gap-1">
-              <span class="material-symbols-outlined">mail</span>
-              <span class="fw-bold" style="margin-right: 20px">Почта:</span> 
-            </div>
-            <div class="col">
-              <a style="color: #E87900;" href="mailto:universalvs@mail.ru">universalvs@mail.ru</a>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-3 d-flex align-items-center gap-1">
-              <span class="material-symbols-outlined">call</span>
-              <span class="fw-bold" style="margin-right: 20px">Номера: </span>
-            </div>
-            <div class="col">
-              <div class="row mb-2">
-                <div class="col">
-                  <a class="text-decoration-none" href="tel:+77172533027">+7 (7172) 533 027</a>
-                </div>
-                <div class="col">
-                  <a class="text-decoration-none" href="tel:+77172533079">+7 (7172) 533 079</a>
-                </div>
+        </div>
+      </nav>
+      <% } else { %>
+        <nav class="navbar sticky-top navbar-expand-xl bg-body-tertiary" style="z-index: 0;">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/admin">
+              <img class="img-fluid" width="220"  src="/public/images/logo.png" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/admin/products">Товары</a>
+                  </li>
+      
+                  <li class="nav-item">
+                    <a class="nav-link" href="/admin/requests">Запросы</a>
+                  </li>
+                </ul>
+                <a class="btn btn-outline-dark" onclick="logout()">Выйти</a>
               </div>
-              <div class="row">
-                <div class="col">
-                  <a class="text-decoration-none" href="tel:+77775335873">+7 777 533 5873</a>
+            </div>
+          </div>
+        </nav>
+        <% } %>
+    </header>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="show-contact-modal">
+      <div class="modal-dialog text-left">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Контакты</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h2 class="text-center">ТОО «UniversalElectro»</h3>
+
+            <div class="row mb-4">
+              <div class="col-3 d-flex align-items-center gap-1">
+                <span class="material-symbols-outlined">home</span>
+                <span class="fw-bold" style="margin-right: 20px">Адрес:</span> 
+              </div>
+              <div class="col">
+                <a class="text-decoration-none text-dark" href="https://www.google.com/maps/place/%D0%A1%D0%BA%D0%BB%D0%B0%D0%B4+%D0%A1%D0%B8%D1%82%D0%B8+GRUP/@51.177655,71.48081,133m/data=!3m1!1e3!4m6!3m5!1s0x424581c3dacb7113:0xab4bd753c74c4bca!8m2!3d51.1777008!4d71.4807249!16s%2Fg%2F11l2kmywb5?hl=en-US&entry=ttu">Республика Казахстан, 010000, г. Астана, ул. Жетiген, 28/2</a>
+              </div>
+            </div>
+            <div class="row mb-4">
+              <div class="col-3 d-flex align-items-center gap-1">
+                <span class="material-symbols-outlined">mail</span>
+                <span class="fw-bold" style="margin-right: 20px">Почта:</span> 
+              </div>
+              <div class="col">
+                <a style="color: #E87900;" href="mailto:universalvs@mail.ru">universalvs@mail.ru</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-3 d-flex align-items-center gap-1">
+                <span class="material-symbols-outlined">call</span>
+                <span class="fw-bold" style="margin-right: 20px">Номера: </span>
+              </div>
+              <div class="col">
+                <div class="row mb-2">
+                  <div class="col">
+                    <a class="text-decoration-none" href="tel:+77172533027">+7 (7172) 533 027</a>
+                  </div>
+                  <div class="col">
+                    <a class="text-decoration-none" href="tel:+77172533079">+7 (7172) 533 079</a>
+                  </div>
                 </div>
-                <div class="col">
-                  <a class="text-decoration-none" href="tel:+77771153735">+7 777 115 3735</a>
+                <div class="row">
+                  <div class="col">
+                    <a class="text-decoration-none" href="tel:+77775335873">+7 777 533 5873</a>
+                  </div>
+                  <div class="col">
+                    <a class="text-decoration-none" href="tel:+77771153735">+7 777 115 3735</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -93,4 +122,21 @@
         </div>
       </div>
     </div>
-  </div>
+
+    <script>
+      // Check if the current URL contains "/admin"
+      if (window.location.pathname.includes('/admin')) {
+          // If the user is on the "/admin" route, display the admin link
+          document.getElementById('admin-link').style.display = 'block';
+      }
+      function logout() {
+        $.ajax({
+          url: '/api/auth/logout',
+          method: 'POST',
+          success: function (r) {
+            window.location.replace("/login");
+
+          }
+        })
+      }
+    </script>

@@ -4,7 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <%- include('../components/head.ejs.html') %>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 </head>
 <body>
+    <%- include('../partials/header.html') %>
+
+    <%- body %>
+
+    <%- include('../partials/footer.html') %>
+
+    <!-- uniq-chat.js -->
+    <script type="text/javascript" src="https://s2.webapi.ai/chat-widget/uniq-chat.js"></script>
+    <script src="/public/js/uniq-chat.js"></script>
 </body>
 </html>

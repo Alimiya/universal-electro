@@ -1,4 +1,3 @@
-const express = require('express');
 const { generateAdminToken } = require("../middlewares/token")
 const fauth = require('../firebase').fauth;
 
@@ -35,7 +34,7 @@ exports.login = async function (req, res, next) {
 
 exports.logout = async function (req, res, next) {
   let r = { r: 1 };
-  res.cookie('admin', null);
+  res.clearCookie("admin");
   res.header('Authorization', null);
   res.send(r)
 }

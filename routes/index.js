@@ -1,7 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const {verifyAdminToken} = require('../middlewares/verify')
-const Controller = require('../controllers/adminController')
+
+router.use((req, res, next) => {
+    const isAdminCookieExists = req.cookies.admin && req.originalUrl.startsWith('/admin');
+    res.locals.isAdmin = isAdminCookieExists
+    next();
+});
 
 router.get('/', (req, res) => {
     res.render('index');
@@ -30,6 +35,10 @@ router.get('/contact', (req, res) => {
 router.get('/login', (req, res) => {
     res.render('login');
 });
+
+router.get('/admin', (req, res) => {
+    res.redirect('/admin/products');
+})
 
 router.get('/admin/products', verifyAdminToken(), (req, res) => {
     res.render('products');

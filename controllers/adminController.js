@@ -1,5 +1,4 @@
 // POST /product/create
-const express = require('express')
 const fdb = require('../firebase').fdb;
 const storage = require('../firebase').storage;
 const uuid = require('uuid-v4');
