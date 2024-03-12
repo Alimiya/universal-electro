@@ -41,11 +41,11 @@ router.get('/admin', (req, res) => {
 })
 
 router.get('/admin/products', verifyAdminToken(), (req, res) => {
-    res.render('products');
+    res.render('products', {page: 'products'});
 });
 
 router.get('/admin/requests', (req, res) => {
-    res.render('requests');
+    res.render('requests', {page: 'requests'});
 });
 
 

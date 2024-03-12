@@ -14,24 +14,23 @@
                     </div>
                     <div class="mb-3">
                         <label for="phone" class="form-label">* Ваш номер:</label>
-                        <input type="tel" class="form-control" id="phone" placeholder="Введите номер"
-                            name="phone">
+                        <input type="tel" class="form-control" id="phone" placeholder="Введите номер" name="phone">
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Ваша почта:</label>
-                        <input type="email" class="form-control" id="email" placeholder="Введите почту"
-                            name="email">
+                        <input type="email" class="form-control" id="email" placeholder="Введите почту" name="email">
                     </div>
                 </div>
                 <div class="modal-message flex-fill mt-3">
                     <label for="message" class="form-label">* Ваша сообщение:</label>
-                    <textarea type="text" class="form-control form__textarea" id="message" placeholder="Введите сообщение" name="message"></textarea>
+                    <textarea type="text" class="form-control form__textarea" id="message"
+                        placeholder="Введите сообщение" name="message"></textarea>
                 </div>
             </div>
 
             <div class="modal-footer">
                 <button type="submit" id="request-modal-btn" class="request-modal__btn btn background-orange"
-                        onclick="submitRequest()">Отправить</button>
+                    onclick="submitRequest()">Отправить</button>
             </div>
         </div>
     </div>
@@ -45,7 +44,7 @@
         let phone = $('#phone').val();
         let email = $('#email').val();
         let message = $('#message').val().trim()
-        if (!name || !phone || message) {
+        if (!name || !phone || !message) {
             $.ambiance({
                 message: "Заполните все поля",
                 type: "error",
@@ -54,9 +53,8 @@
             });
             return loading(20, el = '#request-modal-btn');
         }
-
         $.ajax({
-            url: '/',
+            url: '/api/catalog/request/create',
             method: 'POST',
             data: {
                 name: name,
@@ -70,6 +68,5 @@
                 $('#submit-request-modal').modal('hide');
             }
         });
-
     }
 </script>

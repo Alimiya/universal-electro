@@ -36,11 +36,11 @@ exports.getProducts = async function (req, res, next) {
 
 exports.createRequest = async (req, res) => {
     let r = { r: 0 }
-    console.log(req.body)
-    let products_list = req.body.products;
+    let products_list = req.body.products ? req.body.products : '[]';
     let phone = req.body.phone;
     let name = req.body.name;
     let email = req.body.email;
+    let message = req.body.message ? req.body.message : '';
     let status = 0;
     const currentDate = new Date();
     const year = currentDate.getFullYear();
@@ -58,7 +58,8 @@ exports.createRequest = async (req, res) => {
         phone: phone,
         name: name,
         status: status,
-        created_time: formattedDateTime
+        created_time: formattedDateTime,
+        message: message
     }).then(() => {
         r['r'] = 1;
         res.send(r);
