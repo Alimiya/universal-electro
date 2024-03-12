@@ -1,0 +1,30 @@
+@media (max-width: 1199.98px) {
+    .partner__img-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .partner__img-container img {
+        min-width: 500px;
+    }
+}
+
+@media (max-width: 991.98px) {
+
+}
+
+@media (max-width: 767.98px) {
+
+}
+
+@media (max-width: 575.98px) { 
+    .partner__img-container img {
+        min-width: 400px;
+    }
+}
+
+@media (max-width: 400px) { 
+    .partner__img-container img {
+        min-width: 300px;
+    }
+}

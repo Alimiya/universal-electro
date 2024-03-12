@@ -1,7 +1,33 @@
 body {
     background-image: url(/public/images/main-bg.png);
     background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    user-select: none;
 }
+
+main {
+    margin: 3rem 0;
+}
+
+
+
+/* Submit Modal */
+.form__textarea {
+    height: 75%;
+}
+
+.request-modal__btn:hover {
+    background-color: #ff8400 !important;
+}
+
+.order_form {
+    width: 50%;
+}
+
+
 
 /* Bootstrap */
 
@@ -124,4 +150,24 @@ body {
     border-radius: 50%;
     -webkit-animation: spinner-border .75s linear infinite;
     animation: spinner-border .75s linear infinite;
+}
+
+
+
+@media (max-width: 991.98px) {
+    
+    .modal-body {
+        flex-direction: column;
+    }
+
+    .modal-message {
+        padding: 0 3rem;
+    }
+    .order_form {
+        width: 100%;
+    }
+    
+    .form__textarea {
+        height: 150px;
+    }
 }

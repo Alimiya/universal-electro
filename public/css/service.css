@@ -130,12 +130,13 @@
 
 /* Modal */
 .form__textarea {
-    height: 70%;
+    height: 75%;
 }
 
 .request-modal__btn:hover {
     background-color: #ff8400 !important;
 }
+
 
 
 @media (max-width: 1410px) {
