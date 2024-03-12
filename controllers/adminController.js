@@ -127,6 +127,7 @@ exports.getRequests = async (req, res) => {
                     name: request.data().name,
                     email: request.data().email,
                     created_time: request.data().created_time,
+                    message: request.data().message,
                     status: request.data().status
                 }
                 data.push(request_data);

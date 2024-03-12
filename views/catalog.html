@@ -97,6 +97,21 @@
         </div>
     </div>
 
+    <div class="modal modal-lg fade" id="description-modal">
+        <div class="modal-dialog text-left">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Описание товара</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="description-modal_body">
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
@@ -128,7 +143,7 @@
 
                     data.forEach((p) => {
                         productsHTML += `
-                        <div class="product pb-4" id="product-${i}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="${p.description}" >
+                        <div class="product pb-4" id="product-${i}" >
                             <div class="img_block">
                                 <img src="${p.product_img}" alt="">
                             </div>
@@ -139,6 +154,7 @@
                                 <h2>${p.price} ₸</h2>
                             </div>
                             <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')">В корзину</button>
+                            <button class="btn btn-warning px-4 py-2 mt-2" onclick="showDescription('product-${i}')">Подробнее</button>
                         </div>`
                         i++;
                     });
@@ -170,6 +186,7 @@
                     ${p.status == '1' ? '<p class="text-success">В наличии</p>' : '<p class="text-danger">Нет в наличии</p>'}
                     <h2>${p.price} ₸</h2>
                     <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')">В корзину</button>
+                    <button class="btn btn-warning px-4 py-2 mt-2" onclick="showDescription('product-${i}')">Подробнее</button>
                 </div>`
                 }
                 i++;
@@ -297,14 +314,13 @@
             let productsList = localStorage.getItem('products_list');
             var updatedProductsList = JSON.parse(productsList).map(product => {
                 if (product.count > 0) {
-                    console.log(product.count)
                     if (product.product_id == product_id) {
                         return { ...product, count: product.count - 1 };
                     }
                 }
                 return product;
             });
-
+            updatedProductsList = updatedProductsList.filter(product => product.count > 0);
             localStorage.setItem('products_list', JSON.stringify(updatedProductsList));
             showBucketProducts();
             showCountProducts();
@@ -320,7 +336,7 @@
                 }
                 return product;
             });
-
+            updatedProductsList = updatedProductsList.filter(product => product.count > 0);
             localStorage.setItem('products_list', JSON.stringify(updatedProductsList));
             showBucketProducts();
             showCountProducts();
@@ -406,12 +422,19 @@
                     ${p.status == '1' ? '<p class="text-success">В наличии</p>' : '<p class="text-danger">Нет в наличии</p>'}
                     <h2>${p.price} ₸</h2>
                     <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')">В корзину</button>
+                    <button class="btn btn-warning px-4 py-2 mt-2" onclick="showDescription('product-${i}')">Подробнее</button>
                 </div>`;
                 }
                 i++;
             });
             if (!productsHTML) productsHTML += `<div class="alert alert-light w-100">Ничего не найдено</div>`;
             $("#catalog").html(productsHTML)
+        }
+
+        function showDescription(product_index){
+            let product = globalProducts[product_index.split('-')[1] - 1];
+            $('#description-modal').modal('show');
+            $('#description-modal_body').html(product.description);
         }
 
     </script>
