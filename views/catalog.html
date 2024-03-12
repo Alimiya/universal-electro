@@ -149,7 +149,7 @@
                             </div>
                             <div class="product_info pt-2" style="flex:1">
                                 <i>Артикул: ${p.articul}</i>
-                                <h3>${p.title}</h3>
+                                <h3 data-bs-toggle="tooltip" data-bs-title="${p.title}"">${p.title}</h3>
                                 ${p.status == '1' ? '<p class="text-success">В наличии</p>' : '<p class="text-danger">Нет в наличии</p>'}
                                 <h2>${p.price} ₸</h2>
                             </div>
