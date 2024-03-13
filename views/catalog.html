@@ -434,7 +434,7 @@
         function showDescription(product_index){
             let product = globalProducts[product_index.split('-')[1] - 1];
             $('#description-modal').modal('show');
-            $('#description-modal_body').html(product.description);
+            $('#description-modal_body').html(product.description +'. <br> КАЗНИИСА:' + product.kazniisa);
         }
 
     </script>
