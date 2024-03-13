@@ -157,9 +157,21 @@
 }
 
 
+
 /* End of Requests page */
+@media (max-width: 991.98px) {
+  #show_bucket-modal .modal-body {
+      flex-direction: column-reverse;
+  }
 
+  #show_bucket-modal .bucket {
+    padding: 0 3rem;
+  }
 
+  #show_bucket-modal .bucket h3{
+    margin-bottom: 40px;
+  }
+}
 
 @media (max-width: 550px) {
   #catalog{

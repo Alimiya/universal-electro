@@ -41,28 +41,17 @@ $(document).ready(function(){
     $('.popup-image span').click(showChatButton);
 
     // Move button upwards when it reaches the footer
-    const footer = document.querySelector('footer');
-    const uniqChatButton = document.querySelector('.uniq-chat-button');
+    document.addEventListener('scroll', () => {
+        const footerHeight = $('footer').outerHeight();
+        const height = window.innerHeight + footerHeight
+        const scrollableHeight = document.documentElement.scrollHeight - height
+        const uniqChatButton = document.querySelector('.uniq-chat-button')
 
-    const footerHeight = footer ? footer.offsetHeight : 0;
-    const windowHeight = window.innerHeight;
-    const scrollableHeight = document.documentElement.scrollHeight - windowHeight - footerHeight;
-
-    let ticking = false;
-    function handleScroll() {
-        if (!ticking) {
-            ticking = true;
-
-            requestAnimationFrame(() => {
-                if (window.scrollY >= scrollableHeight) {
-                    uniqChatButton.style.bottom = `${footerHeight}px`;
-                } else {
-                    uniqChatButton.style.bottom = "20px";
-                }
-                ticking = false;
-            });
+        if (window.scrollY >= scrollableHeight) {
+            uniqChatButton.style.bottom = `${footerHeight}px`
+        } else {
+            uniqChatButton.style.bottom = "20px"
         }
-    }
-    document.addEventListener('scroll', handleScroll, { passive: true });
+    })
 });
 

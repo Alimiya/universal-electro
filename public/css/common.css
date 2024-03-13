@@ -64,10 +64,6 @@ main {
 
 
 
-/* Header Modal */
-
-
-
 
 /* Bootstrap */
 .text-125 {
@@ -210,19 +206,18 @@ main {
 }
 
 @media (max-width: 991.98px) {
-    
-    .modal-body {
+    #submit-request-modal .modal-body {
         flex-direction: column;
     }
 
-    .modal-message {
+    #submit-request-modal .modal-message {
         padding: 0 3rem;
     }
-    .order_form {
+    #submit-request-modal .order_form {
         width: 100%;
     }
     
-    .form__textarea {
+    #submit-request-modal .form__textarea {
         height: 150px;
     }
 }

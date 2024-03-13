@@ -2,7 +2,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Universal Electro</title>
-    <%- include('./components/head.ejs.html') %>
 </head>
 
 <body>
@@ -69,7 +68,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body d-flex">
-                    <div class="order_form w-50 px-5">
+                    <div class="order_form px-5">
                         <div class="mb-3 mt-3">
                             <label for="name" class="form-label">* Ваше имя:</label>
                             <input type="text" class="form-control" id="name" placeholder="Введите имя" name="name">
@@ -181,10 +180,12 @@
                     <div class="h-50">
                         <img src="${p.product_img}" alt="">
                     </div>
-                    <i>Артикул: ${p.articul}</i>
-                    <h3>${p.title}</h3>
-                    ${p.status == '1' ? '<p class="text-success">В наличии</p>' : '<p class="text-danger">Нет в наличии</p>'}
-                    <h2>${p.price} ₸</h2>
+                    <div class="product_info pt-2" style="flex:1">
+                        <i>Артикул: ${p.articul}</i>
+                        <h3 data-bs-toggle="tooltip" data-bs-placement="top" title="${p.title}">${p.title}</h3>
+                        ${p.status == '1' ? '<p class="text-success">В наличии</p>' : '<p class="text-danger">Нет в наличии</p>'}
+                        <h2>${p.price} ₸</h2>
+                    </div>
                     <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')">В корзину</button>
                     <button class="btn btn-warning px-4 py-2 mt-2" onclick="showDescription('product-${i}')">Подробнее</button>
                 </div>`
@@ -223,6 +224,13 @@
                 let productsList = [product];
                 localStorage.setItem('products_list', JSON.stringify(productsList));
             }
+
+            $.ambiance({ type: 'success', message: 'Товар добавлен в корзину!' });
+            loading(20, el = '#place_older_btn');
+            $('#show_bucket-modal').modal('hide');
+            $('#products_count').html(0);
+            $('#bucket_content').html('');
+
             showCountProducts();
         }
 
@@ -418,7 +426,7 @@
                         <img src="${p.product_img}" alt="">
                     </div>
                     <i>Артикул: ${p.articul}</i>
-                    <h3>${p.title}</h3>
+                    <h3 data-bs-toggle="tooltip" data-bs-title="${p.title}"">${p.title}</h3>
                     ${p.status == '1' ? '<p class="text-success">В наличии</p>' : '<p class="text-danger">Нет в наличии</p>'}
                     <h2>${p.price} ₸</h2>
                     <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')">В корзину</button>
