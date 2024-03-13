@@ -32,7 +32,7 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get('/admin', (req, res) => {
+router.get('/admin', verifyAdminToken(), (req, res) => {
     res.redirect('/admin/products');
 })
 
@@ -40,7 +40,7 @@ router.get('/admin/products', verifyAdminToken(), (req, res) => {
     res.render('products', {page: 'products'});
 });
 
-router.get('/admin/requests', (req, res) => {
+router.get('/admin/requests', verifyAdminToken(), (req, res) => {
     res.render('requests', {page: 'requests'});
 });
 
