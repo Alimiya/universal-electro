@@ -66,6 +66,18 @@ main {
 
 
 /* Bootstrap */
+.text-110{
+    font-size: 1.1rem !important;
+}
+
+.text-115 {
+    font-size: 1.15rem !important;
+}
+
+.text-120 {
+    font-size: 1.2rem !important;
+}
+
 .text-125 {
     font-size: 1.25rem !important;
 }
@@ -80,6 +92,10 @@ main {
 
 .background-orange:hover {
     background-color: #ff8400 !important;;
+}
+
+.border-orange {
+    border-color: #E87900 !important;
 }
 
 .accordion-item {

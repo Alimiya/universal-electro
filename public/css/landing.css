@@ -76,6 +76,68 @@
 
 
 
+/* About */
+.about__dir__element {
+    width: 46%;
+    padding: 1.5rem;
+
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.about__dir__element p {
+    font-size: 1.1rem !important;
+}
+
+.about__dir__element span{
+    font-size: 70px;
+}
+
+.about__dir__element img{
+    width: 70px;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+
+
+/* Video */
+
+.video__inner{
+    background-color: #E87900;
+    padding: 2rem 0;
+}
+
+
+
+/* Why us */
+.whyus__body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.whyus__element {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.whyus__element span {
+    font-size: 8rem;
+}
+
+
+
+/* Stat */
+.stat__img img {
+    width: 100%;    
+}
+
+
+
 /* Slide */
 
 .splide__slide {
