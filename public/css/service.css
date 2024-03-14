@@ -4,38 +4,29 @@
 }
 
 .service__section {
-    margin-top: 50px;
+    margin-top: 3rem;
 }
 
 .service__inner {
     border-bottom: 1px solid #E87900;
-    padding-bottom: 30px;
+    padding-bottom: 2rem;
 }
 
 .service__content {
     width: 50%;
     padding: 2rem;
     border: 2px solid #E87900;
-    border-radius: 16px;
+    border-radius: 1rem;
 }
 
 .service__body {
-    margin-bottom: 30px;
-}
-
-.service__title {
-    font-size: 2rem;
-    color:#E87900;
-}
-
-.service__text {
-    font-size: 1.25rem;
+    margin-bottom: 2rem;
 }
 
 .service__img {
     max-width: 600px;
 }
- 
+
 
 
 /* Modal */
@@ -49,10 +40,6 @@
 
 
 @media (max-width: 1410px) {
-    .service__text {
-        font-size: 1.2rem;
-    }
-
     .service__img {
         max-width: 500px;
     }
@@ -65,7 +52,7 @@
     .service__body {
         flex-direction: column;
         justify-content: center;
-        gap: 75px;
+        gap: 4rem;
         margin: 0 auto;
     }
     
@@ -97,29 +84,16 @@
     .service__content {
         width: 100%;
     }
-
-    .service__title {
-        font-size: 1.8rem;
-    }
 }
 
 @media (max-width: 767.98px) {
     .service {
-        margin-top: 70px;
+        margin-top: 4rem;
     }
     
     .service__content {
         padding: 1.5rem;
     }
-
-    .service__title {
-        font-size: 1.6rem;
-    }
-
-    .service__text {
-        font-size: 1.1rem;
-    }
-
 }
 
 @media (max-width: 575.98px) { 
@@ -135,17 +109,15 @@
         padding: 1.2rem;
     }
 
-    .service__title {
-        font-size: 1.5rem;
-    }
-
-    .service__text {
-        font-size: 1rem;
-    }
-
     .service__img {
         width: 100%;
         height: auto;
+    }
+}
+
+@media (max-width: 500px) { 
+    .service__mainTitle {
+        font-size: 1.3rem !important;   
     }
 }
 
@@ -189,11 +161,24 @@
 
 @media (max-width: 420px) {
     .service__title {
-        font-size: 1rem;
         font-weight: 900;
     }
 
     .service__content {
         padding: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .service__title {
+        font-size: 1.2rem !important;
+    }
+
+    .service__text {
+        font-size: 1rem !important;
+    }
+
+    .service ul li {
+        font-size: .8rem !important;
     }
 }

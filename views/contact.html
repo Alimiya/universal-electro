@@ -33,7 +33,7 @@
                                     <div class="d-flex align-items-center gap-4">
                                         <i class="fa-solid fa-mobile-screen"></i>
                                         <p>
-                                            <a class="text-decoration-none text-dark d-block mb-3   " href="tel:+77775335873">+7 (777) 533 58 73</a>
+                                            <a class="text-decoration-none text-dark d-block mb-3" href="tel:+77775335873">+7 (777) 533 58 73</a>
                                             <a class="text-decoration-none text-dark d-block" href="tel:+77015882060">+7 (701) 588 20 60</a>
                                         </p>
                                     </div>
@@ -41,7 +41,7 @@
                             </div>
                             
                             
-                            <button type="submit" class="btn btn-lg background-orange text-125 mt-4" data-bs-toggle="modal" data-bs-target="#submit-request-modal">Оставить заявку</button>
+                            <button type="submit" class="btn btn-lg background-orange text-125 mt-4" data-bs-toggle="modal" data-bs-target="#submit-request-modal">Оставить&nbsp;заявку</button>
                         </div>
                         <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2501.2501436741895!2d71.47861331596589!3d51.177612342582655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDEwJzM5LjQiTiA3McKwMjgnNTAuOSJF!5e0!3m2!1sru!2sbg!4v1489587723092" frameborder="0" style="border: 0px;" allowfullscreen=""></iframe>
                     </div>
@@ -49,26 +49,23 @@
 
                 <div class="contact__outer text-center mt-5">
                     <h2>Схема проезда</h2>
-                    <img class="path img-fluid" src="/public/images/path.png" alt="">
-                </div>
-                <div class="popup-image" id="popup-image">
-                    <span>&times;</span>
-                    <img src="/public/images/path.png" alt="">
+                    <img class="path img-fluid" src="/public/images/path.png" alt="" data-bs-toggle="modal" data-bs-target="#show-path-modal">
                 </div>
             </div>
         </div>
     </main>
 
+    <!-- Show Path Modal -->
+    <div class="modal modal-xl fade" id="show-path-modal">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-body">
+                <img class="w-100" src="/public/images/path.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-        document.querySelector('.path').onclick = () => {
-            document.querySelector(".popup-image").style.display = "block";
-        }
-
-        document.querySelector('.popup-image span').onclick = () => {
-            document.querySelector(".popup-image").style.display = "none";
-        }
-    </script>   
 </body>
 </html>

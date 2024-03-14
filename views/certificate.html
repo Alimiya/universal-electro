@@ -18,29 +18,24 @@
                 <div class="splide__track text-center">
                     <ul class="splide__list">
                         <li class="splide__slide">
-                            <img id="slide-img" src="/public/images/cert/cert1.jpg" alt="">
+                            <img id="slide-img" src="/public/images/cert/cert1.jpg" alt="Основной сертификат соответствия ТОО «UniversalElectro»" data-bs-toggle="modal" data-bs-target="#show-certificate-modal">
                         </li>
                         <li class="splide__slide">
-                            <img id="slide-img" src="/public/images/cert/cert2.jpg" alt="">
+                            <img id="slide-img" src="/public/images/cert/cert2.jpg" alt="Индустриальный сертификат" data-bs-toggle="modal" data-bs-target="#show-certificate-modal">
                         </li>
                         <li class="splide__slide">
-                            <img id="slide-img" src="/public/images/cert/cert3.png" alt="">
+                            <img id="slide-img" src="/public/images/cert/cert3.png" alt="Сертификат официального дистрибьютора ООО «ЭКФ Электротехника»" data-bs-toggle="modal" data-bs-target="#show-certificate-modal">
                         </li>
                         <li class="splide__slide">
-                            <img id="slide-img" src="/public/images/cert/cert4.jpg" alt="">
+                            <img id="slide-img" src="/public/images/cert/cert4.jpg" alt="Орган по подтверждению соответствия: ТОО «Фирма Торговая палата»" data-bs-toggle="modal" data-bs-target="#show-certificate-modal">
                         </li>
                         <li class="splide__slide">
-                            <img id="slide-img" src="/public/images/cert/cert5.jpg" alt="">
+                            <img id="slide-img" src="/public/images/cert/cert5.jpg" alt="Орган по подтверждению соответствия: ТОО «Казпром Серт»" data-bs-toggle="modal" data-bs-target="#show-certificate-modal">
                         </li>
                         <li class="splide__slide">
-                            <img id="slide-img" src="/public/images/cert/cert6.jpg" alt="">
+                            <img id="slide-img" src="/public/images/cert/cert6.jpg" alt="Орган по подтверждению соответствия Систем Менеджмента (СМ): ТОО «Казпром Серт»" data-bs-toggle="modal" data-bs-target="#show-certificate-modal">
                         </li>
                     </ul>
-
-                    <div class="popup-image" id="popup-image">
-                        <span>&times;</span>
-                        <img src="/public/images/cert/cert1.jpg" alt="">
-                    </div>
                 </div>
             </section>
         </div>
@@ -117,7 +112,16 @@
             
         </div>
 
-        
+        <!-- Show Certificate Modal -->
+        <div class="modal modal-xl fade " id="show-certificate-modal">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img class="w-100" src="/public/images/cert/cert1.jpg" alt="">
+                </div>
+            </div>
+            </div>
+        </div>
         
     </main>
 
@@ -162,21 +166,13 @@
         toggleText.addEventListener('click', toggleBlock);
 
 
-        // Popover Image in Slider
-        const slideArrows = document.querySelector('.splide__arrows')
-
+        // Changing images' src in Modal
         document.querySelectorAll(".splide__slide img").forEach(image => {
             image.onclick = () => {
-                document.querySelector(".popup-image").style.display = "block";
-                document.querySelector(".popup-image img").src = image.getAttribute("src");
-                slideArrows.style.display = "none"
+                document.querySelector("#show-certificate-modal img").src = image.getAttribute("src");
             }
         });
 
-        document.querySelector(".popup-image span").onclick = () => {
-            document.querySelector(".popup-image").style.display = "none";
-            slideArrows.style.display = "block"
-        };
     </script>
 </body>
 </html>

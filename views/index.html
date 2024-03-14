@@ -1,5 +1,8 @@
 <head>
   <title>Universal Electro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/public/css/landing.css">
 </head>
 <body>
@@ -31,9 +34,9 @@
     <div class="about">
       <div class="container">
         <div class="about__inner">
-          <div class="about__body w-75 mx-auto">
+          <div class="about__body mx-auto">
             <div class="about__content">
-              <h1 class="text-center">TOO <span class="text-orange fw-black text-uppercase">«Universal Electro»</span> работает на рынке Республики Казахстана с 20 февраля 2010 года.</h1>
+              <h1 class="text-center fs-2">TOO <span class="text-orange fw-black text-uppercase">«Universal Electro»</span> работает на рынке Республики Казахстана с 20 февраля 2010 года.</h1>
               <img class="about__img image-fluid w-100" src="/public/images/about.png" alt="">
               <div class="about__text text-start">
                 <p>TOO <span class="text-orange fw-bold text-uppercase">«Universal Electro»</span> является отечественным производителем товаров, мы внесены в реестр отечественных производителей товаров, работ и услуг и получили <a class="text-orange fst-italic" href="/public/pdf/certificates-confirmaty/Индустриальный сертифика 11 11 22т.pdf" target="_blank">Индустриальный сертификат.</a></p>
@@ -94,9 +97,9 @@
               <p class="footer__text">
                 Сотрудники нашей компании всегда рады предложить Вам самые оптимальные решения, а также ответить на все Ваши вопросы!
               </p>
-              <div class="mt-4 d-flex justify-content-center gap-2">
-                <a class="btn btn-light background-orange text-120" data-bs-toggle="modal" data-bs-target="#submit-request-modal">Оставить заявку</a>
-                <a class="btn btn-outline-dark text-120" href="/catalog">Перейти в каталог</a>
+              <div class="about__btn__group mt-4 d-flex justify-content-center gap-2 flex-wrap">
+                <a class="btn btn-light background-orange text-120" data-bs-toggle="modal" data-bs-target="#submit-request-modal">Оставить&nbsp;заявку</a>
+                <a class="btn btn-outline-dark text-120" href="/catalog">Перейти&nbsp;в&nbsp;каталог</a>
               </div>
               
             </div>
@@ -109,10 +112,12 @@
     
     <!-- Video -->
     <div class="video text-center">
-      <h1 class="video__title">Посмотрите краткий экскурс по нашему производству!</h1>
+      <div class="container">
+        <h1 class="video__title fs-2">Посмотрите краткий экскурс по нашему производству!</h1>
+      </div>
       <div class="video__inner">
         <div class="container">
-          <iframe class="w-75" height="500px" src="https://www.youtube.com/embed/Km__8iOFD_E?si=KGqf32jBVLWxI7aa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/Km__8iOFD_E?si=KGqf32jBVLWxI7aa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
       </div>
     </div>
@@ -123,7 +128,7 @@
     <div class="whyus">
       <div class="container">
         <div class="whyus__inner">
-          <h1 class="whyus__title text-center">Почему <span class="text-orange">Universal Electro</span> ?</h1>
+          <h1 class="whyus__title text-center fs-2">Почему <span class="text-orange">Universal Electro</span> ?</h1>
           <div class="whyus__body mt-5">
 
             <div class="whyus__element">
@@ -167,15 +172,34 @@
 
     <!-- Stat -->
     <div class="stat">
-      <div class="stat__img">
-        <img class="image-fluid" src="/public/images/bg.png" alt="">
-      </div>
-      
-      <div class="container">
-        <div class="stat__inner">
-          
+      <h1 class="stat__img__title">
+        <span>Universal</span>
+        <span>Electro</span>
+      </h1>
+
+      <!-- <div class="stat__body">
+        <div class="container">
+          <div class="stat__inner">
+            <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, earum.</h1>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic excepturi incidunt tempore aliquid unde totam, vero consequuntur! Similique voluptatem temporibus eaque quos? Distinctio possimus qui dolore, consequatur aspernatur in ex?</p>
+          </div>
         </div>
       </div>
+
+      <div class="stat__footer">
+        <div class="stat__inner">
+          <div class="stat__element">
+            <h2>30000</h2>
+          </div>
+          <div class="stat__element">
+            <h2>30000</h2>
+          </div>
+          <div class="stat__element">
+            <h2>30000</h2>
+          </div>
+        </div>
+      </div> -->
+      
     </div>
 
     <hr class="mt-5 mb-5">
@@ -187,7 +211,7 @@
           <div class="partner__body">
 
             <div class="partner__content text-center">
-              <h1>Наши партнеры</h1>
+              <h1 class="fs-2">Наши партнеры</h1>
               <p class="w-75 mx-auto mb-5">Мы работаем только с лучшими производителями, которые делают постоянные инвестиции в развитие новых технологий. Наша компания является дистрибьютором и партнером:</p>
             </div>
             <section id="companies-slider" class="splide" aria-label="Splide Basic HTML Example">
@@ -265,7 +289,7 @@
           <div class="faq__body">
 
             <div class="faq__content text-center">
-              <h1>Часто-задаваемые вопросы</h1>
+              <h1 class="fs-2">Часто-задаваемые вопросы</h1>
             </div>
             <div class="accordion accordion-flush" id="accordionFlushExample">
               <div class="accordion-item">

@@ -29,29 +29,28 @@ $(document).ready(function(){
         }
     });
 
-
-    // Hide button when Popup Image is shown
-    function hideChatButton() {
-        $('.uniq-chat-button').hide();
-    }
-    function showChatButton() {
-        $('.uniq-chat-button').show();
-    }
-    $('.splide__slide img, .path').click(hideChatButton);
-    $('.popup-image span').click(showChatButton);
-
-    // Move button upwards when it reaches the footer
     document.addEventListener('scroll', () => {
         const footerHeight = $('footer').outerHeight();
-        const height = window.innerHeight + footerHeight
-        const scrollableHeight = document.documentElement.scrollHeight - height
-        const uniqChatButton = document.querySelector('.uniq-chat-button')
-
-        if (window.scrollY >= scrollableHeight) {
-            uniqChatButton.style.bottom = `${footerHeight}px`
+        const height = window.innerHeight;
+        const scrollableHeight = document.documentElement.scrollHeight - height;
+        const uniqChatButton = document.querySelector('.uniq-chat-button');
+    
+        const distanceToFooter = scrollableHeight - window.scrollY;
+    
+        const interpolationFactor = Math.min(1, distanceToFooter / footerHeight);
+    
+        let bottomValue = 20 + (footerHeight * (1 - interpolationFactor));
+    
+        if (window.innerWidth < 800) {
+            uniqChatButton.style.position = 'fixed';
+            uniqChatButton.style.bottom = '20px';
+            uniqChatButton.style.right = '20px';
         } else {
-            uniqChatButton.style.bottom = "20px"
+            uniqChatButton.style.position = 'absolute';
+            uniqChatButton.style.bottom = `${bottomValue}px`;
+            uniqChatButton.style.right = '20px';
         }
-    })
+    });
+    
 });
 

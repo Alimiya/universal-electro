@@ -13,42 +13,6 @@ main {
 
 
 
-/* Popup Image */
-.popup-image {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, .9);
-    width: 100%;
-    height: 100%;
-    z-index: 100;
-}
-
-.popup-image span {
-    position: absolute;
-    top: 0;
-    right: 30px;
-    font-size: 40px;
-    font-weight: bolder;
-    color: #fff;
-    cursor: pointer;
-    z-index: 100;
-}
-
-.popup-image img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 5px solid #fff;
-    border-radius: 5px;
-    max-width: 500px;
-    object-fit: cover;
-}
-
-
-
 /* Submit Modal */
 #submit-request-modal .form__textarea {
     height: 75%;
@@ -105,6 +69,10 @@ main {
 .accordion-header {
     margin-top: 0;
     background-color: #E87900;
+}
+
+.accordion-body {
+    overflow: hidden;
 }
 
 .accordion-button {
@@ -215,12 +183,6 @@ main {
     animation: spinner-border .75s linear infinite;
 }
 
-@media (max-width: 575.98px) {  
-    .text-125 {
-        font-size: 1.1rem !important;
-    }
-}
-
 @media (max-width: 991.98px) {
     #submit-request-modal .modal-body {
         flex-direction: column;
@@ -238,8 +200,39 @@ main {
     }
 }
 
+@media (max-width: 767.98px) {  
+    .uniq-chat-button {
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+    .uniq-chat-button .ailabs_open svg {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 575.98px) {  
+    .text-125, .text-120 {
+        font-size: 1.1rem !important;
+    }
+}
+
 @media (max-width: 420px) {
     #show-contact-modal .modal-body .row {
         flex-direction: column;
+    }
+}
+
+@media (max-width: 380px) {
+    #show-contact-modal .modal-body .btn__group {
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 360px) {
+    .uniq-chat-button {
+        right: 10px !important;
     }
 }

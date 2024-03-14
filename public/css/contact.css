@@ -14,10 +14,6 @@
     transform: .2s linear;
 }
 
-.popup-image img {
-    max-width: 1000px !important;
-}
-
 @media (max-width: 1199.98px) {
     .contact__body {
         flex-direction: column;

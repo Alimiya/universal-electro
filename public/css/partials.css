@@ -1,7 +1,7 @@
 /* Footer */
 .footer {
     margin-top: auto;
-    background-color: #E87900 !important;
+    background-color: #b3b3b3 !important;
 }
 
 .footer .nav li a i{
@@ -13,6 +13,10 @@
 .footer .nav li a i:hover {
     background-color: rgb(0, 0, 0);
     border-radius: 8px;
+}
+
+.svk {
+    width: 100px;
 }
 
 .footer .nav li:nth-child(1) a i:hover {
@@ -31,13 +35,25 @@
     color: #087bff;
 }
 
-@media (max-width: 575.98px) { 
+@media (max-width: 800px) {
     .footer {
-        flex-direction: column;
-        gap: 30px
+        padding-top: 40px !important;
+        flex-direction: column-reverse;
+        gap: 30px;
+    }
+    .footer__title {
+        font-size: 1.1rem;
     }
 
+    .footer .nav li a i{
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 575.98px) { 
     .footer__title {
         font-size: 1.1rem;
     }
 }
+
+

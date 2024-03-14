@@ -47,13 +47,19 @@
     max-height: 500px;
 }
 
+@media (max-width: 1300px) {
+    .splide__list {
+        margin: 0 20px;
+    }
+}
+
 @media (max-width: 1199.98px) {
     .upload__title {
         text-align: center;
     }
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 900px) {
 
 }
 
@@ -78,6 +84,18 @@
 @media (max-width: 575.98px) { 
     .popup-image img {
         max-width: 300px;
+    }
+}
+
+@media (max-width: 440px) {
+    .splide__list img{
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 340px) {
+    .splide__list img{
+        max-width: 190px;
     }
 }
 
