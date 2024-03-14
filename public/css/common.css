@@ -150,6 +150,10 @@ main {
     font-family: InterReg;
 }
 
+#ambiance-notification {
+    top: 0 !important
+}
+
 .loader_overlay {
     display: block;
     width: 20px;
@@ -215,6 +219,10 @@ main {
 @media (max-width: 575.98px) {  
     .text-125, .text-120 {
         font-size: 1.1rem !important;
+    }
+
+    .ambiance {
+        width: 100% !important;
     }
 }
 
