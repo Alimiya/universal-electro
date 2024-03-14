@@ -5,6 +5,8 @@ const { jsPDF } = require('jspdf')
 const fs = require('fs')
 require('jspdf-autotable')
 
+const path = require('path');
+
 exports.getProducts = async function (req, res, next) {
     let data = [];
 
@@ -99,13 +101,16 @@ exports.createPdf = async (req, res) => {
         });
         // bodyData.push(['', '', '', 'Общая сумма:', totalAmount.toFixed(2), '', '']);
 
+        const fontsDir = path.join(__dirname, '../public/fonts/');
+        const imagesDir = path.join(__dirname, '../public/images/pdf-images');
+
         const docPdf = new jsPDF();
-        docPdf.addFont("ArialRegular.ttf", "Arial", "normal");
-        docPdf.addFont("ArialBold.ttf", "ArialBold", "normal");
+        docPdf.addFont(path.join(fontsDir, "ArialRegular.ttf"), "Arial", "normal");
+        docPdf.addFont(path.join(fontsDir, "ArialBold.ttf"), "ArialBold", "normal");
         docPdf.setFont("Arial");
 
         // Add the first image at the beginning of the PDF
-        const firstImageBuffer = fs.readFileSync('header_pdf.png');
+        const firstImageBuffer = fs.readFileSync(path.join(imagesDir, 'header_pdf.png'));
         docPdf.addImage(firstImageBuffer, 'PNG', 0, 0, docPdf.internal.pageSize.width, 27); // Adjust the coordinates and dimensions
 
         docPdf.setFont("ArialBold");
@@ -141,7 +146,7 @@ exports.createPdf = async (req, res) => {
         });
 
         // Add the second image at the end of the PDF
-        const secondImageBuffer = fs.readFileSync('footer_pdf.png');
+        const secondImageBuffer = fs.readFileSync(path.join(imagesDir, 'footer_pdf.png'));
         const imgWidth = docPdf.internal.pageSize.width;
         const imgHeight = 18; // Adjust the height as needed
         const imgY = docPdf.internal.pageSize.height - imgHeight;

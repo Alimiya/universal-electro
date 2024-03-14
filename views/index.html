@@ -7,6 +7,7 @@
 </head>
 <body>
   <main>
+
     <!-- Intro -->
     <div class="intro w-100 py-5">
       <div class="container text-center">
@@ -30,7 +31,6 @@
     <hr class="mt-5 mb-5">
 
     <!-- About -->
-
     <div class="about">
       <div class="container">
         <div class="about__inner">
@@ -124,6 +124,18 @@
 
     <hr class="mt-5 mb-5">
 
+    <!-- Map -->
+    <div class="map">
+      <div class="container">
+        <div class="map__inner text-center">
+          <h2>Наша продукция поставляюет <span class="text-success">в разные регионы</span> Республики Казахстана:</h2>
+          <img style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#show-map-modal" width="100%" src="/public/images/landing-page/map2.png" alt="">
+        </div> 
+      </div>
+    </div>
+
+    <hr class="mt-5 mb-5">
+
     <!-- Why us -->
     <div class="whyus">
       <div class="container">
@@ -170,42 +182,8 @@
 
     <hr class="mt-5 mb-5">
 
-    <!-- Stat -->
-    <div class="stat">
-      <h1 class="stat__img__title">
-        <span>Universal</span>
-        <span>Electro</span>
-      </h1>
-
-      <!-- <div class="stat__body">
-        <div class="container">
-          <div class="stat__inner">
-            <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, earum.</h1>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic excepturi incidunt tempore aliquid unde totam, vero consequuntur! Similique voluptatem temporibus eaque quos? Distinctio possimus qui dolore, consequatur aspernatur in ex?</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="stat__footer">
-        <div class="stat__inner">
-          <div class="stat__element">
-            <h2>30000</h2>
-          </div>
-          <div class="stat__element">
-            <h2>30000</h2>
-          </div>
-          <div class="stat__element">
-            <h2>30000</h2>
-          </div>
-        </div>
-      </div> -->
-      
-    </div>
-
-    <hr class="mt-5 mb-5">
-
     <!-- Partners -->
-    <div class="partner pt-5" id="faq">
+    <div class="partner" id="faq">
       <div class="container">
         <div class="partner__inner">
           <div class="partner__body">
@@ -402,12 +380,21 @@
             </div>
           </div>
         </div>
-        <div class="faq__footer">
-        
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Show Certificate Modal -->
+  <div class="modal modal-xl fade " id="show-map-modal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <img class="w-100" src="/public/images/landing-page/map2.png" alt="">
         </div>
       </div>
     </div>
-  </main>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

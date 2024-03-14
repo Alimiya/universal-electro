@@ -122,6 +122,14 @@
 
 
 
+/* Map */
+
+.map__inner {
+    position: relative;
+}
+
+
+
 /* Why us */
 .whyus__body {
     display: flex;
@@ -145,70 +153,6 @@
 }
 
 
-
-/* Stat */
-.stat {
-    display: none;
-    position: relative;
-    background-image: url("/public/images/bg.png");
-    background-position: center;
-    background-size: cover;
-
-    width: 100%;
-    height: 1080px;
-}
-
-.stat__img__title {
-    width: 100%;
-    text-align: center;
-
-    position: absolute;
-    top: 51%;
-    left: 52%;
-    transform: translate(-52%, -51%)
-}
-
-.stat__img__title span{
-    font-family: "Audiowide", sans-serif;
-    font-size: 4rem;
-    letter-spacing: .1.5rem;
-    text-transform: uppercase;
-}
-
-.stat__img__title span:nth-child(1) {
-    color: #fff;
-    text-shadow: 0 0 15px #f95005, 0 0 15px #f95005;
-    -webkit-text-stroke: 1px #f95005;
-}
-
-.stat__img__title span:nth-child(2) {
-    color: #f95005;
-    text-shadow:  0 0 15px #fff, 0 0 20px #fff;
-}
-
-/* .stat__body {
-    color: #fff;
-    text-align: center;
-}
-
-.stat__body .stat__inner {
-    width: 75%;
-    margin: 2.5rem auto;
-    text-align: center;
-}
-
-.stat__footer .stat__inner {
-    position: absolute;
-    
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.stat__footer .stat__innner .stat__element {
-    width: 30%;
-}
- */
 
 /* Slide */
 
