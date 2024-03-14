@@ -90,6 +90,7 @@
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    background-color: #fff;
 }
 
 .about__dir__element p {
@@ -104,6 +105,10 @@
     width: 70px;
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
+}
+
+.about__btn__group a:nth-child(2) {
+    border: 1px solid;
 }
 
 
@@ -126,6 +131,10 @@
 
 .map__inner {
     position: relative;
+}
+
+.map img {
+    width: 75%;
 }
 
 

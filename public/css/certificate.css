@@ -1,19 +1,3 @@
-.header__btn {
-    background-color:#E87900 !important; 
-    font-weight: 500;
-    transition: .2s ease color;
-}
-
-.header__btn:hover {
-    color: #fff !important;
-}
-
-.text-orange {
-    color: #E87900;
-}
-
-
-
 /* Splide */
 .splide__slide img {
     cursor: pointer;
