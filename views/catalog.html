@@ -6,8 +6,8 @@
 
 <body>
     <main>
-        <div class="container d-flex align-items-center gap-5" style="width: 78%;">
-            <h1>Наш каталог</h1>
+        <div class="container d-flex align-items-center gap-5 mt-4 mb-4" style="width: 78%;">
+            <a href="/catalog" class="fs-2 text-decoration-none text-dark fw-bold">Наш каталог</a>
             <div class="bucket_btn bg-light rounded pt-1 px-2 d-flex align-items-center btn" onclick="showBucket()">
                 <span class="material-symbols-outlined" style="font-size: 30px; font-variant: bold;">
                     shopping_cart_checkout
@@ -195,6 +195,12 @@
             if (!productsHTML) productsHTML += `<div class="alert alert-light w-100">Ничего не найдено</div>`;
 
             $("#catalog").append(productsHTML);
+
+            // Reinitialize tooltips
+            $('[data-bs-toggle="tooltip"]').each(function () {
+                new bootstrap.Tooltip(this);
+            });
+
             showCountProducts();
         }
 
@@ -425,10 +431,13 @@
                     <div class="h-50">
                         <img src="${p.product_img}" alt="">
                     </div>
-                    <i>Артикул: ${p.articul}</i>
-                    <h3 data-bs-toggle="tooltip" data-bs-title="${p.title}"">${p.title}</h3>
-                    ${p.status == '1' ? '<p class="text-success">В наличии</p>' : '<p class="text-danger">Нет в наличии</p>'}
-                    <h2>${p.price} ₸</h2>
+                    
+                    <div class="product_info pt-2" style="flex:1">
+                        <i>Артикул: ${p.articul}</i>
+                        <h3 data-bs-toggle="tooltip" data-bs-title="${p.title}"">${p.title}</h3>
+                        ${p.status == '1' ? '<p class="text-success">В наличии</p>' : '<p class="text-danger">Нет в наличии</p>'}
+                        <h2>${p.price} ₸</h2>
+                    </div>
                     <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')">В корзину</button>
                     <button class="btn btn-warning px-4 py-2 mt-2" onclick="showDescription('product-${i}')">Подробнее</button>
                 </div>`;
@@ -436,7 +445,12 @@
                 i++;
             });
             if (!productsHTML) productsHTML += `<div class="alert alert-light w-100">Ничего не найдено</div>`;
+
             $("#catalog").html(productsHTML)
+            // Reinitialize tooltips
+            $('[data-bs-toggle="tooltip"]').each(function () {
+                new bootstrap.Tooltip(this);
+            });
         }
 
         function showDescription(product_index){

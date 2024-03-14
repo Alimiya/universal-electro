@@ -180,10 +180,19 @@
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 603px) { 
   #catalog{
     justify-content: center;
   }
+
+  .product .img_block {
+    text-align: center;
+  }
+  
+  .product img {
+    width: 175px;
+  }
+
   .product{
     min-height: 500px; 
     width: 90%;
@@ -193,3 +202,18 @@
     flex: none !important;
   }
 }
+
+/* @media (max-width: 575.98px) { 
+  #catalog{
+    justify-content: center;
+  }
+
+  .product{
+    min-height: 500px; 
+    width: 90%;
+  }
+
+  .product_info{
+    flex: none !important;
+  }
+} */
