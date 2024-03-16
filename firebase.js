@@ -6,7 +6,7 @@ const { initializeApp } = require('firebase/app')
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDoOnSE-0UMFiJPn0O48vg8NnU0Qtsa62c",
+    apiKey: "AIzaSyDLzXUJLTR61pYACSlD-HEu6boh6IwfqY0",
     authDomain: "universal-electro.firebaseapp.com",
     projectId: "universal-electro",
     storageBucket: "universal-electro.appspot.com",
