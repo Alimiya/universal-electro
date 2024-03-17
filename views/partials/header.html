@@ -11,19 +11,19 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto  me-auto mb-2 mb-lg-0">
               <li class="nav-item mx-3">
-                <a class="nav-link" href="/">О нас</a>
+                <a class="nav-link" href="/"><%=L('header1', language, 'О нас') %></a>
               </li>
               <li class="nav-item mx-3">
-                <a class="nav-link" href="/service">Услуги</a>
+                <a class="nav-link" href="/service"><%=L('header2', language, 'Услуги') %></a>
               </li>
               <li class="nav-item mx-3">
-                <a class="nav-link" href="/catalog">Каталог</a>
+                <a class="nav-link" href="/catalog">Каталог </a>
               </li>
               <li class="nav-item mx-3">
-                <a class="nav-link" href="/certificate">Сертификаты</a>
+                <a class="nav-link" href="/certificate"><%=L('header3', language, 'Сертификаты') %></a>
               </li>
               <li class="nav-item mx-3">
-                <a class="nav-link" href="/contact">Контакты</a>
+                <a class="nav-link" href="/contact"><%=L('header4', language, 'Контакты') %></a>
               </li>
             </ul>
             <select class="form-select me-3" style="width: 70px;" id="language" onchange="changeLanguage()">
@@ -32,7 +32,7 @@
             </select>
             </button>
             <button type="button" class="header__btn btn background-orange" data-bs-toggle="modal" data-bs-target="#show-contact-modal">
-              Связаться&nbsp;с&nbsp;нами
+              <%=L('header5', language, 'Связаться с нами') %>
             </button>
             </div>
           </div>
@@ -79,7 +79,7 @@
       <div class="modal-dialog text-left">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Контакты</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel"><%=L('header4', language, 'Контакты') %></h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -108,8 +108,8 @@
               </div>
             </div>
             <div class="btn__group mt-4 mb-3 d-flex flex-wrap align-items-center gap-2">
-              <a class="btn btn-light background-orange" data-bs-toggle="modal" data-bs-target="#submit-request-modal">Оставить&nbsp;заявку</a>
-              <a href="/catalog" class="btn btn-outline-dark">Перейти&nbsp;в&nbsp;каталог</a>
+              <a class="btn btn-light background-orange" data-bs-toggle="modal" data-bs-target="#submit-request-modal"><%=L('header6', language, 'Оставить заявку') %></a>
+              <a href="/catalog" class="btn btn-outline-dark"><%=L('header7', language, 'Перейти в каталог') %></a>
             </div>
           </div>
         </div>
@@ -121,7 +121,7 @@
       $(()=>{
         $('#language').val('<%= language %>');
       });
-      
+
       function logout() {
         $.ajax({
           url: '/api/auth/logout',

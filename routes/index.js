@@ -17,7 +17,7 @@ router.get('/service', (req, res) => {
 });
 
 router.get('/catalog', (req, res) => {
-    res.render('catalog');
+    res.render('catalog', {L:L, language: req.cookies.language ? req.cookies.language : 'ru'});
 });
 
 router.get('/certificate', (req, res) => {
