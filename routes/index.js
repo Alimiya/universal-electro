@@ -9,11 +9,11 @@ router.use((req, res, next) => {
 });
 
 router.get('/', (req, res) => {
-    res.render('index', {L:L, language: "ru"});
+    res.render('index', {L:L, language: req.cookies.language ? req.cookies.language : 'ru'});
 });
 
 router.get('/service', (req, res) => {
-    res.render('service');
+    res.render('service', {L:L, language: req.cookies.language ? req.cookies.language : 'ru'});
 });
 
 router.get('/catalog', (req, res) => {
@@ -21,11 +21,11 @@ router.get('/catalog', (req, res) => {
 });
 
 router.get('/certificate', (req, res) => {
-    res.render('certificate');
+    res.render('certificate', {L:L, language: req.cookies.language ? req.cookies.language : 'ru'});
 });
 
 router.get('/contact', (req, res) => {
-    res.render('contact');
+    res.render('contact', {L:L, language: req.cookies.language ? req.cookies.language : 'ru'});
 })
 
 router.get('/login', (req, res) => {
@@ -42,6 +42,18 @@ router.get('/admin/products', verifyAdminToken(), (req, res) => {
 
 router.get('/admin/requests', verifyAdminToken(), (req, res) => {
     res.render('requests', {page: 'requests'});
+});
+
+router.post('/', (req,res)=>{
+    var r = {r:0};
+    var action = req.body.action;
+    
+    if(action == 'changeLanguage'){
+        const language = req.body.language;
+        res.cookie("language", language);
+        r['r'] = 1;
+        res.send(JSON.stringify(r));
+    }
 });
 
 

@@ -26,7 +26,11 @@
                 <a class="nav-link" href="/contact">Контакты</a>
               </li>
             </ul>
-
+            <select class="form-select me-3" style="width: 70px;" id="language" onchange="changeLanguage()">
+              <option value="kz">KZ</option>
+              <option value="ru">RU</option>
+            </select>
+            </button>
             <button type="button" class="header__btn btn background-orange" data-bs-toggle="modal" data-bs-target="#show-contact-modal">
               Связаться&nbsp;с&nbsp;нами
             </button>
@@ -113,12 +117,30 @@
     </div>
 
     <script>
+
+      $(()=>{
+        $('#language').val('<%= language %>');
+      });
+      
       function logout() {
         $.ajax({
           url: '/api/auth/logout',
           method: 'POST',
           success: function (r) {
             window.location.replace("/login");
+          }
+        })
+      }
+
+      function changeLanguage(){
+        let language = $('#language').val();
+        $.ajax({
+          url: '/',
+          method: 'POST',
+          data: {action: 'changeLanguage', language: language},
+          dataType: 'json',
+          success: function(data){
+            if(data.r) location.reload();
           }
         })
       }
