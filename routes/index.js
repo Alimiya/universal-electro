@@ -9,7 +9,7 @@ router.use((req, res, next) => {
 });
 
 router.get('/', (req, res) => {
-    res.render('index');
+    res.render('index', {L:L, language: "ru"});
 });
 
 router.get('/service', (req, res) => {

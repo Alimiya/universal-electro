@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
 require("dotenv").config({path: "config/.env"})
-
+require("./translate")
 const index = require('./routes/index');
 const adminRoute = require('./routes/adminRoute')
 const catalogRoute = require('./routes/catalogRoute')
