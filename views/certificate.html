@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificates</title>
+    <title><%= L('cert1', language, 'Сертификаты') %></title>
     <link rel="stylesheet" href="/public/css/certificate.css">
 </head>
 <body>
     <main>
         <div class="pageTitle text-center mb-5">
-            <h1 class="fs-2">Сертификаты</h1>
+            <h1 class="fs-2"><%= L('cert1', language, 'Сертификаты') %></h1>
             <div></div>
         </div>
 
@@ -18,22 +18,22 @@
                 <div class="splide__track text-center">
                     <ul class="splide__list">
                         <li class="splide__slide">
-                            <img id="slide-img" src="/public/images/cert/cert1.jpg" alt="Основной сертификат соответствия ТОО «UniversalElectro»" data-bs-toggle="modal" data-bs-target="#show-certificate-modal">
+                            <img id="slide-img" src="<%= L('certImgUrl1', language, '/public/images/cert/ru/cert1.jpg') %>" alt="Основной сертификат соответствия ТОО «UniversalElectro»" data-bs-toggle="modal" data-bs-target="#show-certificate-modal">
                         </li>
                         <li class="splide__slide">
-                            <img id="slide-img" src="/public/images/cert/cert2.jpg" alt="Индустриальный сертификат" data-bs-toggle="modal" data-bs-target="#show-certificate-modal">
+                            <img id="slide-img" src="<%= L('certImgUrl2', language, '/public/images/cert/ru/cert2.jpg') %>" alt="Индустриальный сертификат" data-bs-toggle="modal" data-bs-target="#show-certificate-modal">
                         </li>
                         <li class="splide__slide">
-                            <img id="slide-img" src="/public/images/cert/cert3.png" alt="Сертификат официального дистрибьютора ООО «ЭКФ Электротехника»" data-bs-toggle="modal" data-bs-target="#show-certificate-modal">
+                            <img id="slide-img" src="/public/images/cert/ru/cert3.png" alt="Сертификат официального дистрибьютора ООО «ЭКФ Электротехника»" data-bs-toggle="modal" data-bs-target="#show-certificate-modal">
                         </li>
                         <li class="splide__slide">
-                            <img id="slide-img" src="/public/images/cert/cert4.jpg" alt="Орган по подтверждению соответствия: ТОО «Фирма Торговая палата»" data-bs-toggle="modal" data-bs-target="#show-certificate-modal">
+                            <img id="slide-img" src="<%= L('certImgUrl3', language, '/public/images/cert/ru/cert4.jpg') %>" alt="Орган по подтверждению соответствия: ТОО «Фирма Торговая палата»" data-bs-toggle="modal" data-bs-target="#show-certificate-modal">
                         </li>
                         <li class="splide__slide">
-                            <img id="slide-img" src="/public/images/cert/cert5.jpg" alt="Орган по подтверждению соответствия: ТОО «Казпром Серт»" data-bs-toggle="modal" data-bs-target="#show-certificate-modal">
+                            <img id="slide-img" src="/public/images/cert/ru/cert5.jpg" alt="Орган по подтверждению соответствия: ТОО «Казпром Серт»" data-bs-toggle="modal" data-bs-target="#show-certificate-modal">
                         </li>
                         <li class="splide__slide">
-                            <img id="slide-img" src="/public/images/cert/cert6.jpg" alt="Орган по подтверждению соответствия Систем Менеджмента (СМ): ТОО «Казпром Серт»" data-bs-toggle="modal" data-bs-target="#show-certificate-modal">
+                            <img id="slide-img" src="/public/images/cert/ru/cert6.jpg" alt="Орган по подтверждению соответствия Систем Менеджмента (СМ): ТОО «Казпром Серт»" data-bs-toggle="modal" data-bs-target="#show-certificate-modal">
                         </li>
                     </ul>
                 </div>
@@ -43,66 +43,66 @@
         <div class="upload">
             <div class="container">
 
-                <h2 class="upload__title">Тут вы можете посмотреть каждый сертификат по отдельности в формате PDF</h2>
+                <h2 class="upload__title"><%= L('cert2', language, 'Тут вы можете посмотреть каждый сертификат по отдельности в формате PDF') %></h2>
                 <ol class="upload__body">
 
                     <li class="upload__element">
-                        <h3>Основной сертификат соответствия ТОО «UniversalElectro»</h3>
-                        <a href="/public/pdf/certificates-confirmaty/Сертификат соответствия ТОО UniversalElectro ЕАЭС KZ 7100841.01.01.00558 до 18 10 2025.pdf" target="_blank">Скачать в формате PDF</a>
+                        <h3><%= L('cert3', language, 'Основной сертификат соответствия ТОО «UniversalElectro»') %></h3>
+                        <a href="/public/pdf/certificates-confirmaty/Сертификат соответствия ТОО UniversalElectro ЕАЭС KZ 7100841.01.01.00558 до 18 10 2025.pdf" target="_blank"><%= L('cert4', language, 'Скачать в формате PDF') %></a>
                     </li>
                     <li class="upload__element">
-                        <h3>Индустриальный сертификат</h3>
-                        <a href="/public/pdf/certificates-confirmaty/Индустриальный сертифика 11 11 22т.pdf" target="_blank">Скачать в формате PDF</a>
+                        <h3><%= L('cert5', language, 'Индустриальный сертификат') %></h3>
+                        <a href="/public/pdf/certificates-confirmaty/Индустриальный сертифика 11 11 22т.pdf" target="_blank"><%= L('cert4', language, 'Скачать в формате PDF') %></a>
                     </li>
                     <li class="upload__element">
-                        <h3>Сертификат официального дистрибьютора ООО «ЭКФ Электротехника»</h3>
-                        <a href="/public/pdf/certificates-confirmaty/Сертификат EKF - UniversalElectro ТОО  ДИСТРЫ.pdf" target="_blank">Скачать в формате PDF</a>
+                        <h3><%= L('cert6', language, 'Сертификат официального дистрибьютора ООО «ЭКФ Электротехника»') %></h3>
+                        <a href="/public/pdf/certificates-confirmaty/Сертификат EKF - UniversalElectro ТОО  ДИСТРЫ.pdf" target="_blank"><%= L('cert4', language, 'Скачать в формате PDF') %></a>
                     </li>
                     <li class="upload__element">
-                        <h3>Орган по подтверждению соответствия: ТОО «Фирма Торговая палата»</h3>
-                        <a href="/public/pdf/certificates-confirmaty/Сертификат соответствия КТП КСО ЯКНО КМ КТПМ КТПГ.pdf" target="_blank">Скачать в формате PDF</a>
+                        <h3><%= L('cert7', language, 'Орган по подтверждению соответствия: ТОО «Фирма Торговая палата»') %></h3>
+                        <a href="/public/pdf/certificates-confirmaty/Сертификат соответствия КТП КСО ЯКНО КМ КТПМ КТПГ.pdf" target="_blank"><%= L('cert4', language, 'Скачать в формате PDF') %></a>
                     </li>
                     <li class="upload__element">
-                        <h3>Орган по подтверждению соответствия: ТОО «Казпром Серт»</h3>
-                        <a href="/public/pdf/certificates-confirmaty/Сертификат соответствия СТ РК ISO 9001-2016 Система менеджмента качества Требования.PDF" target="_blank">Скачать в формате PDF</a>
+                        <h3><%= L('cert8', language, 'Орган по подтверждению соответствия: ТОО «Казпром Серт»') %></h3>
+                        <a href="/public/pdf/certificates-confirmaty/Сертификат соответствия СТ РК ISO 9001-2016 Система менеджмента качества Требования.PDF" target="_blank"><%= L('cert4', language, 'Скачать в формате PDF') %></a>
                     </li>
                     <li class="upload__element">
-                        <h3>Орган по подтверждению соответствия Систем Менеджмента (СМ): ТОО «Казпром Серт»</h3>
-                        <a href="/public/pdf/certificates-confirmaty/Сертификат СТ РК ISO 9001 2016 14001 2016.pdf" target="_blank">Скачать в формате PDF</a>
+                        <h3><%= L('cert9', language, 'Орган по подтверждению соответствия Систем Менеджмента (СМ): ТОО «Казпром Серт»') %></h3>
+                        <a href="/public/pdf/certificates-confirmaty/Сертификат СТ РК ISO 9001 2016 14001 2016.pdf" target="_blank"><%= L('cert4', language, 'Скачать в формате PDF') %></a>
                     </li>
                     <li class="upload__element">
-                        <h3>Сертификаты о происхождении товаров </h3>
+                        <h3><%= L('cert10', language, 'Сертификаты о происхождении товаров') %></h3>
                     </li>
 
-                    <p id="upload-toggle" class="text-decoration-underline">Посмотреть</p>
+                    <p id="upload-toggle" class="text-decoration-underline"><%= L('cert11', language, 'Посмотреть') %></p>
                     <div id="upload-block" class="upload__block">
                         <ul>
                             <div class="d-flex align-items-center gap-3">
-                                <li>Комплектная трансформаторная странция КТП (Б)а</li>
+                                <li><%= L('cert12', language, 'Комплектная трансформаторная странция КТП (Б)а') %></li>
                                 <a href="/public/pdf/certificates-product/СТ КЗ на КТП и ЯУО .PDF" target="_blank">PDF</a>
                             </div>
                             <div class="d-flex align-items-center gap-3">
-                                <li>Шкаф металлический для одежды</li>
+                                <li><%= L('cert13', language, 'Шкаф металлический для одежды') %></li>
                                 <a href="/public/pdf/certificates-product/ст кз от 05 05 23.PDF" target="_blank">PDF</a>
                             </div>
                             <div class="d-flex align-items-center gap-3">
-                                <li>Шкаф управления, для насоса с частотным преобразователем, IP 41</li>
+                                <li><%= L('cert14', language, 'Шкаф управления, для насоса с частотным преобразователем, IP 41') %></li>
                                 <a href="/public/pdf/certificates-product/ст кз шкаф управления для насоса.PDF" target="_blank">PDF</a>
                             </div>
                             <div class="d-flex align-items-center gap-3">
-                                <li>Шкаф распределения переменного тока ПР 11 3078 21 У3</li>
+                                <li><%= L('cert15', language, 'Шкаф распределения переменного тока ПР 11 3078 21 У3') %></li>
                                 <a href="/public/pdf/certificates-product/ст кз ШР ПР 11 3 078 21У3.PDF" target="_blank">PDF</a>
                             </div>
                             <div class="d-flex align-items-center gap-3">
-                                <li>Щит учетно-распределительный для производственных и общественных зданий</li>
+                                <li><%= L('cert16', language, 'Щит учетно-распределительный для производственных и общественных зданий') %></li>
                                 <a href="/public/pdf/certificates-product/ст кз ЩРН от 17 11 23.PDF" target="_blank">PDF</a>
                             </div>
                             <div class="d-flex align-items-center gap-3">
-                                <li>Шкаф распределения переменного тока, ШАОТ</li>
+                                <li><%= L('cert17', language, 'Шкаф распределения переменного тока, ШАОТ') %></li>
                                 <a href="/public/pdf/certificates-product/ст-кз ЩАОТ.PDF" target="_blank">PDF</a>
                             </div>
                             <div class="d-flex align-items-center gap-3">
-                                <li>Щит распределительный переносной 3xl6/3+3x16/5 У1 IP44</li>
+                                <li><%= L('cert18', language, 'Щит распределительный переносной 3xl6/3+3x16/5 У1 IP44') %></li>
                                 <a href="/public/pdf/certificates-product/ст-кз щит распред.PDF" target="_blank">PDF</a>
                             </div>
                         </ul>

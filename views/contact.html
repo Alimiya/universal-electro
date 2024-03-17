@@ -1,5 +1,5 @@
 <head>
-    <title>Document</title>
+    <title><%=L('contact1', language, 'Контакты') %></title>
     <link rel="stylesheet" href="/public/css/contact.css">
 </head>
 <body>
@@ -8,17 +8,17 @@
             <div class="container">
                 <div class="contact__inner">
                     <div class="contact__header text-center">
-                        <h1 class="contact__title fs-2">Контакты</h1>
+                        <h1 class="contact__title fs-2"><%=L('contact1', language, 'Контакты') %></h1>
                     </div>
 
                     <div class="contact__body d-flex justify-content-between align-items-center">
                         <div class="contact__content">
                             <div class="contact__content__inner" itemscope itemtype="https://schema.org/LocalBusiness">
                                 <div>
-                                    <h2 class="mb-4">ТОО «UniversalElectro»</h2>
+                                    <h2 class="mb-4"><%=L('contact2', language, 'ТОО «UniversalElectro»') %></h2>
                                     <p class="d-flex align-items-center gap-4">
                                         <i class="fa-solid fa-location-dot"></i>
-                                        <a class="text-dark text-decoration-none" href="https://go.2gis.com/8iz6w">г.Астана, ул. Жетіген, 28/2</a>
+                                        <a class="text-dark text-decoration-none" href="https://go.2gis.com/8iz6w"><%=L('contact3', language, 'г.Астана, ул. Жетіген, 28/2') %></a>
                                     </p>
                                     <p class="d-flex align-items-center gap-4">
                                         <i class="fa-solid fa-envelope"></i>
@@ -41,14 +41,14 @@
                             </div>
                             
                             
-                            <button type="submit" class="btn btn-lg background-orange text-125 mt-4" data-bs-toggle="modal" data-bs-target="#submit-request-modal">Оставить&nbsp;заявку</button>
+                            <button type="submit" class="btn btn-lg background-orange text-125 mt-4" data-bs-toggle="modal" data-bs-target="#submit-request-modal"><%= L('contact4', language, 'Оставить заявку') %></button>
                         </div>
                         <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2501.2501436741895!2d71.47861331596589!3d51.177612342582655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDEwJzM5LjQiTiA3McKwMjgnNTAuOSJF!5e0!3m2!1sru!2sbg!4v1489587723092" frameborder="0" style="border: 0px;" allowfullscreen=""></iframe>
                     </div>
                 </div>
 
                 <div class="contact__outer text-center mt-5">
-                    <h2>Схема проезда</h2>
+                    <h2><%= L('contact5', language, 'Схема проезда') %></h2>
                     <img class="path img-fluid" src="/public/images/path.png" alt="" data-bs-toggle="modal" data-bs-target="#show-path-modal">
                 </div>
             </div>
