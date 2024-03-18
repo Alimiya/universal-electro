@@ -14,11 +14,11 @@
 }
 
 .upload__element a {
-    color: #E87900;
+    color: var(--main-color);
 }
 
 .upload__block a {
-    color: #E87900;
+    color: var(--main-color);
 }
 
 .upload__block {

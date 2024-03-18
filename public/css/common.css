@@ -1,3 +1,8 @@
+:root {
+    --main-color: #fa9120;
+    --main-hover-color: #ff8400;;
+}
+
 body {
     background-image: url(/public/images/main-bg.png);
     background-size: cover;
@@ -19,7 +24,7 @@ main {
 }
 
 #submit-request-modal .request-modal__btn:hover {
-    background-color: #ff8400 !important;
+    background-color: var(--main-hover-color) !important;
 }
 
 #submit-request-modal .order_form {
@@ -47,19 +52,19 @@ main {
 }
 
 .text-orange {
-    color: #E87900 !important;
+    color: var(--main-color) !important;
 }
 
 .background-orange {
-    background-color: #E87900 !important;
+    background-color: var(--main-color) !important;
 }
 
 .background-orange:hover {
-    background-color: #ff8400 !important;;
+    background-color: var(--main-hover-color) !important;;
 }
 
 .border-orange {
-    border-color: #E87900 !important;
+    border-color: var(--main-color) !important;
 }
 
 .accordion-item {
@@ -68,7 +73,7 @@ main {
 
 .accordion-header {
     margin-top: 0;
-    background-color: #E87900;
+    background-color: var(--main-color);
 }
 
 .accordion-body {
@@ -80,7 +85,7 @@ main {
 }
 
 .accordion-button:focus {
-    background-color: #E87900;
+    background-color: var(--main-color);
     box-shadow: 0 0 0 .1rem #f09431;
 }
 

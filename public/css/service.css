@@ -8,14 +8,14 @@
 }
 
 .service__inner {
-    border-bottom: 1px solid #E87900;
+    border-bottom: 1px solid var(--main-color);
     padding-bottom: 2rem;
 }
 
 .service__content {
     width: 50%;
     padding: 2rem;
-    border: 2px solid #E87900;
+    border: 2px solid var(--main-color);
     border-radius: 1rem;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .request-modal__btn:hover {
-    background-color: #ff8400 !important;
+    background-color: var(--main-hover-color) !important;
 }
 
 

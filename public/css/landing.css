@@ -1,7 +1,7 @@
 /* Intro */
 .intro {
     min-height: 80vh;
-    background-color: #E87900;
+    background-color: var(--main-color);
 
     display: flex;
     justify-content: center;
@@ -116,7 +116,7 @@
 /* Video */
 
 .video__inner {
-    background-color: #E87900;
+    background-color: var(--main-color);
     padding: 2rem 0;
 }
 
