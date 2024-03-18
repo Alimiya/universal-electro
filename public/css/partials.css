@@ -17,6 +17,7 @@
 
 .svk {
     width: 100px;
+    filter: contrast(3)
 }
 
 .footer .nav li:nth-child(1) a i:hover {

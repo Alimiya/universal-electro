@@ -128,7 +128,7 @@
       <div class="container">
         <div class="map__inner text-center">
           <h2><%-L('index20', language, 'Наша продукция поставляют <span class="text-success">в разные регионы</span> Республики Казахстана') %>:</h2>
-          <img style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#show-map-modal" src="/public/images/landing-page/map.png" alt="">
+          <img style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#show-map-modal" src="<%= L('mapUrl', language, '/public/images/landing-page/map_ru.png') %>" alt="Карта Казахстана">
         </div> 
       </div>
     </div>
@@ -277,7 +277,7 @@
                 </h2>
                 <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                   <div class="accordion-body">
-                    <%-L('index38', language, 'Да, изготавливаем. Обратитесь к нам по контактам в разделе <b>«Контакты»</b> или вышлете запрос на e-mail:  <a href="mailto:universalelectro.kz@gmail.com">universalelectro.kz@gmail.com</a>') %>
+                    <%-L('index38', language, 'Да, изготавливаем. Обратитесь к нам по контактам в разделе <a href="/contact">"Контакты"</a> или вышлете запрос на e-mail:  <a href="mailto:universalelectro.kz@gmail.com">universalelectro.kz@gmail.com</a>') %>.
                   </div>
                 </div>
               </div>
@@ -289,8 +289,8 @@
                 </h2>
                 <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                   <div class="accordion-body"><%-L('index40', language, 'Мы находимся по адресу <b>РК  г. Астана, улица Жетіген 28/2. </b>Пройдите по ссылке 2gis') %>: 
-                    <a href="https://2gis.kz/astana/geo/9570784863344814 ">https://2gis.kz/astana/geo/9570784863344814 </a>
-                    </div>
+                    <a href="https://2gis.kz/astana/geo/9570784863344814 ">https://2gis.kz/astana/geo/9570784863344814</a>.
+                  </div>
                 </div>
               </div>
               <div class="accordion-item">
@@ -300,8 +300,7 @@
                   </button>
                 </h2>
                 <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body"><%-L('index42', language, 'Да, изготавливаем. Застройщики, которые ценят качество и надежность заказывают у нас. <a href="/catalog">Каталог</a> <br>Обратитесь к нам по контактам в разделе <b>«Контакты»</b> или вышлете запрос на e-mail:  <a href="mailto:universalelectro.kz@gmail.com">universalelectro.kz@gmail.com</a>') %>
-                    </div>
+                  <div class="accordion-body"><%-L('index42', language, 'Да, изготавливаем. Застройщики, которые ценят качество и надежность заказывают у нас - <a href="/catalog">Каталог</a>.<br>Обратитесь к нам по контактам в разделе <a href="/contact">"Контакты"</a> или вышлете запрос на e-mail:<a href="mailto:universalelectro.kz@gmail.com">universalelectro.kz@gmail.com</a>') %>.</div>
                 </div>
               </div>
               <div class="accordion-item">
@@ -311,9 +310,7 @@
                   </button>
                 </h2>
                 <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body"><%-L('index44', language, 'Да, конечно. Вся выпускаемая нами продукция сертифицирована. При необходимости предоставляем сертификат <b>СТ KZ</b>. <a href="/certificate">Сертификаты</a>') %>
-                    <br> 
-                  </div>
+                  <div class="accordion-body"><%-L('index44', language, 'Да, конечно. Вся выпускаемая нами продукция сертифицирована. При необходимости предоставляем <a href="/certificate">сертификат СТ KZ</a>') %>.</div>
                 </div>
               </div>
               <div class="accordion-item">
@@ -323,7 +320,7 @@
                   </button>
                 </h2>
                 <div id="flush-collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body"><%-L('index46', language, 'Разных. Мы уже более 8 лет являемся дистрибьютерами продукции <b>EKF</b> в РК. В основном используем материалы данного бренда,  проверенного временем. По пожеланию заказчика или согласно заявки  можем использовать другие') %>.</div>
+                  <div class="accordion-body"><%-L('index46', language, 'Разных. Мы уже более 8 лет являемся дистрибьютерами продукции <a href="https://ekfgroup.com/ru">EKF</a> в РК. В основном используем материалы данного бренда,  проверенного временем. По пожеланию заказчика или согласно заявки  можем использовать другие') %>.</div>
                 </div>
               </div>
               <div class="accordion-item">
@@ -363,7 +360,7 @@
                   </button>
                 </h2>
                 <div id="flush-collapseNine" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body"><%-L('index54', language, 'Мы являемся дистрибьюторами завода <b>ЕКФ</b>. Имеются позиции как на складе, так и под заказ') %>.</div>
+                  <div class="accordion-body"><%-L('index54', language, 'Мы являемся дистрибьюторами завода <a href="https://ekfgroup.com/ru">EKF</a>. Имеются позиции как на складе, так и под заказ') %>.</div>
                 </div>
               </div>
               <div class="accordion-item">
@@ -373,7 +370,7 @@
                   </button>
                 </h2>
                 <div id="flush-collapseTen" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body"><%=L('index56', language, 'Да. Условия поставки обсуждаются с заказчиком <b>перед заключением договор') %>.</b></div>
+                  <div class="accordion-body"><%-L('index56', language, 'Да. Условия поставки обсуждаются с заказчиком <b>перед заключением договор</b>') %>.</div>
                 </div>
               </div>
             </div>
@@ -389,7 +386,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
-          <img class="w-100" src="/public/images/landing-page/map.png" alt="">
+          <img class="w-100" src="<%= L('mapUrl', language, '/public/images/landing-page/map_ru.png') %>" alt="">
         </div>
       </div>
     </div>
