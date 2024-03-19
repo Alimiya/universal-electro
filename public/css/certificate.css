@@ -1,11 +1,10 @@
 /* Splide */
 .splide__slide img {
     cursor: pointer;
-    max-width: 350px;
+    max-width: 350px !important;
     object-fit: cover;
     transform: .2s linear;
 }
-
 
 
 /* Upload */
