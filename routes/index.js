@@ -4,7 +4,9 @@ const {verifyAdminToken} = require('../middlewares/verify')
 
 router.use((req, res, next) => {
     const isAdminCookieExists = req.cookies.admin && req.originalUrl.startsWith('/admin');
-    res.locals.isAdmin = isAdminCookieExists
+    res.locals.isAdmin = isAdminCookieExists;
+    res.locals.language = req.cookies.language || 'ru';
+    res.locals.page = '';
     next();
 });
 
@@ -55,6 +57,5 @@ router.post('/', (req,res)=>{
         res.send(JSON.stringify(r));
     }
 });
-
 
 module.exports = router

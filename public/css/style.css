@@ -156,6 +156,17 @@
   transition: 0.2s;
 }
 
+/* Error Page */
+.error {
+  margin: 4rem;
+}
+
+.error img {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+}
+
 
 
 /* End of Requests page */

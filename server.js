@@ -29,6 +29,10 @@ app.use('/api/admin', adminRoute)
 app.use('/api/catalog', catalogRoute)
 app.use('/api/auth', authRoute)
 
+app.use((req, res, next) => {
+    res.status(404).render('error/error')
+});
+
 app.listen(process.env.PORT, ()=> {
     console.log(`app listening at port http://localhost:${process.env.PORT}`);
 })

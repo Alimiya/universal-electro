@@ -1,0 +1,20 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= L('error1', language, 'Страница не найдена') %> | Universal Electro</title>
+</head>
+<body>
+    <div class="error">
+        <div class="container">
+            <div class="error__inner text-center">
+                <img src="/public/images/404.png" alt="">
+                <div class="intro__content text-secondary">
+                    <h1><%= L('error1', language, 'Страница не найдена') %></h1>
+                    <p> <%= L('error2', language, 'Простите за это. Попробуйте вернуться на главную страницу') %>.</p>
+                    <a class="btn background-orange" href="/"><%= L('error3', language, 'Главная страница') %></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
