@@ -68,11 +68,11 @@
 
 @keyframes circle-in {
     0% {
-        transform: translate(-50%, -50%) rotate(0deg) translateX(155px) rotate(0deg);
+        transform: translate(-50%, -50%) rotate(0deg) translateX(160px) rotate(0deg);
     }
 
     100% {
-        transform: translate(-50%, -50%) rotate(360deg) translateX(155px) rotate(-360deg);
+        transform: translate(-50%, -50%) rotate(360deg) translateX(160px) rotate(-360deg);
     }
 }
 
@@ -155,6 +155,10 @@
 
 .whyus__element span {
     font-size: 8rem;
+}
+
+.whyus__element h2 {
+    color: rgb(220, 119, 24);
 }
 
 .whyus__element ul{

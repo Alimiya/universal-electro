@@ -15,7 +15,7 @@
           <div class="intro__content mx-auto">
               <h1 class="intro__title text-uppercase">Universal Electro</h1>
               <h2 class="intro__subtitle text-light fw-bold"><%=L('index1', language, 'Качественно. Надежно. Выгодно') %>.</h2>
-              <p class="intro__text"><%=L('index2', language, 'Компания предлагает высококачественное щитовое оборудование, фасадные элементы и комплектующие для трансформаторных подстанций. Наша продукция сертифицирована и соответствует стандартам. Обращайтесь к нам для надежных решений и профессионального обслуживания.') %></p>
+              <p class="intro__text"><%-L('index2', language, 'Компания предлагает и изготавливает высококачественное электрощитовое оборудование и фасадные элементы. <br/> Является лидером продаж продукции <b>EKF</b> в Республике Казахстан. <br/> Наша продукция сертифицирована и соответствует стандартам. Обращайтесь к нам для надежных решений и профессионального обслуживания') %>.</p>
             </div>
 
             <div class="intro__img-container mx-auto position-relative">
@@ -49,7 +49,7 @@
               <div class="about__dir__inner d-flex flex-wrap justify-content-betwenn gap-5">
                 <div class="about__dir__element p-3 border border-2 border-orange rounded-3">
                   <span class="material-symbols-outlined">battery_charging_20</span>
-                  <p><%-L('index9', language, 'Комплектные низковольтные устройства на напряжение до <b>1000 В</b>') %></p>
+                  <p><%-L('index9', language, 'Комплектные низковольтные устройства на напряжение до <b>1000 В</b> (электрощитовое оборудование)') %></p>
                 </div>
                 <div class="about__dir__element border border-2 border-orange rounded-3">
                   <span class="material-symbols-outlined">charging_station</span>
@@ -71,7 +71,7 @@
                   <span class="material-symbols-outlined">
                     cable
                     </span>
-                  <p><%=L('index13', language, 'Лотки для удержания и защити кабелей') %>
+                  <p><%=L('index13', language, 'Лотки для удержания и защиты кабелей, прочие металлические изделия и шкафы') %>
                   </p>
                 </div>
                 <div class="about__dir__element border border-2 border-orange rounded-3">
@@ -82,13 +82,7 @@
                 </div>
                 <div class="about__dir__element border border-2 border-orange rounded-3">
                   <img src="/public/images/companies/ekf.png" alt="">
-                  <p class="text-110"><%-L('index15', language, 'Продажа продукции EKF') %> (<a class="text-orange" href="https://ekfgroup.com/ru">efkgroup.com</a>)</p>
-                </div>
-                <div class="about__dir__element border border-2 border-orange rounded-3">
-                  <span class="material-symbols-outlined">
-                    dresser
-                    </span>
-                  <p><%=L('index16', language, 'Прочие металлические изделия и шкафы') %></p>
+                  <p class="text-110"><%-L('index15', language, 'Продажа продукции EKF') %> (<a class="text-orange" href="https://etim.ekfgroup.com/">efkgroup.com</a>)</p>
                 </div>
               </div>
             </div>
@@ -127,8 +121,8 @@
     <div class="map">
       <div class="container">
         <div class="map__inner text-center">
-          <h2><%-L('index20', language, 'Наша продукция поставляют <span class="text-success">в разные регионы</span> Республики Казахстана') %>:</h2>
-          <img style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#show-map-modal" src="<%= L('mapUrl', language, '/public/images/landing-page/map_ru.png') %>" alt="Карта Казахстана">
+          <h2><%-L('index20', language, 'Наша продукция поставляют <span class="text-success">во все регионы</span> Республики Казахстана') %>:</h2>
+          <img style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#show-map-modal" src="<%= L('mapUrl', language, '/public/images/landing-page/map_ru2.png') %>" alt="Карта Казахстана">
         </div> 
       </div>
     </div>
@@ -144,7 +138,7 @@
 
             <div class="whyus__element">
               <span class="material-symbols-outlined">workspace_premium</span>
-              <h2 style="color: #009f84"><%=L('index22', language, 'Качественно') %></h2>
+              <h2><%=L('index22', language, 'Качественно') %></h2>
               <ul>
                 <li><%=L('index23', language, 'Каждый наш продукт сертифицирован') %></li>
                 <li><%-L('index24', language, 'Каждая продукция проходит через проверку по <a class="text-orange" href="/certificate">ГОСТ СК</a>') %></li>
@@ -153,25 +147,25 @@
             </div>
             <div class="whyus__element">
               <span class="material-symbols-outlined">
-                payments
-
+                event_available
                 </span>
-              <h2 style="color: #fa9a00"><%=L('index26', language, 'Выгодно') %></h2>
+                </span>
+              <h2><%=L('index30', language, 'Надежно') %></h2>
               <ul>
-                <li><%=L('index27', language, 'Все наши продукции соответствуют всем нормам') %></li>
-                <li><%=L('index28', language, 'Идеальный вариант, когда цена соответствует качеству') %></li>
-                <li><%=L('index29', language, 'Мы являемся официальными поставщиками, и покупать у нас напрямую намного дешевле и выгоднее') %></li>
+                <li><%=L('index31', language, 'Мы предоставим вам услуги и продукции за обговоренный короткий срок') %></li>
+                <li><%=L('index32', language, 'Мы имеем собственный цех и можем предоставить огромное количество в кратчайшие сроки') %></li>
               </ul>
             </div>
             <div class="whyus__element">
               <span class="material-symbols-outlined">
-                event_available
+                payments
+
                 </span>
-                </span>
-              <h2 style="color: #ee5038"><%=L('index30', language, 'Надежно') %></h2>
+              <h2><%=L('index26', language, 'Выгодно') %></h2>
               <ul>
-                <li><%=L('index31', language, 'Мы предоставим вам услуги и продукции за обговоренный короткий срок') %></li>
-                <li><%=L('index32', language, 'Мы имеем собственный цех и можем предоставить огромное количество в кратчайшие сроки') %></li>
+                <li><%=L('index27', language, 'Все наши продукции соответствуют всем нормам') %></li>
+                <li><%=L('index28', language, 'Идеальный вариант, когда цена соответствует качеству') %></li>
+                <li><%=L('index29', language, 'Мы являемся официальными поставщиками, и покупать у нас напрямую намного дешевле и выгоднее') %></li>
               </ul>
             </div>
           </div>
@@ -234,7 +228,7 @@
                     <img src="/public/images/companies/ordaInvest.png" alt="">
                   </li>
                   <li class="splide__slide text-center">
-                    <img src="/public/images/companies/saiman.webp" alt="">
+                    <img src="/public/images/companies/saiman.png" alt="">
                   </li>
                   <li class="splide__slide text-center">
                     <img src="/public/images/companies/schneider.png" alt="">
@@ -289,7 +283,7 @@
                 </h2>
                 <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                   <div class="accordion-body"><%-L('index40', language, 'Мы находимся по адресу <b>РК  г. Астана, улица Жетіген 28/2. </b>Пройдите по ссылке 2gis') %>: 
-                    <a href="https://2gis.kz/astana/geo/9570784863344814 ">https://2gis.kz/astana/geo/9570784863344814</a>.
+                    <a href="https://go.2gis.com/8iz6w">https://go.2gis.com/8iz6w</a>.
                   </div>
                 </div>
               </div>
@@ -386,7 +380,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
-          <img class="w-100" src="<%= L('mapUrl', language, '/public/images/landing-page/map_ru.png') %>" alt="">
+          <img class="w-100" src="<%= L('mapUrl', language, '/public/images/landing-page/map_ru2.png') %>" alt="">
         </div>
       </div>
     </div>
