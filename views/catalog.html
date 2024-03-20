@@ -155,19 +155,19 @@
             globalProducts.forEach((p) => {
                 if (p.category == category || category == 'all') {
                     productsHTML += `
-                <div class="product" id="product-${i}">
-                    <div class="h-50">
-                        <img src="${p.product_img}" alt="">
-                    </div>
-                    <div class="product_info pt-2" style="flex:1">
-                        <i>Артикул: ${p.articul}</i>
-                        <h3 data-bs-toggle="tooltip" data-bs-placement="top" title="${p.title}">${p.title}</h3>
-                        ${p.status == '1' ? '<p class="text-success">В наличии</p>' : (p.status == '2' ? '<p class="text-primary">Под заказ</p>' : '<p class="text-danger">Нет в наличии</p>')}
-                        <h2>${p.price} ₸</h2>
-                    </div>
-                    <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')">В корзину</button>
-                    <button class="btn btn-warning px-4 py-2 mt-2" onclick="showDescription('product-${i}')">Подробнее</button>
-                </div>`
+                        <div class="product pb-4" id="product-${i}" >
+                            <div class="img_block">
+                                <img src="${p.product_img}" alt="">
+                            </div>
+                            <div class="product_info pt-2" style="flex:1">
+                                <i>Артикул: ${p.articul}</i>
+                                <h3 data-bs-toggle="tooltip" data-bs-title="${p.title}"">${p.title}</h3>
+                                ${p.status == '1' ? '<p class="text-success">В наличии</p>' : (p.status == '2' ? '<p class="text-primary">Под заказ</p>' : '<p class="text-danger">Нет в наличии</p>') }
+                                <h2>${p.price==0 ? '' : p.price + '₸'} </h2>
+                            </div>
+                            <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')">В корзину</button>
+                            <button class="btn btn-warning px-4 py-2 mt-2" onclick="showDescription('product-${i}')">Подробнее</button>
+                        </div>`
                 }
                 i++;
             });
@@ -404,22 +404,21 @@
             let i = 1;
             let category = $("#category").val();
             globalProducts.forEach((p) => {
-                if ((p.title.includes(text.trim()) || p.description.includes(text.trim())) && (p.category == category || category == 'all')) {
+                if ((p.title.toLowerCase().includes(text.trim().toLowerCase()) || p.description.toLowerCase().includes(text.trim().toLowerCase())) && (p.category == category || category == 'all')) {
                     productsHTML += `
-                <div class="product" id="product-${i}">
-                    <div class="h-50">
-                        <img src="${p.product_img}" alt="">
-                    </div>
-                    
-                    <div class="product_info pt-2" style="flex:1">
-                        <i>Артикул: ${p.articul}</i>
-                        <h3 data-bs-toggle="tooltip" data-bs-title="${p.title}"">${p.title}</h3>
-                        ${p.status == '1' ? '<p class="text-success">В наличии</p>' : (p.status == '2' ? '<p class="text-primary">Под заказ</p>' : '<p class="text-danger">Нет в наличии</p>') }
-                        <h2>${p.price} ₸</h2>
-                    </div>
-                    <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')">В корзину</button>
-                    <button class="btn btn-warning px-4 py-2 mt-2" onclick="showDescription('product-${i}')">Подробнее</button>
-                </div>`;
+                        <div class="product pb-4" id="product-${i}" >
+                            <div class="img_block">
+                                <img src="${p.product_img}" alt="">
+                            </div>
+                            <div class="product_info pt-2" style="flex:1">
+                                <i>Артикул: ${p.articul}</i>
+                                <h3 data-bs-toggle="tooltip" data-bs-title="${p.title}"">${p.title}</h3>
+                                ${p.status == '1' ? '<p class="text-success">В наличии</p>' : (p.status == '2' ? '<p class="text-primary">Под заказ</p>' : '<p class="text-danger">Нет в наличии</p>') }
+                                <h2>${p.price==0 ? '' : p.price + '₸'} </h2>
+                            </div>
+                            <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')">В корзину</button>
+                            <button class="btn btn-warning px-4 py-2 mt-2" onclick="showDescription('product-${i}')">Подробнее</button>
+                        </div>`
                 }
                 i++;
             });
