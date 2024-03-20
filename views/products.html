@@ -30,6 +30,7 @@
               <th scope="col">Название</th>
               <th scope="col">Описание</th>
               <th scope="col">Категория</th>
+              <th scope="col">Статус</th>
               <th scope="col">КазНИИСА</th>
               <th scope="col">Артикул</th>
               <th scope="col">Количество</th>
@@ -282,6 +283,7 @@
                 <td>${p.title}</td>
                 <td><div style="max-height: 100px; overflow-y: auto; text-overflow: ellipsis">${p.description}</div></td>
                 <td>${p.category}</td>
+                <td>${p.status==1 ? 'В наличии' : 'Нет в наличии'}</td>
                 <td style="width: 10%">${p.kazniisa}</td>
                 <td style="width: 10%">${p.articul}</td>
                 <td style="width: 10%">${p.quantity}</td>
@@ -406,10 +408,11 @@
       $('#new_title').val(`${$(product_index).find('td:nth-child(3)').text()}`);
       $('#new_description').val(`${$(product_index).find('td:nth-child(4)').text()}`);
       $('#new_category').val(`${$(product_index).find('td:nth-child(5)').text()}`);
-      $('#new_kazniisa').val(`${$(product_index).find('td:nth-child(6)').text()}`);
-      $('#new_articul').val(`${$(product_index).find('td:nth-child(7)').text()}`);
-      $('#new_quantity').val(`${$(product_index).find('td:nth-child(8)').text()}`);
-      $('#new_price').val(`${$(product_index).find('td:nth-child(9)').text()}`);
+      $('#new_status').val(`${$(product_index).find('td:nth-child(6)').text() == 'В наличии' ? 1 : 0}`);
+      $('#new_kazniisa').val(`${$(product_index).find('td:nth-child(7)').text()}`);
+      $('#new_articul').val(`${$(product_index).find('td:nth-child(8)').text()}`);
+      $('#new_quantity').val(`${$(product_index).find('td:nth-child(9)').text()}`);
+      $('#new_price').val(`${$(product_index).find('td:nth-child(10)').text()}`);
       $("#edit_product-modal").modal("show");
     }
 
