@@ -3,10 +3,11 @@
   <link rel="stylesheet" href="/public/css/bootstrap.css" />
   <link rel="stylesheet" href="/public/css/common.css">
 </head>
+
 <body>
   <main>
     <div class="container">
-      <form class="d-flex justify-content-between mt-5" role="search">
+      <form class="d-flex justify-content-between align-items-center mt-5 gap-2" role="search">
         <div class="search position-relative w-75">
           <input class="form-control me-2 w-100 search-input border-secondary ps-5" onkeyup="searchProduct(this.value)"
             type="search" placeholder="Введите" aria-label="Search" />
@@ -14,13 +15,26 @@
             search
           </span>
         </div>
-
         <div class="d-flex gap-2">
           <button class="btn btn-primary" type="button" onclick="showAddProductModal()">
-            + Добавить
+            + Добавить товар
           </button>
         </div>
       </form>
+      <div class="d-flex gap-2 mt-3 w-100 ">
+        <select class="form-select w-50" id="categories" type="button" onchange="showProductsByCategory()">
+
+        </select>
+        <button type="button" class="btn btn-success" onclick="showAddCategoryModal()">
+          + Категория
+        </button>
+        <button type="button" class="btn btn-danger hidden" id="show_delete_category_modal_btn" style="display: none;"
+          onclick="showDeleteCategoryModal()">
+          Удалить
+        </button>
+
+      </div>
+
       <div id="table_block" style="width: 100%; overflow-x: auto;">
         <table class="table table-hover table-bordered border-secondary mt-5 text-center align-middle">
           <thead class="thead-dark">
@@ -72,23 +86,7 @@
             <div class="mb-3">
               <label for="category" class="form-label">Категория</label>
               <select class="form-control" id="category">
-                <option disabled selected value="none">Не выбрано</option>
-                <option value="Вводно-распределительное устройство ГОСТ 30011.1-2003">Вводно-распределительное
-                  устройство ГОСТ 30011.1-2003</option>
-                <option value="Блок автоматического управления освещением">Блок автоматического управления освещением
-                </option>
-                <option value="АВР (автоматическое включение резерва)">АВР (автоматическое включение резерва)</option>
-                <option value="Ящик управления освещением">Ящик управления освещением</option>
-                <option
-                  value="Устройства комплектные низковольтные управления, ввода и распределения энергии ГОСТ 30011.1-2003">
-                  Устройства комплектные низковольтные управления, ввода и распределения энергии ГОСТ 30011.1-2003
-                </option>
-                <option value="Устройство компенсации реактивной мощности, конденсаторная установка">Устройство
-                  компенсации реактивной мощности, конденсаторная установка</option>
-                <option value="Щит распределительный, этажный ГОСТ 32397-2013, типа ЩЭ">Щит распределительный, этажный
-                  ГОСТ 32397-2013, типа ЩЭ</option>
-                <option value="Ящик силовой распределительный, типа ЯРВ">Ящик силовой распределительный, типа ЯРВ
-                </option>
+                
               </select>
             </div>
             <div class="mb-3">
@@ -99,6 +97,7 @@
               <label for="status" class="form-label">Статус</label>
               <select class="form-control" id="status">
                 <option value="1">В наличии</option>
+                <option value="2">Под заказ</option>
                 <option value="0">Не в наличии</option>
               </select>
             </div>
@@ -155,22 +154,7 @@
             <div class="mb-3">
               <label for="new_category" class="form-label">Категория</label>
               <select class="form-control" id="new_category">
-                <option value="Вводно-распределительное устройство ГОСТ 30011.1-2003">Вводно-распределительное
-                  устройство ГОСТ 30011.1-2003</option>
-                <option value="Блок автоматического управления освещением">Блок автоматического управления освещением
-                </option>
-                <option value="АВР (автоматическое включение резерва)">АВР (автоматическое включение резерва)</option>
-                <option value="Ящик управления освещением">Ящик управления освещением</option>
-                <option
-                  value="Устройства комплектные низковольтные управления, ввода и распределения энергии ГОСТ 30011.1-2003">
-                  Устройства комплектные низковольтные управления, ввода и распределения энергии ГОСТ 30011.1-2003
-                </option>
-                <option value="Устройство компенсации реактивной мощности, конденсаторная установка">Устройство
-                  компенсации реактивной мощности, конденсаторная установка</option>
-                <option value="Щит распределительный, этажный ГОСТ 32397-2013, типа ЩЭ">Щит распределительный, этажный
-                  ГОСТ 32397-2013, типа ЩЭ</option>
-                <option value="Ящик силовой распределительный, типа ЯРВ">Ящик силовой распределительный, типа ЯРВ
-                </option>
+               
               </select>
             </div>
             <div class="mb-3">
@@ -181,7 +165,8 @@
               <label for="new_status" class="form-label">Статус</label>
               <select class="form-control" id="new_status">
                 <option value="1">В наличии</option>
-                <option value="0">Не в наличии</option>
+                <option value="2">Под заказ</option>
+                <option value="0">Нет в наличии</option>
               </select>
             </div>
             <div class="mb-3">
@@ -234,10 +219,61 @@
     </div>
   </div>
 
+  <div class="modal fade" id="add_category-modal">
+    <div class="modal-dialog text-left">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Добавить категорию</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="category_name" class="form-label">Название</label>
+            <input type="text" class="form-control" id="category_name" placeholder="Введите название" />
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+              Отмена
+            </button>
+            <button type="button" class="btn btn-success" id="add_category_btn" onclick="addCategory()">
+              Добавить
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="delete_category-modal">
+    <div class="modal-dialog text-left">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Удалить категорию</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">Вы уверены что хотите удалить данную категорию?</div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Отмена
+            </button>
+            <button type="button" class="btn btn-danger" id="delete_category_btn" onclick="deleteCategory()">
+              Удалить
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     var globalProductId;
     var globalProducts;
+    var globalCategories;
+    var globalCategoryId;
 
     $(() => {
       $('#product_img').on('change', function () {
@@ -260,6 +296,7 @@
         reader.readAsDataURL(this.files[0]);
       });
       loading(1);
+      showCategories();
       showProducts();
       loading(0);
     })
@@ -283,7 +320,7 @@
                 <td>${p.title}</td>
                 <td><div style="max-height: 100px; overflow-y: auto; text-overflow: ellipsis">${p.description}</div></td>
                 <td>${p.category}</td>
-                <td>${p.status==1 ? 'В наличии' : 'Нет в наличии'}</td>
+                <td>${p.status == 1 ? 'В наличии' : (p.status == 2 ? 'Под заказ' : 'Нет в наличии')}</td>
                 <td style="width: 10%">${p.kazniisa}</td>
                 <td style="width: 10%">${p.articul}</td>
                 <td style="width: 10%">${p.quantity}</td>
@@ -384,6 +421,7 @@
             })
             $("#add_product-modal").modal("hide");
             $("#add_product-modal input").val("");
+            $("#categories").val('all');
             showProducts();
           }
 
@@ -402,13 +440,14 @@
       })
     }
 
+
     function showEditProductModal(product_index, id) {
       globalProductId = id;
       $('#new_product_src').attr('src', $(product_index).find('td:nth-child(2) img').attr('src'))
       $('#new_title').val(`${$(product_index).find('td:nth-child(3)').text()}`);
       $('#new_description').val(`${$(product_index).find('td:nth-child(4)').text()}`);
       $('#new_category').val(`${$(product_index).find('td:nth-child(5)').text()}`);
-      $('#new_status').val(`${$(product_index).find('td:nth-child(6)').text() == 'В наличии' ? 1 : 0}`);
+      $('#new_status').val(`${$(product_index).find('td:nth-child(6)').text() == 'В наличии' ? 1 : ($(product_index).find('td:nth-child(6)').text() == 'под заказ' ? 2 : 0)}`);
       $('#new_kazniisa').val(`${$(product_index).find('td:nth-child(7)').text()}`);
       $('#new_articul').val(`${$(product_index).find('td:nth-child(8)').text()}`);
       $('#new_quantity').val(`${$(product_index).find('td:nth-child(9)').text()}`);
@@ -459,7 +498,7 @@
       formData.set("quantity", quantity);
       formData.set("kazniisa", kazniisa);
       formData.set("articul", articul);
-      
+
       $.ajax({
         url: "/api/admin/product/update",
         method: "post",
@@ -534,11 +573,11 @@
                 <td>${p.title}</td>
                 <td><div style="max-height: 100px; overflow-y: auto; text-overflow: ellipsis">${p.description}</div></td>
                 <td>${p.category}</td>
-                <td>${p.price}</td>
-                <td style="width: 10%">${p.quantity}</td>
+                <td>${p.status == 1 ? 'В наличии' : (p.status == 2 ? 'Под заказ' : 'Нет в наличии')}</td>
                 <td style="width: 10%">${p.kazniisa}</td>
                 <td style="width: 10%">${p.articul}</td>
-
+                <td style="width: 10%">${p.quantity}</td>
+                <td>${p.price}</td>
                 <td style="width: 12%">
                   <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showEditProductModal('#product-${i}','${p.product_id}')">
                     <span class="material-symbols-outlined"> edit_document </span>
@@ -555,6 +594,165 @@
       });
       $("#products").append(productsHTML)
     }
+
+    function showProductsByCategory() {
+      let i = 1;
+      let category = $('#categories').val();
+      console.log(category)
+      if (category != 'all' && category) {
+        $('#show_delete_category_modal_btn').show();
+        let category_index = $('#categories ').find(':selected').attr('id').split('-')[1];
+        globalCategoryId = globalCategories[category_index].category_id;
+      }
+      else $('#show_delete_category_modal_btn').hide();
+      $("#products").html('');
+      let productsHTML = "";
+      globalProducts.forEach((p) => {
+        if (p.category == category || category == 'all') {
+          productsHTML += `
+              <tr id="product-${i}"">
+                <th scope="row">${i}</th>
+                <td>
+                  <img src="${p.product_img}" alt="" />
+                </td>
+                <td>${p.title}</td>
+                <td><div style="max-height: 100px; overflow-y: auto; text-overflow: ellipsis">${p.description}</div></td>
+                <td>${p.category}</td>
+                <td>${p.status == 1 ? 'В наличии' : (p.status == 2 ? 'Под заказ' : 'Нет в наличии')}</td>
+                <td style="width: 10%">${p.kazniisa}</td>
+                <td style="width: 10%">${p.articul}</td>
+                <td style="width: 10%">${p.quantity}</td>
+                <td>${p.price}</td>
+                <td style="width: 12%">
+                  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showEditProductModal('#product-${i}','${p.product_id}')">
+                    <span class="material-symbols-outlined"> edit_document </span>
+                  </button>
+
+                  <button type="button" class="btn table-icon" data-toggle="modal" data-target="#deleteModal" onclick="showDeleteProductModal('${p.product_id}')">
+                    <span class="material-symbols-outlined text-danger"> delete </span>
+                  </button>
+                </td>
+              </tr>`
+        }
+        i++;
+      });
+      if (!productsHTML) productsHTML += `<div class="alert alert-light w-100">Ничего не найдено</div>`;
+
+      $("#products").append(productsHTML);
+
+    }
+
+    function showCategories() {
+      let i = 0;
+      $("#categories").html('');
+
+      let categoriesHTML = '';
+      let addProductModalCategoriesHTML = '<option disabled="" selected="" value="none">Не выбрано</option>';
+      let mainCategoresHTML = '<option selected="" value="all">Все категории</option>'
+      $.ajax({
+        url: "/api/admin/categories",
+        method: "get",
+        dataType: 'json',
+        success: function (data) {
+          globalCategories = data;
+          data.forEach((c) => {
+            categoriesHTML += `<option value="${c.category_name}" id="category-${i}">${c.category_name}</option>`
+            i++;
+          });
+          $("#categories").html(mainCategoresHTML+categoriesHTML);
+          $("#category").html(addProductModalCategoriesHTML + categoriesHTML);
+          $("#new_category").html(categoriesHTML);
+
+        }
+      })
+    }
+
+    function showAddCategoryModal() {
+      $('#add_category-modal').modal('show');
+    }
+
+    function addCategory() {
+      loading(2, el = "#add_category_btn")
+      let category_name = $('#category_name').val().trim();
+
+      if (!category_name) {
+        $.ambiance({
+          message: "Заполните все поля",
+          type: "error",
+          fade: true,
+          width: 400,
+        });
+        return loading(20, (el = "#add_category_btn"))
+      }
+
+      $.ajax({
+        url: "/api/admin/category/create",
+        method: "post",
+        data: { category_name: category_name },
+        dataType: 'json',
+        success: function (res) {
+          if (res.r) {
+            $.ambiance({
+              message: "Новая категория добавлена",
+              type: "success",
+              fade: true,
+              width: 400,
+            })
+            $("#add_category-modal").modal("hide");
+            $("#add_category-modal input").val("");
+            showCategories();
+            setTimeout(()=>{
+              showProductsByCategory();
+            }, 700)
+          }
+
+          return loading(20, (el = "#add_category_btn"))
+        },
+        error: function (err) {
+          console.log(err)
+          $.ambiance({
+            message: "Что то пошло не так. Повторите позже",
+            type: "error",
+            fade: true,
+            width: 400,
+          })
+          return loading(20, (el = "#add_category_btn"))
+        },
+      })
+
+    }
+
+    function showDeleteCategoryModal() {
+      $('#delete_category-modal').modal('show');
+    }
+
+    function deleteCategory() {
+      console.log(globalCategoryId)
+      loading(2, '#delete_category_btn');
+      $.ajax({
+        url: "/api/admin/category/delete",
+        method: "post",
+        data: { category_id: globalCategoryId },
+        dataType: 'json',
+        success: function (res) {
+          if (res.r) {
+            $.ambiance({
+              message: "Категория была успешно удалена",
+              type: "success",
+              fade: true,
+              width: 400,
+            })
+            $("#delete_category-modal").modal("hide");
+            loading(20, '#delete_category_btn');
+            showCategories();
+            setTimeout(()=>{
+              showProductsByCategory()
+            }, 700)
+          }
+        },
+      });
+    }
+
 
     function logout() {
       $.ajax({

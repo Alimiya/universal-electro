@@ -28,5 +28,8 @@ router.get('/requests', Controller.getRequests)
 router.post('/request/update', Controller.updateRequest)
 router.post('/request/delete', Controller.deleteRequest)
 
+router.get('/categories', Controller.getCategories)
+router.post('/category/create', Controller.createCategory)
+router.post('/category/delete', Controller.deleteCategory)
 
-module.exports = router
+module.exports = router;

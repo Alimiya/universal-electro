@@ -27,28 +27,7 @@
 
             <div class="d-flex gap-2">
                 <select class="form-select" id="category" onchange="showCatalogByCategory()">
-                    <option selected value="all">Все категории</option>
-                    <option value="Вводно-распределительное устройство ГОСТ 30011.1-2003">Вводно-распределительное
-                        устройство ГОСТ 30011.1-2003</option>
-                    <option value="Блок автоматического управления освещением">Блок автоматического управления
-                        освещением
-                    </option>
-                    <option value="АВР (автоматическое включение резерва)">АВР (автоматическое включение резерва)
-                    </option>
-                    <option value="Ящик управления освещением">Ящик управления освещением</option>
-                    <option
-                        value="Устройства комплектные низковольтные управления, ввода и распределения энергии ГОСТ 30011.1-2003">
-                        Устройства комплектные низковольтные управления, ввода и распределения энергии ГОСТ
-                        30011.1-2003
-                    </option>
-                    <option value="Устройство компенсации реактивной мощности, конденсаторная установка">Устройство
-                        компенсации реактивной мощности, конденсаторная установка</option>
-                    <option value="Щит распределительный, этажный ГОСТ 32397-2013, типа ЩЭ">Щит распределительный,
-                        этажный
-                        ГОСТ 32397-2013, типа ЩЭ</option>
-                    <option value="Ящик силовой распределительный, типа ЯРВ">Ящик силовой распределительный, типа
-                        ЯРВ
-                    </option>
+                    
                 </select>
             </div>
 
@@ -58,7 +37,7 @@
 
         </div>
     </main>
-    
+
     <!-- Show Bucket Modal -->
     <div class="modal modal-lg fade" id="show_bucket-modal">
         <div class="modal-dialog text-left">
@@ -75,8 +54,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="phone" class="form-label">* Ваш номер:</label>
-                            <input type="tel" class="form-control" id="phone" placeholder="Введите номер"
-                                name="phone">
+                            <input type="tel" class="form-control" id="phone" placeholder="Введите номер" name="phone">
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Ваша почта:</label>
@@ -104,8 +82,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="description-modal_body">
-                    
-                    
+
+
                 </div>
             </div>
         </div>
@@ -117,6 +95,7 @@
         var globalProducts;
         $(() => {
             loading(1);
+            showCategories();
             showCatalog();
         });
 
@@ -149,8 +128,8 @@
                             <div class="product_info pt-2" style="flex:1">
                                 <i>Артикул: ${p.articul}</i>
                                 <h3 data-bs-toggle="tooltip" data-bs-title="${p.title}"">${p.title}</h3>
-                                ${p.status == '1' ? '<p class="text-success">В наличии</p>' : '<p class="text-danger">Нет в наличии</p>'}
-                                <h2>${p.price} ₸</h2>
+                                ${p.status == '1' ? '<p class="text-success">В наличии</p>' : (p.status == '2' ? '<p class="text-primary">Под заказ</p>' : '<p class="text-danger">Нет в наличии</p>') }
+                                <h2>${p.price==0 ? '' : p.price + '₸'} </h2>
                             </div>
                             <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')">В корзину</button>
                             <button class="btn btn-warning px-4 py-2 mt-2" onclick="showDescription('product-${i}')">Подробнее</button>
@@ -183,7 +162,7 @@
                     <div class="product_info pt-2" style="flex:1">
                         <i>Артикул: ${p.articul}</i>
                         <h3 data-bs-toggle="tooltip" data-bs-placement="top" title="${p.title}">${p.title}</h3>
-                        ${p.status == '1' ? '<p class="text-success">В наличии</p>' : '<p class="text-danger">Нет в наличии</p>'}
+                        ${p.status == '1' ? '<p class="text-success">В наличии</p>' : (p.status == '2' ? '<p class="text-primary">Под заказ</p>' : '<p class="text-danger">Нет в наличии</p>')}
                         <h2>${p.price} ₸</h2>
                     </div>
                     <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')">В корзину</button>
@@ -435,7 +414,7 @@
                     <div class="product_info pt-2" style="flex:1">
                         <i>Артикул: ${p.articul}</i>
                         <h3 data-bs-toggle="tooltip" data-bs-title="${p.title}"">${p.title}</h3>
-                        ${p.status == '1' ? '<p class="text-success">В наличии</p>' : '<p class="text-danger">Нет в наличии</p>'}
+                        ${p.status == '1' ? '<p class="text-success">В наличии</p>' : (p.status == '2' ? '<p class="text-primary">Под заказ</p>' : '<p class="text-danger">Нет в наличии</p>') }
                         <h2>${p.price} ₸</h2>
                     </div>
                     <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')">В корзину</button>
@@ -453,10 +432,30 @@
             });
         }
 
-        function showDescription(product_index){
+        function showCategories() {
+            let i = 0;
+            $("#category").html('');
+
+            let categoriesHTML = '<option selected="" value="all">Все категории</option>';
+            $.ajax({
+                url: "/api/admin/categories",
+                method: "get",
+                dataType: 'json',
+                success: function (data) {
+                    globalCategories = data;
+                    data.forEach((c) => {
+                        categoriesHTML += `<option value="${c.category_name}" id="category-${i}">${c.category_name}</option>`
+                        i++;
+                    });
+                    $("#category").html(categoriesHTML);
+                }
+            })
+        }
+
+        function showDescription(product_index) {
             let product = globalProducts[product_index.split('-')[1] - 1];
             $('#description-modal').modal('show');
-            $('#description-modal_body').html(product.description +'. <br> КАЗНИИСА:' + product.kazniisa);
+            $('#description-modal_body').html(product.description + '. <br> КАЗНИИСА:' + product.kazniisa);
         }
 
     </script>

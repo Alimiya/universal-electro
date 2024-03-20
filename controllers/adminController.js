@@ -212,3 +212,59 @@ exports.deleteRequest = async (req, res) => {
         res.send(r);
     })
 }
+
+exports.createCategory = async (req,res) =>{
+    let r = { r: 0 };
+    let category_name = req.body.category_name;
+
+    if (!category_name) {
+        return res.send(r);
+    }
+
+    await fdb.collection('categories').add({category_name: category_name}).then((category) => {
+        r['r'] = 1;
+        r['category_id'] = category.id;
+        res.send(r);
+    }).catch((e) => {
+        console.log(e);
+        res.send(r);
+    });
+}
+
+exports.deleteCategory = async (req,res) =>{
+    let r = { r: 0 };
+    let category_id = req.body.category_id;
+
+    if (!category_id) {
+        return res.send(r);
+    }
+
+    await fdb.collection('categories').doc(category_id).delete().then((category) => {
+        r['r'] = 1;
+        r['category_id'] = category.id;
+        res.send(r);
+    }).catch((e) => {
+        console.log(e);
+        res.send(r);
+    });
+}
+
+exports.getCategories = async (req, res) => {
+    let data = []
+
+    try {
+        await fdb.collection('categories').get().then((categories) => {
+            categories.forEach((category) => {
+                var category_data = {
+                    category_id: category.id,
+                    category_name: category.data().category_name
+                }
+                data.push(category_data);
+            })
+        })
+        res.send(JSON.stringify(data));
+    } catch (err) {
+        res.send(data);
+        console.log(err);
+    }
+}
