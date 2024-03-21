@@ -383,7 +383,7 @@
         $("#title").focus();
         $.ambiance({
           message:
-            "Длина заголовка должна составлять не более 30",
+            "Длина заголовка должна составлять не более 50",
           type: "error",
           fade: true,
           width: 400,
@@ -399,7 +399,6 @@
       formData.set("price", price);
       formData.set("category", category);
       formData.set("status", status);
-      console.log(quantity);
       formData.set("quantity", quantity);
       formData.set("kazniisa", kazniisa);
       formData.set("articul", articul);
@@ -421,6 +420,8 @@
             })
             $("#add_product-modal").modal("hide");
             $("#add_product-modal input").val("");
+            $("#add_product-modal textarea").val("");
+            $('#add_product_src').attr('src', '');
             $("#categories").val('all');
             showProducts();
           }
@@ -487,7 +488,6 @@
       }
 
       let formData = new FormData();
-      console.log(quantity)
       formData.set("product_id", globalProductId);
       formData.set("product_img", img);
       formData.set("title", title);
