@@ -9,10 +9,8 @@
         <div class="container d-flex align-items-center gap-5 mt-4 mb-4" style="width: 78%;">
             <a href="/catalog" class="fs-2 text-decoration-none text-dark fw-bold">Каталог</a>
             <div class="bucket_btn bg-light rounded pt-1 px-2 d-flex align-items-center btn" onclick="showBucket()">
-                <span class="material-symbols-outlined" style="font-size: 30px; font-variant: bold;">
-                    shopping_cart_checkout
-                </span>
-                <div id="products_count" class="h1"></div>
+                <img src="/public/images/basket.png" width="20" alt="">
+                <div id="products_count" class="h1 ms-2"></div>
             </div>
         </div>
         <div class="search-category container d-flex align-items-center gap-3" style="width: 78%;">
@@ -20,9 +18,7 @@
             <div class="search position-relative w-100">
                 <input class="form-control me-2 w-100 search-input border-secondary ps-5"
                     onkeyup="searchProduct(this.value)" type="search" placeholder="Введите" aria-label="Search" />
-                <span class="material-symbols-outlined position-absolute top-50 translate-middle ps-5">
-                    search
-                </span>
+                <img src="/public/images/search-icon.webp" class="position-absolute top-50 translate-middle ps-5" style="height: 12px;">
             </div>
 
             <div class="d-flex gap-2">
@@ -43,29 +39,29 @@
         <div class="modal-dialog text-left">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5">Оформить&nbsp;заказ</h1>
+                    <h1 class="modal-title fs-5"><%=L('catalog3', language, 'Оформить заказ') %></h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body d-flex">
                     <div class="order_form px-5">
                         <div class="mb-3 mt-3">
-                            <label for="name" class="form-label">* Ваше имя:</label>
-                            <input type="text" class="form-control" id="name" placeholder="Введите имя" name="name">
+                            <label for="name" class="form-label">* <%=L('catalog5', language, 'Ваше имя') %>:</label>
+                            <input type="text" class="form-control" id="name" placeholder="<%=L('catalog11', language, 'Введите имя') %>" name="name">
                         </div>
                         <div class="mb-3">
-                            <label for="phone" class="form-label">* Ваш номер:</label>
-                            <input type="tel" class="form-control" id="phone" placeholder="Введите номер" name="phone">
+                            <label for="phone" class="form-label">* <%=L('catalog6', language, 'Ваш номер') %>:</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="<%=L('catalog12', language, 'Введите номер') %>" name="phone">
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Ваша почта:</label>
-                            <input type="email" class="form-control" id="email" placeholder="Введите почту"
+                            <label for="email" class="form-label"><%=L('catalog7', language, 'Ваша почта') %>:</label>
+                            <input type="email" class="form-control" id="email" placeholder="<%=L('catalog13', language, 'Введите почту') %>"
                                 name="email">
                         </div>
                         <button type="submit" id="place_older_btn" class="btn btn-primary"
-                            onclick="placeOrder()">Отправить</button>
+                            onclick="placeOrder()"><%=L('catalog8', language, 'Отправить') %></button>
                     </div>
                     <div class="bucket flex-fill">
-                        <h3>Корзина</h3>
+                        <h3><%=L('catalog9', language, 'Корзина') %></h3>
                         <div id="bucket_content"></div>
                         <h4 class="border-top pt-2">Общая сумма: <span id="total_amount">492</span> ₸</h4>
                     </div>
@@ -78,7 +74,7 @@
         <div class="modal-dialog text-left">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5">Описание товара</h1>
+                    <h1 class="modal-title fs-5"><%=L('catalog10', language, 'Описание товара') %></h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="description-modal_body">
@@ -131,8 +127,8 @@
                                 ${p.status == '1' ? '<p class="text-success">В наличии</p>' : (p.status == '2' ? '<p class="text-primary">Под заказ</p>' : '<p class="text-danger">Нет в наличии</p>') }
                                 <h2>${p.price==0 ? '' : p.price + '₸'} </h2>
                             </div>
-                            <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')">В корзину</button>
-                            <button class="btn btn-warning px-4 py-2 mt-2" onclick="showDescription('product-${i}')">Подробнее</button>
+                            <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')"><%=L('catalog1', language, 'В корзину') %></button>
+                            <button class="btn btn-warning px-4 py-2 mt-2" onclick="showDescription('product-${i}')"><%=L('catalog2', language, 'Подробнее') %></button>
                         </div>`
                         i++;
                     });
@@ -165,13 +161,13 @@
                                 ${p.status == '1' ? '<p class="text-success">В наличии</p>' : (p.status == '2' ? '<p class="text-primary">Под заказ</p>' : '<p class="text-danger">Нет в наличии</p>') }
                                 <h2>${p.price==0 ? '' : p.price + '₸'} </h2>
                             </div>
-                            <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')">В корзину</button>
-                            <button class="btn btn-warning px-4 py-2 mt-2" onclick="showDescription('product-${i}')">Подробнее</button>
+                            <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')"><%=L('catalog1', language, 'В корзину') %></button>
+                            <button class="btn btn-warning px-4 py-2 mt-2" onclick="showDescription('product-${i}')"><%=L('catalog2', language, 'Подробнее') %></button>
                         </div>`
                 }
                 i++;
             });
-            if (!productsHTML) productsHTML += `<div class="alert alert-light w-100">Ничего не найдено</div>`;
+            if (!productsHTML) productsHTML += `<div class="alert alert-light w-100"><%=L('catalog15', language, 'Ничего не найдено') %></div>`;
 
             $("#catalog").append(productsHTML);
 
@@ -210,7 +206,7 @@
                 localStorage.setItem('products_list', JSON.stringify(productsList));
             }
 
-            $.ambiance({ type: 'success', message: 'Товар добавлен в корзину!' });
+            $.ambiance({ type: 'success', message: "<%=L('catalog14', language, 'Товар добавлен в корзину') %>!" });
             loading(20, el = '#place_older_btn');
             $('#show_bucket-modal').modal('hide');
             $('#products_count').html(0);
@@ -256,10 +252,10 @@
                 });
             } else {
                 bucketContentHTML += `
-        <div class="alert alert-light">
-            У вас нет выбранных товаров.
-        </div>
-        `;
+                <div class="alert alert-light">
+                    <%=L('catalog4', language, 'У вас нет выбранных товаров') %>.
+                </div>
+                `;
                 $('#bucket_content').html(bucketContentHTML);
             }
             showTotalAmount();
@@ -416,13 +412,13 @@
                                 ${p.status == '1' ? '<p class="text-success">В наличии</p>' : (p.status == '2' ? '<p class="text-primary">Под заказ</p>' : '<p class="text-danger">Нет в наличии</p>') }
                                 <h2>${p.price==0 ? '' : p.price + '₸'} </h2>
                             </div>
-                            <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')">В корзину</button>
-                            <button class="btn btn-warning px-4 py-2 mt-2" onclick="showDescription('product-${i}')">Подробнее</button>
+                            <button class="btn btn-dark px-4 py-2" onclick="addToBucket('product-${i}', '${p.product_id}')"><%=L('catalog1', language, 'В корзину') %></button>
+                            <button class="btn btn-warning px-4 py-2 mt-2" onclick="showDescription('product-${i}')"><%=L('catalog2', language, 'Подробнее') %></button>
                         </div>`
                 }
                 i++;
             });
-            if (!productsHTML) productsHTML += `<div class="alert alert-light w-100">Ничего не найдено</div>`;
+            if (!productsHTML) productsHTML += `<div class="alert alert-light w-100"><%=L('catalog15', language, 'Ничего не найдено') %></div>`;
 
             $("#catalog").html(productsHTML)
             // Reinitialize tooltips
